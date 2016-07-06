@@ -18,5 +18,5 @@ gulp.task('default', [
     util.log('Skipping revisioning for development');
     return callback();
   }
-  return runSequence('revision', 'revision:replace', callback);
+  return runSequence('revision', callback);
 });
