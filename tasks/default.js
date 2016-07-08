@@ -2,7 +2,6 @@ import gulp from 'gulp';
 import util from 'gulp-util';
 import runSequence from 'run-sequence';
 
-
 gulp.task('build', (done) => {
   runSequence.use(gulp)(
     'init',

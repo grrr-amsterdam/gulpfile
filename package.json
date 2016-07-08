@@ -1,6 +1,6 @@
 {
   "name": "grrr-gulpfile",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "An opiniated set of gulp tasks",
   "main": "gulpfile.babel.js",
   "scripts": {
