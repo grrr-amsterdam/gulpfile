@@ -3,6 +3,6 @@ import gulp from 'gulp';
 import copy from 'gulp-copy';
 
 gulp.task('copy', () => gulp
-  .src(`${config.get('paths.src')}/favicon.ico`)
+  .src(config.get('paths.copy.src'))
   .pipe(copy(config.get('paths.dist'), { prefix: 1 }))
 );

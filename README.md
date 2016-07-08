@@ -39,6 +39,13 @@ This is a good starting point for a config file:
       "src": "./src/sass/**/*.scss",
       "dist": "./dist/css",
       "entry": "./src/sass/base.scss"
+    },
+    "copy": {
+      "src": [
+        "./src/favicon.ico",
+        "./src/fonts/**/*",
+        "./src/js/vendor/**/*"
+      ]
     }
   }
 }
@@ -52,7 +59,7 @@ Or if you have set it as an npm script: `npm run build -- [task-name]`
 - `browsersync` Auto refresh and hot reloading in the browser
 - `browserify` Bundle javascript modules required together into a single bundle.js.
 - `clean` removes everything in the `config.paths.dist` folder
-- `copy` copies the favicon from the `config.paths.src` to the `config.paths.dist`
+- `copy` copies files from the `config.paths.copy.src` to the `config.paths.dist`
 - `default` runs `clean`, `copy`, `sass`, `sass:lint`, `browserify`, `images`, `svg`, `modernizr`, and `revision`
 - `eslint`
 - `images` runs imagemin on all images in the `config.paths.images.src` and saves the result to `config.paths.images.dist`
