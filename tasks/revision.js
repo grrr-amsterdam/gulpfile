@@ -6,10 +6,16 @@ import revDeleteOriginal from 'gulp-rev-delete-original';
 import revReplace from 'gulp-rev-replace';
 import { ENV } from '../lib/getEnv';
 
+const needsRevision = () => ENV !== 'development';
+
 /**
  * Add revision hash behind filename so we can cache assets forever
  */
 gulp.task('revision:rename', () => {
+  if (!needsRevision) {
+    return;
+  }
+
   const cssFilter = filter('**/*.css', { restore: true });
   const jsFilter = filter('**/*.js', { restore: true });
   const imgFilter = filter('**/*.{png,gif,jpg,svg}', { restore: true });
@@ -35,6 +41,10 @@ gulp.task('revision:rename', () => {
  */
 
 gulp.task('revision', ['revision:rename'], () => {
+  if (!needsRevision) {
+    return;
+  }
+
   const manifestFile = `${config.get('paths.dist')}/rev-manifest-${ENV}.json`;
   const manifest = gulp.src(manifestFile);
 

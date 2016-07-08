@@ -52,7 +52,7 @@ function initBrowserify(options) {
   }).on('error', handleError);
 
   browserifyInstance.on('update', () => bundle(browserifyInstance));
-  bundle(browserifyInstance);
+  return bundle(browserifyInstance);
 }
 
 gulp.task('browserify', initBrowserify);
