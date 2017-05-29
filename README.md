@@ -1,4 +1,6 @@
 # gulpfile
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/grrr-amsterdam/gulpfile.svg)](https://greenkeeper.io/)
 The best Gulpfile in the world, by Grrr - Creative Digital Agency in Amsterdam.
 
 ## How to use
