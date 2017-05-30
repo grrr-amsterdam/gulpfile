@@ -13,6 +13,7 @@ The best Gulpfile in the world, by Grrr - Creative Digital Agency in Amsterdam.
 - Create a config file at a location like `config/default.json` (for the allowed config file locations, look at https://www.npmjs.com/package/config )
 - Run gulp by calling `gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'` (tip: save this as an npm script in your project's `package.json`)
 
+
 ## Config file
 
 This is a good starting point for a config file:
