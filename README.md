@@ -5,14 +5,14 @@ The best Gulpfile in the world, by Grrr - Creative Digital Agency in Amsterdam.
 
 - Create a folder for your new project or enter your existing project
 - Install this package through npm: `npm install grrr-gulpfile --save-dev`
-- Create a config file at a location like `config/default.json` (for the allowed config file locations, look at https://www.npmjs.com/package/config )
+- Create a config file at a location like `config/default.json` (for the allowed config file locations, look at [npm package config](https://www.npmjs.com/package/config) )
 - Run gulp by calling `gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'` (tip: save this as an npm script in your project's `package.json`)
 
 ## Config file
 
 This is a good starting point for a config file:
 
-```
+```javascript
 {
   "app": {
     "domain": "localhost",
@@ -70,4 +70,4 @@ Or if you have set it as an npm script: `npm run build -- [task-name]`
 - `svg` creates a svg sprite
 - `watch` runs the same tasks as `default` but will retrigger when files are changed
 
-For more info, jump into the tasks folder...
+For more info, jump into the tasks folder.
