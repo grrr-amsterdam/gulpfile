@@ -4,7 +4,7 @@
   "description": "An opiniated set of gulp tasks",
   "main": "gulpfile.babel.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Not testing anything just yet.\" && exit 0"
   },
   "repository": {
     "type": "git",
