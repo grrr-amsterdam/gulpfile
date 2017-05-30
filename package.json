@@ -14,8 +14,8 @@
     "gulp",
     "grrr"
   ],
-  "author": "larix@grrr.nl",
-  "license": "ISC",
+  "author": "Grrr <npm@grrr.nl>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/grrr-amsterdam/gulpfile/issues"
   },
