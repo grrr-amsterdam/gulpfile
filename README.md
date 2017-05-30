@@ -1,6 +1,11 @@
 # gulpfile
 The best Gulpfile in the world, by Grrr - Creative Digital Agency in Amsterdam.
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/grrr-amsterdam/gulpfile.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/grrr-amsterdam/gulpfile.svg)](https://travis-ci.org/grrr-amsterdam/gulpfile)
+[![Dependencies](https://david-dm.org/grrr-amsterdam/gulpfile.svg)](https://david-dm.org/grrr-amsterdam/gulpfile)
+
+
 ## How to use
 
 - Create a folder for your new project or enter your existing project
