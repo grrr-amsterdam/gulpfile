@@ -1,0 +1,30 @@
+{
+  "app": {
+    "domain": "localhost.<something>.com"
+  },
+  "paths": {
+    "src": "./assets",
+    "dist": "./dist"
+  },
+  "tasks": {
+    "icons": {
+      "src": "./assets/images/icons/**/*.svg",
+      "dist": "./dist/images"
+    },
+    "images": {
+      "src": "./assets/images/**/*.{png,gif,jpg,jpeg,svg}",
+      "dist": "./dist/images"
+    },
+    "javascript": {
+      "src": "./assets/scripts/**/*.js",
+      "dist": "./dist/scripts",
+      "main": "./assets/scripts/main.js",
+      "bundle": "main.js"
+    },
+    "sass": {
+      "src": "./assets/styles/**/*.scss",
+      "dist": "./dist/styles",
+      "main": "./assets/styles/base.scss"
+    }
+  }
+}

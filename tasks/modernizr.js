@@ -1,5 +1,7 @@
-import config from 'config';
+import config from '../lib/config';
 import gulp from 'gulp';
+import pump from 'pump';
+
 import modernizr from 'gulp-modernizr';
 import uglify from 'gulp-uglify';
 
@@ -9,20 +11,23 @@ import uglify from 'gulp-uglify';
  *
  * Note: this task isn't run on watch, you can run it manually via `gulp modernizr`
  */
-gulp.task('modernizr', () => gulp
-  .src([
-    config.get('paths.css.src'),
-    config.get('paths.js.src'),
-  ])
-  .pipe(modernizr({
-    enableJSClass: false,
-    options: [
-      'setClasses',
-    ],
-    tests: [
-      'picture',
-    ],
-  }))
-  .pipe(uglify())
-  .pipe(gulp.dest(config.get('paths.js.dist')))
-);
+gulp.task('modernizr', (done) => {
+  pump([
+    gulp.src([
+      config.get('tasks.sass.src'),
+      config.get('tasks.javascript.src'),
+      '!**/{vendor,polyfills}/**/*.js',
+    ]),
+    modernizr({
+      enableJSClass: false,
+      options: [
+        'setClasses',
+      ],
+      tests: [
+        'picture',
+      ],
+    }),
+    uglify(),
+    gulp.dest(config.get('tasks.javascript.dist')),
+  ], done);
+});

@@ -1,20 +1,23 @@
-import config from 'config';
+import config from '../lib/config';
 import gulp from 'gulp';
+import pump from 'pump';
 import util from 'gulp-util';
+
 import imagemin from 'gulp-imagemin';
-import handleError from '../lib/handleError';
 
 /**
  * Compresses images
  */
-gulp.task('images', () => {
-  util.log(util.colors.green(`Building images to ${config.get('paths.images.dist')}`));
-  return gulp.src(config.get('paths.images.src'))
-    .pipe(imagemin({
+gulp.task('images', (done) => {
+  pump([
+    gulp.src([
+      config.get('tasks.images.src'),
+      '!**/icons/**/*.svg',
+    ]),
+    imagemin({
       progressive: true,
       svgoPlugins: [{ removeViewBox: false }],
-    }))
-    .on('error', handleError)
-    .pipe(gulp.dest(config.get('paths.images.dist')))
-  ;
+    }),
+    gulp.dest(config.get('tasks.images.dist')),
+  ], done);
 });
