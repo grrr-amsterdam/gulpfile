@@ -1,5 +1,6 @@
-import config from 'config';
+import config from '../lib/config';
 import gulp from 'gulp';
+
 import del from 'del';
 
 /**
@@ -7,4 +8,4 @@ import del from 'del';
  */
 gulp.task('clean', () => del([
   `${config.get('paths.dist')}/**/*`,
-]));
+], { dot: true }));

@@ -1,5 +1,6 @@
-# gulpfile
-The best Gulpfile in the world, by Grrr - Creative Digital Agency in Amsterdam.
+# Grrr Gulpfile
+An opinionated and modular gulpfile.
+Made with ❤️ by [Grrr](https://grrr.nl/), a digital creative agency in Amsterdam.
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/grrr-amsterdam/gulpfile.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/grrr-amsterdam/gulpfile.svg)](https://travis-ci.org/grrr-amsterdam/gulpfile)
@@ -7,73 +8,128 @@ The best Gulpfile in the world, by Grrr - Creative Digital Agency in Amsterdam.
 
 
 ## How to use
+This Gulpfile require
 
-- Create a folder for your new project or enter your existing project
-- Install this package through npm: `npm install grrr-gulpfile --save-dev`
-- Create a config file at a location like `config/default.json` (for the allowed config file locations, look at [npm package config](https://www.npmjs.com/package/config) )
-- Run gulp by calling `gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'` (tip: save this as an npm script in your project's `package.json`)
+#### Install
+Install this package through yarn or npm:
+```
+npm install grrr-gulpfile --save-dev
+```
 
+#### Configure
+- Create a `gulp.json` config file (see below).
+- Add a `.babelrc` file and add the required dependencies for the project. A good starting point is by adding `babel-preset-env`, and adding it as the current preset in the `.babelrc` file. See the [Babel documentation](https://babeljs.io/docs/plugins/preset-env/) for more info.
+
+Note: the `.babelrc` file in this project is only used for transpiling the gulpfile itself. Without one specified in the project, no transpiling or bundling of JavaScript will be performed.
+
+#### Run
+Run gulp by calling:
+```
+gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'
+```
+
+Tip: save this as an npm script in your project's `package.json`, for example:
+```json
+"scripts": {
+    "watch": "gulp watch --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'",
+    "build": "gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'",
+    "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'",
+    "build:production": "gulp --production --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'"
+},
+```
+Then run by calling the watch task:
+```
+npm run watch
+```
+or build for a specific environment:
+```
+npm run build:production
+```
+or run a specific task:
+```
+npm run build images
+```
 
 ## Config file
-
-This is a good starting point for a config file:
+Below is an example `gulp.json` config, check the [examples](https://github.com/grrr-amsterdam/gulpfile/tree/master/examples) for more advanced configs.
 
 ```javascript
 {
   "app": {
-    "domain": "localhost",
-    "port": 80
+    "domain": "localhost.<something>.com"
   },
   "paths": {
-    "dist": "./dist",
-    "src": "./src",
-    "images": {
-      "src": "./src/images/**/*.{png,gif,jpg}",
+    "src": "./assets",
+    "dist": "./dist"
+  },
+  "tasks": {
+    "icons": {
+      "src": "./assets/images/icons/**/*.svg",
       "dist": "./dist/images"
     },
-    "svg": {
-      "src": "./src/svg/**/*.svg",
-      "dist": "./dist/svg"
+    "images": {
+      "src": "./assets/images/**/*.{png,gif,jpg,jpeg,svg}",
+      "dist": "./dist/images"
     },
-    "js": {
-      "src": "./src/js/**/*.js",
-      "entries": "./src/js/main.js",
-      "bundle": "bundle.js",
-      "dist": "./dist/js"
+    "javascript": {
+      "src": "./assets/scripts/**/*.js",
+      "dist": "./dist/scripts",
+      "main": "./assets/scripts/main.js",
+      "bundle": "main.js"
     },
-    "css": {
-      "src": "./src/sass/**/*.scss",
-      "dist": "./dist/css",
-      "entry": "./src/sass/base.scss"
-    },
-    "copy": {
-      "src": [
-        "./src/favicon.ico",
-        "./src/fonts/**/*",
-        "./src/js/vendor/**/*"
-      ]
+    "sass": {
+      "src": "./assets/styles/**/*.scss",
+      "dist": "./dist/styles",
+      "main": "./assets/styles/base.scss"
     }
   }
 }
 ```
 
+## Overriding defaults
+Some defaults can be overwritten. These are:
+
+- The Autoprefixer options used in `sass`. These can be specified in the `gulp.json` file.
+- The rules used in `sass:lint`. Place a `.sass-lint.yml` file in your project.
+- The `eslint` rules. Place an `.eslintrc` file in your project.
+
 ## Tasks
+Specify which tasks to run by calling gulp like: `gulp [task-name] --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'`. Or if speciefied `gulp` as a script: `yarn run gulp <task>`.
 
-Specify which tasks to run by calling gulp like: `gulp [task-name] --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'`
-Or if you have set it as an npm script: `npm run build -- [task-name]`
+The individual tasks include:
 
-- `browsersync` Auto refresh and hot reloading in the browser
-- `browserify` Bundle javascript modules required together into a single bundle.js.
-- `clean` removes everything in the `config.paths.dist` folder
-- `copy` copies files from the `config.paths.copy.src` to the `config.paths.dist`
-- `default` runs `clean`, `copy`, `sass`, `sass:lint`, `browserify`, `images`, `svg`, `modernizr`, and `revision`
-- `eslint`
+- `browsersync` auto refresh and hot reloading in the browser
+- `clean` removes all built assets
+- `copy` copies files that don't need processing (like fonts, videos and the favicon)
+- `eslint` lints js with opinionated rules, which can be overwritten by including your own `.eslintrc`
 - `images` runs imagemin on all images in the `config.paths.images.src` and saves the result to `config.paths.images.dist`
+- `javascript` bundles javascript into a single bunle thru Browserify and transpiles them via Babel (adding a project-specific `.babelrc` file + dependencies is required)
+- `javascript:vendor` copies and uglifies vendor files (can also concatenate them)
 - `init` prints some debug info
-- `modernizr` checks js and scss source files for Modernizr tests and creates a custom modernizr build
+- `icons` creates a svg sprite
+- `modernizr` checks js and scss source files for Modernizr tests and creates a custom Modernizr build
 - `revision` creates a revisioned filename for each static asset
-- `sass`
-- `svg` creates a svg sprite
-- `watch` runs the same tasks as `default` but will retrigger when files are changed
+- `sass` compiles sass with globbing
+- `sass:lint` lints sass with opinionated rules, which can be overwritten by including your own `.sass-lint.yml`
+
+The main tasks are:
+
+- `default` runs all above tasks, except `browsersync` (some tasks are dependent on the called environment)
+- `watch` runs the same tasks as `default` but will retrigger when files are changed, and will start browsersync
 
 For more info, jump into the tasks folder.
+
+## Development
+To make changes to this gulpfile, it's best to replace the installed package in a real project with a locally linked development version. This can be done with both yarn or npm. We use yarn in this example; for npm check the [npm docs](https://docs.npmjs.com/cli/link) . Inside the root of the `grrr-gulpfile` repo, run:
+```
+yarn link
+```
+Inside the root of the project you want to test the gulpfile, run:
+```
+yarn link grrr-gulpfile
+```
+When you're done, you can publish the changes on `npm` and unlink the development version by running the following inside the project:
+```
+yarn unlink grrr-gulpfile
+yarn install
+```
