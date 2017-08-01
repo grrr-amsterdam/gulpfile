@@ -28,6 +28,7 @@ Run gulp by calling:
 gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'
 ```
 
+
 Tip: save this as an npm script in your project's `package.json`, for example:
 ```json
 "scripts": {
@@ -92,6 +93,7 @@ Some defaults can be overwritten. These are:
 - The Autoprefixer options used in `sass`. These can be specified in the `gulp.json` file.
 - The rules used in `sass:lint`. Place a `.sass-lint.yml` file in your project.
 - The `eslint` rules. Place an `.eslintrc` file in your project.
+- You can additionally add an `.eslintignore` for ignoring (wildcarded) folders or packages.
 
 ## Tasks
 Specify which tasks to run by calling gulp like: `gulp [task-name] --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'`. Or if speciefied `gulp` as a script: `yarn run gulp <task>`.
