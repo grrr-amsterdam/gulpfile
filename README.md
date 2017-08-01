@@ -32,10 +32,10 @@ gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'
 Tip: save this as an npm script in your project's `package.json`, for example:
 ```json
 "scripts": {
-    "watch": "gulp watch --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'",
-    "build": "gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'",
-    "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'",
-    "build:production": "gulp --production --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'"
+    "watch": "gulp watch --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'",
+    "build": "gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'",
+    "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'",
+    "build:production": "gulp --production --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'"
 },
 ```
 Then run by calling the watch task:
