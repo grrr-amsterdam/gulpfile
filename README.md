@@ -7,11 +7,11 @@ Made with ❤️ by [Grrr](https://grrr.nl/), a digital creative agency in Amste
 [![Dependencies](https://david-dm.org/grrr-amsterdam/gulpfile.svg)](https://david-dm.org/grrr-amsterdam/gulpfile)
 
 
-## How to use
-This Gulpfile require
+## Quick start
+Basic installation and configuration is as follows:
 
 #### Install
-Install this package through yarn or npm:
+Install this package in your project through yarn or npm:
 ```
 npm install grrr-gulpfile --save-dev
 ```
