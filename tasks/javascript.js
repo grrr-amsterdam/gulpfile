@@ -1,5 +1,5 @@
 import { isDevelopment } from '../lib/env';
-import { logError } from '../lib/log';
+import { log, logError } from '../lib/log';
 import fs from 'fs';
 import config from '../lib/config';
 import gulp from 'gulp';
@@ -26,7 +26,9 @@ const bundle = (done) => {
     return;
   }
   pump([
-    browserifyInstance.bundle(),
+    browserifyInstance.bundle().on('error', (err) => {
+      logError(err);
+    }),
     source(config.get('tasks.javascript.bundle')),
     buffer(),
     sourcemaps.init({ loadMaps: true }),
@@ -45,30 +47,21 @@ const bundle = (done) => {
   ], done);
 };
 
-const initBrowserify = (options) => {
+const initBrowserify = (args) => {
   if (!hasBabelConfig) {
-    logError(
+    return logError(
       `\n——————————————\n
       Warning: No JavaScript will be built, since there\'s no \`.babelrc\` file present.
       For help, check: https://github.com/grrr-amsterdam/gulpfile#configure
       \n——————————————`
     );
-    return;
   }
-  const opts = Object.assign({}, watchify.args, {
-    entries: config.get('tasks.javascript.main'),
-  });
-  browserifyInstance = browserify(opts);
-
-  // If this is a watch task, wrap browserify in watchify
-  if (options && options.watch) {
-    browserifyInstance = watchify(browserifyInstance);
-  }
-
   const babelConfig = JSON.parse(fs.readFileSync('.babelrc'));
-  browserifyInstance.transform(babelify, babelConfig).on('error', (err) => {
-    logError(err);
-  });
+  const options = {
+    entries: config.get('tasks.javascript.main'),
+  };
+  browserifyInstance = args && args.watch ? watchify(browserify(options)) : browserify(options);
+  browserifyInstance.transform(babelify, babelConfig);
 
   // Run here, since gulp.watch is less reliable
   browserifyInstance.on('update', () => {
