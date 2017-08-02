@@ -8,6 +8,7 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import gulpif from 'gulp-if';
 import browserSync from 'browser-sync';
+import runSequence from 'run-sequence';
 
 import uglify from 'gulp-uglify';
 import sourcemaps from 'gulp-sourcemaps';
@@ -26,9 +27,9 @@ const bundle = (done) => {
     return;
   }
   pump([
-    browserifyInstance.bundle().on('error', (err) => {
-      logError(err);
-    }),
+    browserifyInstance.bundle()
+      .on('error', err => logError(err))
+      .on('end', () => done()),
     source(config.get('tasks.javascript.bundle')),
     buffer(),
     sourcemaps.init({ loadMaps: true }),
@@ -44,7 +45,7 @@ const bundle = (done) => {
     sourcemaps.write('./'),
     gulp.dest(config.get('tasks.javascript.dist')),
     browserSync.stream({ once: true }),
-  ], done);
+  ]);
 };
 
 const initBrowserify = (args) => {
@@ -57,27 +58,25 @@ const initBrowserify = (args) => {
     );
   }
   const babelConfig = JSON.parse(fs.readFileSync('.babelrc'));
-  const options = {
-    entries: config.get('tasks.javascript.main'),
-  };
+  const options = { entries: config.get('tasks.javascript.main') };
   browserifyInstance = args && args.watch ? watchify(browserify(options)) : browserify(options);
   browserifyInstance.transform(babelify, babelConfig);
-
-  // Run here, since gulp.watch is less reliable
   browserifyInstance.on('update', () => {
     gulp.start('javascript:rebuild');
-    gulp.start('eslint');
   });
 }
 
-gulp.task('javascript:build', () => {
+gulp.task('javascript:build', (done) => {
   initBrowserify();
-  return bundle();
+  bundle(callback => done());
 });
-gulp.task('javascript:watch', () => {
+gulp.task('javascript:watch', (done) => {
   initBrowserify({ watch: true });
-  return bundle();
+  bundle(callback => done());
 });
-gulp.task('javascript:rebuild', () => {
-  return bundle();
+gulp.task('javascript:rebuild', (done) => {
+  bundle(callback => {
+    done();
+    gulp.start('eslint');
+  });
 });

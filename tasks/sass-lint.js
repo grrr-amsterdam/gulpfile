@@ -25,5 +25,5 @@ gulp.task('sass:lint', (done) => {
       configFile: sassLintConfig,
     }),
     sassLint.format(),
-  ], done);
+  ]);
 });

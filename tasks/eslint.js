@@ -26,5 +26,5 @@ gulp.task('eslint', (done) => {
     ]).on('finish', () => done()),
     eslint(eslintConfig),
     eslint.formatEach(),
-  ], done);
+  ]);
 });
