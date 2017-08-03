@@ -11,7 +11,7 @@ gulp.task('watch', ['watch:init'], () => {
   gulp.watch(config.get('tasks.images.src'), ['images']);
   gulp.watch(config.get('tasks.icons.src'), ['icons']);
   if (config.has('tasks.watch.files')) {
-    gulp.watch(config.get('tasks.watch.files'), browserSync.reload());
+    gulp.watch(config.get('tasks.watch.files'), browserSync.reload);
   }
 });
 
