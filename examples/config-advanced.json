@@ -68,8 +68,8 @@
     },
     "watch": {
       "files": [
-        "{lib,templates}/**/*.{php,phtml,twig}",
-        "*.php"
+        "./{lib,templates}/**/*.{php,phtml}",
+        "./**/*.twig"
       ]
     }
   }

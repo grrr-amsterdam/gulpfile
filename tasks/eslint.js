@@ -1,6 +1,8 @@
+import config from '../lib/config';
+import { isDevelopment } from '../lib/env';
+import { log } from '../lib/log';
 import fs from 'fs';
 import path from 'path';
-import config from '../lib/config';
 import gulp from 'gulp';
 import pump from 'pump';
 
@@ -13,6 +15,10 @@ const eslintConfig = fs.existsSync('.eslintrc') ?
  * Lints JS (see `.eslintrc`)
  */
 gulp.task('eslint', (done) => {
+  if (!isDevelopment) {
+    log('eslint: skipping for non-development');
+    return done();
+  }
   pump([
     gulp.src([
       config.get('tasks.javascript.src'),
@@ -20,5 +26,5 @@ gulp.task('eslint', (done) => {
     ]).on('finish', () => done()),
     eslint(eslintConfig),
     eslint.formatEach(),
-  ], done);
+  ]);
 });

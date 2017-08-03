@@ -73,7 +73,7 @@ gulp.task('revision:replace:js', (done) => {
  */
 gulp.task('revision', (done) => {
   if (isDevelopment) {
-    log('Skipping revisioning for development');
+    log('revision: skipping for development');
     return done();
   }
   runSequence(
