@@ -6,7 +6,7 @@ gulp.task('build', (done) => runSequence.use(gulp)(
   'clean',
   [
     'modernizr',
-    'javascript:watch',
+    'javascript:build',
     'javascript:vendor',
     'sass',
     'copy',
