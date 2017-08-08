@@ -20,8 +20,15 @@ const autoprefixerConfig = config.has('tasks.sass.autoprefixer') ?
     'last 3 versions',
     'ie 9',
     'ie 10'
-  ],
-};
+  ]}
+;
+
+const cleanCssConfig = config.has('tasks.sass.cleanCss') ?
+  config.get('tasks.sass.cleanCss') : {
+    compatibility: 'ie8',
+    level: 1,
+  }
+;
 
 const processorsConfig = [
   autoprefixer(autoprefixerConfig),
@@ -46,10 +53,7 @@ gulp.task('sass', (done) => {
     sassGlob(),
     sass(),
     postcss(processorsConfig),
-    gulpif(!isDevelopment, cleanCSS({
-      aggressiveMerging: false,
-      restructuring: false,
-    })),
+    gulpif(!isDevelopment, cleanCSS(cleanCssConfig)),
     gulp.dest(config.get('tasks.sass.dist')),
     browserSync.reload({ stream: true }),
   ], done);

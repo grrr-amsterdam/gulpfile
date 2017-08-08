@@ -58,6 +58,10 @@
           "ie 10",
           "ie 11"
         ]
+      },
+      "cleanCss": {
+        "compatibility": "ie8",
+        "level": 1,
       }
     },
     "revision": {
