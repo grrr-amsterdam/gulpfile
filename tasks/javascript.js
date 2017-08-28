@@ -1,4 +1,4 @@
-import { isDevelopment } from '../lib/env';
+import { isProduction } from '../lib/env';
 import { log, logError } from '../lib/log';
 import fs from 'fs';
 import config from '../lib/config';
