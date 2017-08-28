@@ -33,7 +33,7 @@ const bundle = (done) => {
     source(config.get('tasks.javascript.bundle')),
     buffer(),
     sourcemaps.init({ loadMaps: true }),
-    gulpif(!isDevelopment, uglify({
+    gulpif(isProduction, uglify({
       compress: {
         drop_console: true,
         drop_debugger: true,
