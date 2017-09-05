@@ -16,7 +16,9 @@ import browserify from 'browserify';
 import babelify from 'babelify';
 import watchify from 'watchify';
 
-const hasBabelConfig = fs.existsSync('.babelrc');
+const hasBabelConfig = fs.existsSync('.babelrc') ||
+  JSON.parse(fs.readFileSync('package.json')).babel;
+
 let browserifyInstance;
 
 /**
@@ -57,7 +59,9 @@ const initBrowserify = (args) => {
       \n——————————————`
     );
   }
-  const babelConfig = JSON.parse(fs.readFileSync('.babelrc'));
+  const babelConfig = fs.existsSync('.babelrc') ?
+    JSON.parse(fs.readFileSync('.babelrc')) :
+    JSON.parse(fs.readFileSync('package.json')).babel;
   const options = { entries: config.get('tasks.javascript.main') };
   browserifyInstance = args && args.watch ? watchify(browserify(options)) : browserify(options);
   browserifyInstance.transform(babelify, babelConfig);
