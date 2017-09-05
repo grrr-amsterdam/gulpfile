@@ -1,6 +1,6 @@
 {
   "name": "grrr-gulpfile",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "An opiniated set of gulp tasks",
   "author": "Grrr <npm@grrr.nl>",
   "license": "MIT",
@@ -36,6 +36,7 @@
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.7.0",
+    "event-stream": "^3.3.4",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^3.7.0",
