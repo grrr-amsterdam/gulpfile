@@ -18,9 +18,8 @@ npm install grrr-gulpfile --save-dev
 
 #### Configure
 - Create a `gulp.json` config file (see below).
-- Add a `.babelrc` file and add the required dependencies for the project. A good starting point is by adding `babel-preset-env`, and adding it as the current preset in the `.babelrc` file. See the [Babel documentation](https://babeljs.io/docs/plugins/preset-env/) for more info.
-
-Note: the `.babelrc` file in this project is only used for transpiling the gulpfile itself. Without one specified in the project, no transpiling or bundling of JavaScript will be performed.
+- Add a the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information.
+- Specify the Babel config either in the `gulp.json` file or your `package.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
 
 #### Run
 Run gulp by calling:
@@ -54,7 +53,7 @@ npm run build images
 ## Config file
 Below is an example `gulp.json` config, check the [examples](https://github.com/grrr-amsterdam/gulpfile/tree/master/examples) for more advanced configs.
 
-```javascript
+```json
 {
   "app": {
     "domain": "localhost.<something>.com"
@@ -76,7 +75,27 @@ Below is an example `gulp.json` config, check the [examples](https://github.com/
       "src": "./assets/scripts/**/*.js",
       "dist": "./dist/scripts",
       "main": "./assets/scripts/main.js",
-      "bundle": "main.js"
+      "bundle": "main.js",
+      "babel": {
+        "plugins": [
+          "lodash",
+          "babel-plugin-transform-object-rest-spread"
+        ],
+        "presets": [
+          [
+            "env", {
+              "targets": {
+                "browsers": [
+                  "> 5%",
+                  "last 3 versions",
+                  "safari >= 7",
+                  "ie >= 9"
+                ]
+              }
+            }
+          ]
+        ]
+      }
     },
     "sass": {
       "src": "./assets/styles/**/*.scss",
