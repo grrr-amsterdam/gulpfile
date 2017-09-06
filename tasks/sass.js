@@ -19,7 +19,8 @@ const autoprefixerConfig = config.has('tasks.sass.autoprefixer') ?
     '>5%',
     'last 3 versions',
     'ie 9',
-    'ie 10'
+    'ie 10',
+    'ie 11'
   ]}
 ;
 

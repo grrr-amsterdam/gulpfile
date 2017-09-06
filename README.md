@@ -17,16 +17,15 @@ npm install grrr-gulpfile --save-dev
 ```
 
 #### Configure
-- Create a `gulp.json` config file (see below).
+- Create a `gulp.json` config file (see [below](#config-file)).
 - Add a the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information.
-- Specify the Babel config either in the `gulp.json` file or your `package.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
+- Specify the Babel config either in the `gulp.json`, your `package.json` or a dedicated `.babelrc` file. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
 
 #### Run
 Run gulp by calling:
 ```
 gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'
 ```
-
 
 Tip: save this as an npm script in your project's `package.json`, for example:
 ```json
@@ -140,7 +139,7 @@ The main tasks are:
 
 For more info, jump into the tasks folder.
 
-## Development
+## Contributing
 To make changes to this gulpfile, it's best to replace the installed package in a real project with a locally linked development version. This can be done with both yarn or npm. We use yarn in this example; for npm check the [npm docs](https://docs.npmjs.com/cli/link) . Inside the root of the `grrr-gulpfile` repo, run:
 ```
 yarn link
