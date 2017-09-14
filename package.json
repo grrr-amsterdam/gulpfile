@@ -1,6 +1,6 @@
 {
   "name": "grrr-gulpfile",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "An opiniated set of gulp tasks",
   "author": "Grrr <npm@grrr.nl>",
   "license": "MIT",
@@ -68,7 +68,6 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0",
-    "yargs": "^8.0.2",
-    "yarn": "^0.27.5"
+    "yargs": "^8.0.2"
   }
 }
