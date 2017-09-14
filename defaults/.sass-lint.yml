@@ -15,9 +15,9 @@ rules:
       max-depth: 1
 
   border-zero:
-    - 1
+    - 0
     -
-      convention: 'zero'
+      convention: 'none'
 
   brace-style:
     - 1
