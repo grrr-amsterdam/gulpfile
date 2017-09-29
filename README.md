@@ -58,22 +58,22 @@ Below is an example `gulp.json` config, check the [examples](https://github.com/
     "domain": "localhost.<something>.com"
   },
   "paths": {
-    "src": "./assets",
-    "dist": "./dist"
+    "src": "assets",
+    "dist": "dist"
   },
   "tasks": {
     "icons": {
-      "src": "./assets/images/icons/**/*.svg",
-      "dist": "./dist/images"
+      "src": "assets/images/icons/**/*.svg",
+      "dist": "dist/images"
     },
     "images": {
-      "src": "./assets/images/**/*.{png,gif,jpg,jpeg,svg}",
-      "dist": "./dist/images"
+      "src": "assets/images/**/*.{png,gif,jpg,jpeg,svg}",
+      "dist": "dist/images"
     },
     "javascript": {
-      "src": "./assets/scripts/**/*.js",
-      "dist": "./dist/scripts",
-      "main": "./assets/scripts/main.js",
+      "src": "assets/scripts/**/*.js",
+      "dist": "dist/scripts",
+      "main": "assets/scripts/main.js",
       "bundle": "main.js",
       "babel": {
         "plugins": [
@@ -97,9 +97,9 @@ Below is an example `gulp.json` config, check the [examples](https://github.com/
       }
     },
     "sass": {
-      "src": "./assets/styles/**/*.scss",
-      "dist": "./dist/styles",
-      "main": "./assets/styles/base.scss"
+      "src": "assets/styles/**/*.scss",
+      "dist": "dist/styles",
+      "main": "assets/styles/base.scss"
     }
   }
 }

@@ -4,26 +4,26 @@
     "port": 443
   },
   "paths": {
-    "src": "./assets",
-    "dist": "./dist"
+    "src": "assets",
+    "dist": "dist"
   },
   "tasks": {
     "copy": [
-      "./assets/fonts/**/*",
-      "./assets/scripts/vendor/**/*.js"
+      "assets/fonts/**/*",
+      "assets/scripts/vendor/**/*.js"
     ],
     "icons": {
-      "src": "./assets/images/icons/**/*.svg",
-      "dist": "./dist/images"
+      "src": "assets/images/icons/**/*.svg",
+      "dist": "dist/images"
     },
     "images": {
-      "src": "./assets/images/**/*.{png,gif,jpg,jpeg,svg}",
-      "dist": "./dist/images"
+      "src": "assets/images/**/*.{png,gif,jpg,jpeg,svg}",
+      "dist": "dist/images"
     },
     "javascript": {
-      "src": "./assets/scripts/**/*.js",
-      "dist": "./dist/scripts",
-      "main": "./assets/scripts/main.js",
+      "src": "assets/scripts/**/*.js",
+      "dist": "dist/scripts",
+      "main": "assets/scripts/main.js",
       "bundle": "main.js",
       "babel": {
         "plugins": [
@@ -49,26 +49,26 @@
     "javascript:vendor": [
       {
         "src": [
-          "./node_modules/fg-loadjs/loadJS.js",
-          "./node_modules/svg4everybody/dist/svg4everybody.js"
+          "node_modules/fg-loadjs/loadJS.js",
+          "node_modules/svg4everybody/dist/svg4everybody.js"
         ],
-        "dist": "./dist/scripts/vendor"
+        "dist": "dist/scripts/vendor"
       },
       {
         "src": [
-          "./node_modules/fg-loadjs/loadJS.js",
-          "./node_modules/svg4everybody/dist/svg4everybody.js"
+          "node_modules/fg-loadjs/loadJS.js",
+          "node_modules/svg4everybody/dist/svg4everybody.js"
         ],
-        "dist": "./dist/scripts",
+        "dist": "dist/scripts",
         "bundle": "libs.js"
       }
     ],
     "sass": {
-      "src": "./assets/styles/**/*.scss",
-      "dist": "./dist/styles",
+      "src": "assets/styles/**/*.scss",
+      "dist": "dist/styles",
       "main": [
-        "./assets/styles/base.scss",
-        "./assets/styles/admin.scss"
+        "assets/styles/base.scss",
+        "assets/styles/admin.scss"
       ],
       "autoprefixer": {
         "browsers": [
@@ -86,14 +86,14 @@
     },
     "revision": {
       "manifest": {
-        "directory": "./dist",
+        "directory": "dist",
         "files": "assets.json"
       }
     },
     "watch": {
       "files": [
-        "./{lib,templates}/**/*.{php,phtml}",
-        "./**/*.twig"
+        "{lib,templates}/**/*.{php,phtml}",
+        "**/*.twig"
       ]
     }
   }
