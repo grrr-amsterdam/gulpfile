@@ -5,7 +5,6 @@ import gulp from 'gulp';
 import pump from 'pump';
 import runSequence from 'run-sequence';
 
-import filter from 'gulp-filter';
 import rev from 'gulp-rev';
 import revDeleteOriginal from 'gulp-rev-delete-original';
 import revReplace from 'gulp-rev-replace';
@@ -20,27 +19,15 @@ const manifestFullPath = `${manifestDir}/${manifestFile}`;
  * Add revision hash behind filename so we can cache assets forever
  */
 gulp.task('revision:hash', (done) => {
-  const cssFilter = filter('**/*.css', { restore: true });
-  const jsFilter = filter('**/*.js', { restore: true });
-  const imgFilter = filter('**/*.{png,gif,jpg,jpeg,svg}', { restore: true });
-
   pump([
     gulp.src([
-      `${config.get('tasks.sass.dist')}/*.css`,
-      `${config.get('tasks.javascript.dist')}/*.js`,
+      `${config.get('tasks.sass.dist')}/**/*.css`,
+      `${config.get('tasks.javascript.dist')}/**/*.js`,
       `${config.get('tasks.images.dist')}/**/*.{gif,jpg,jpeg,svg}`,
-    ]),
+    ], { base: config.get('paths.dist') }),
     rev(),
     revDeleteOriginal(),
-    cssFilter,
-    gulp.dest(config.get('tasks.sass.dist')),
-    cssFilter.restore,
-    jsFilter,
-    gulp.dest(config.get('tasks.javascript.dist')),
-    jsFilter.restore,
-    imgFilter,
-    gulp.dest(config.get('tasks.images.dist')),
-    imgFilter.restore,
+    gulp.dest(config.get('paths.dist')),
     rev.manifest(manifestFile),
     gulp.dest(manifestDir),
   ], done);
@@ -51,7 +38,7 @@ gulp.task('revision:hash', (done) => {
  */
 gulp.task('revision:replace:css', (done) => {
   pump([
-    gulp.src(`${config.get('tasks.sass.dist')}/*.css`),
+    gulp.src(`${config.get('tasks.sass.dist')}/**/*.css`),
     revReplace({ manifest: gulp.src(manifestFullPath) }),
     gulp.dest(config.get('tasks.sass.dist')),
   ], done);
@@ -62,7 +49,7 @@ gulp.task('revision:replace:css', (done) => {
  */
 gulp.task('revision:replace:js', (done) => {
   pump([
-    gulp.src(`${config.get('tasks.javascript.dist')}/*.js`),
+    gulp.src(`${config.get('tasks.javascript.dist')}/**/*.js`),
     revReplace({ manifest: gulp.src(manifestFullPath) }),
     gulp.dest(config.get('tasks.javascript.dist')),
   ], done);
