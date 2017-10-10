@@ -19,7 +19,55 @@
       "src": "assets/scripts/**/*.js",
       "dist": "dist/scripts",
       "main": "assets/scripts/main.js",
-      "bundle": "main.js"
+      "bundle": {
+        "es6": "main.js",
+        "legacy": "main-legacy.js"
+      },
+      "babel": {
+        "es6": {
+          "plugins": [
+            "lodash",
+            "babel-plugin-transform-object-rest-spread"
+          ],
+          "presets": [
+            [
+              "env", {
+                "useBuiltIns": true,
+                "targets": {
+                  "browsers": [
+                    "Chrome >= 60",
+                    "Safari >= 10.1",
+                    "iOS >= 10.3",
+                    "Firefox >= 54",
+                    "Edge >= 15"
+                  ]
+                }
+              }
+            ]
+          ]
+        },
+        "legacy": {
+          "plugins": [
+            "lodash",
+            "babel-plugin-transform-object-rest-spread"
+          ],
+          "presets": [
+            [
+              "env", {
+                "useBuiltIns": true,
+                "targets": {
+                  "browsers": [
+                    "> 5%",
+                    "last 3 versions",
+                    "safari >= 7",
+                    "ie >= 9"
+                  ]
+                }
+              }
+            ]
+          ]
+        }
+      }
     },
     "sass": {
       "src": "assets/styles/**/*.scss",

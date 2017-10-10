@@ -97,7 +97,7 @@ rules:
       convention: 'hyphenatedlowercase'
 
   mixins-before-declarations:
-    - 2
+    - 1
     -
       exclude:
         - bp-min

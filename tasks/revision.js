@@ -53,7 +53,7 @@ gulp.task('revision:replace:js', (done) => {
     revReplace({ manifest: gulp.src(manifestFullPath) }),
     gulp.dest(config.get('tasks.javascript.dist')),
   ], done);
-}) ;
+});
 
 /**
  * Revision tasks wrapper

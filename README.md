@@ -18,8 +18,8 @@ npm install grrr-gulpfile --save-dev
 
 #### Configure
 - Create a `gulp.json` config file (see [below](#config-file)).
-- Add a the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information.
-- Specify the Babel config either in the `gulp.json`, your `package.json` or a dedicated `.babelrc` file. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
+- Add the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information.
+- Specify the Babel config in the `gulp.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
 
 #### Run
 Run gulp by calling:
@@ -74,26 +74,54 @@ Below is an example `gulp.json` config, check the [examples](https://github.com/
       "src": "assets/scripts/**/*.js",
       "dist": "dist/scripts",
       "main": "assets/scripts/main.js",
-      "bundle": "main.js",
+      "bundle": {
+        "es6": "main.js",
+        "legacy": "main-legacy.js"
+      },
       "babel": {
-        "plugins": [
-          "lodash",
-          "babel-plugin-transform-object-rest-spread"
-        ],
-        "presets": [
-          [
-            "env", {
-              "targets": {
-                "browsers": [
-                  "> 5%",
-                  "last 3 versions",
-                  "safari >= 7",
-                  "ie >= 9"
-                ]
+        "es6": {
+          "plugins": [
+            "lodash",
+            "babel-plugin-transform-object-rest-spread"
+          ],
+          "presets": [
+            [
+              "env", {
+                "useBuiltIns": true,
+                "targets": {
+                  "browsers": [
+                    "Chrome >= 60",
+                    "Safari >= 10.1",
+                    "iOS >= 10.3",
+                    "Firefox >= 54",
+                    "Edge >= 15"
+                  ]
+                }
               }
-            }
+            ]
           ]
-        ]
+        },
+        "legacy": {
+          "plugins": [
+            "lodash",
+            "babel-plugin-transform-object-rest-spread"
+          ],
+          "presets": [
+            [
+              "env", {
+                "useBuiltIns": true,
+                "targets": {
+                  "browsers": [
+                    "> 5%",
+                    "last 3 versions",
+                    "safari >= 7",
+                    "ie >= 9"
+                  ]
+                }
+              }
+            ]
+          ]
+        }
       }
     },
     "sass": {
@@ -123,7 +151,7 @@ The individual tasks include:
 - `copy` copies files that don't need processing (like fonts, videos and the favicon)
 - `eslint` lints js with opinionated rules, which can be overwritten by including your own `.eslintrc`
 - `images` runs imagemin on all images in the `config.paths.images.src` and saves the result to `config.paths.images.dist`
-- `javascript` bundles javascript into a single bunle thru Browserify and transpiles them via Babel (adding a project-specific `.babelrc` file + dependencies is required)
+- `javascript` bundles javascript into a single bunle thru Browserify and transpiles them via Babel
 - `javascript:vendor` copies and uglifies vendor files (can also concatenate them)
 - `init` prints some debug info
 - `icons` creates a svg sprite

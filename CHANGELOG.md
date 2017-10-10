@@ -1,6 +1,15 @@
 # Changelog
 This changelog only lists major version changes (breaking), or minor changes important enough to list them here. Check individual releases (tags) and their commits to see unlisted changes.
 
+### 3.0.0 (2017-10-10)
+
+#### Split up JavaScript into ES6 (ES2015+) and legacy versions
+There are two seperate Babel config entries, and two bundle output entries. This means you can have a `main.js` file for evergreen browsers, alongside a `main-legacy.js` file which will serve older browsers. Additionally really old browser can be served a `no-js` version of the website.
+
+#### Removed JavaScript minification
+Uglify doesn't work wel with ES6 syntax, and `gulp-uglify` gave errors when running with newer JavaScript syntax (eg. async functions). Since all files should be served with `gzip` (or some newer form of compression) anyhow, this shouldn't hurt much.
+A future release might add something like [babel-minify](https://github.com/babel/minify).
+
 ### 2.0.0 (2017-10-08)
 
 Changed the way paths are listed in the revisioned manifest JSON file:
