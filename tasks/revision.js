@@ -9,11 +9,13 @@ import rev from 'gulp-rev';
 import revDeleteOriginal from 'gulp-rev-delete-original';
 import revReplace from 'gulp-rev-replace';
 
-const manifestDir = config.has('tasks.revision.manifest.directory') ?
-  config.get('tasks.revision.manifest.directory') : config.get('paths.dist');
-const manifestFile = config.has('tasks.revision.manifest.file') ?
-    config.get('tasks.revision.manifest.file') : 'assets.json';
-const manifestFullPath = `${manifestDir}/${manifestFile}`;
+if (config.get('tasks.revision')) {
+  const manifestDir = config.has('tasks.revision.manifest.directory') ?
+    config.get('tasks.revision.manifest.directory') : config.get('paths.dist');
+  const manifestFile = config.has('tasks.revision.manifest.file') ?
+      config.get('tasks.revision.manifest.file') : 'assets.json';
+  const manifestFullPath = `${manifestDir}/${manifestFile}`;
+}
 
 /**
  * Add revision hash behind filename so we can cache assets forever
@@ -59,8 +61,8 @@ gulp.task('revision:replace:js', (done) => {
  * Revision tasks wrapper
  */
 gulp.task('revision', (done) => {
-  if (isDevelopment) {
-    log('revision: skipping for development');
+  if (isDevelopment || !config.get('tasks.revision')) {
+    log('revision: skipping for this environment');
     return done();
   }
   runSequence(
