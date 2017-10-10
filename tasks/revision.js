@@ -23,7 +23,7 @@ gulp.task('revision:hash', (done) => {
     gulp.src([
       `${config.get('tasks.sass.dist')}/**/*.css`,
       `${config.get('tasks.javascript.dist')}/**/*.js`,
-      `${config.get('tasks.images.dist')}/**/*.{gif,jpg,jpeg,svg}`,
+      `${config.get('tasks.images.dist')}/**/*.{gif,jpg,jpeg,svg,png}`,
     ], { base: config.get('paths.dist') }),
     rev(),
     revDeleteOriginal(),
