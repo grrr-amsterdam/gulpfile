@@ -21,13 +21,14 @@ gulp.task('watch:init', (done) => runSequence.use(gulp)(
   [
     'browsersync',
     'modernizr',
-    'javascript:watch',
     'javascript:vendor',
     'sass',
     'copy',
     'images',
     'icons',
   ],
+  'javascript:build:legacy',
+  'javascript:watch',
   'eslint',
   'sass:lint',
   done
