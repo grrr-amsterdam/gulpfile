@@ -74,11 +74,11 @@ Below is an example `gulp.json` config, check the [examples](https://github.com/
       "src": "assets/scripts/**/*.js",
       "dist": "dist/scripts",
       "main": "assets/scripts/main.js",
-      "babel": [
+      "bundles": [
         {
           "bundle": "main.js",
           "watch": true,
-          "config": {
+          "babel": {
             "env": {
               "production": {
                 "presets": [ "minify" ]
@@ -107,7 +107,7 @@ Below is an example `gulp.json` config, check the [examples](https://github.com/
         {
           "bundle": "main-legacy.js",
           "watch": false,
-          "config": {
+          "babel": {
             "plugins": [
               "babel-plugin-transform-object-rest-spread"
             ],

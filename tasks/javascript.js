@@ -35,20 +35,23 @@ const getBrowserifyInstance = (args) => {
 };
 
 gulp.task('javascript:build', () => {
-  const entries = config.get('tasks.javascript.babel');
+  const entries = config.get('tasks.javascript.bundles');
   return es.merge(entries.map(entry => {
     return bundle({
-      instance: getBrowserifyInstance({ config: entry.config }),
+      instance: getBrowserifyInstance({ config: entry.babel }),
       bundle: entry.bundle,
     });
   }));
 });
 
 gulp.task('javascript:watch', () => {
-  const entries = config.get('tasks.javascript.babel').filter(entry => entry.watch);
+  const entries = config.get('tasks.javascript.bundles').filter(entry => entry.watch);
   return es.merge(entries.map(entry => {
     return bundle({
-      instance: getBrowserifyInstance({ config: entry.config }),
+      instance: getBrowserifyInstance({
+        config: entry.babel,
+        watch: true,
+      }),
       bundle: entry.bundle,
     });
   })).on('end', () => {

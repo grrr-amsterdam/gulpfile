@@ -24,11 +24,11 @@
       "src": "assets/scripts/**/*.js",
       "dist": "dist/scripts",
       "main": "assets/scripts/main.js",
-      "babel": [
+      "bundles": [
         {
           "bundle": "main.js",
           "watch": true,
-          "config": {
+          "babel": {
             "env": {
               "production": {
                 "presets": [ "minify" ]
@@ -57,7 +57,7 @@
         {
           "bundle": "main-legacy.js",
           "watch": false,
-          "config": {
+          "babel": {
             "plugins": [
               "babel-plugin-transform-object-rest-spread"
             ],
