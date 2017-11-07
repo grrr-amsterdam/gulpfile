@@ -1,6 +1,6 @@
-import { isProduction } from '../lib/env';
-import { log, logError } from '../lib/log';
+import { logError } from '../lib/log';
 import fs from 'fs';
+import es from 'event-stream';
 import config from '../lib/config';
 import gulp from 'gulp';
 import pump from 'pump';
@@ -14,56 +14,44 @@ import babelify from 'babelify';
 import watchify from 'watchify';
 
 /**
- * Javascript bundle with Browserify
+ * Javascript bundle with Browserify and Babel transpiler
  */
-const bundle = (args, done) => {
-  pump([
+const bundle = (args) => {
+  return pump([
     args.instance.bundle()
       .on('error', err => logError(err)),
-    source(args.src),
+    source(args.bundle),
     buffer(),
     sourcemaps.init({ loadMaps: true }),
     sourcemaps.write('./'),
-    gulp.dest(args.dest),
-  ], done);
+    gulp.dest(config.get('tasks.javascript.dist')),
+  ]);
 };
 
 const getBrowserifyInstance = (args) => {
   const options = { entries: config.get('tasks.javascript.main') };
   const instance = args && args.watch ? watchify(browserify(options)) : browserify(options);
-  instance.transform(babelify, args.config);
-  return instance;
+  return instance.transform(babelify, args.config);
 };
 
-gulp.task('javascript:build', (done) => {
-  bundle({
-    instance: getBrowserifyInstance({ config: config.get('tasks.javascript.babel.es6') }),
-    src: config.get('tasks.javascript.bundle.es6'),
-    dest: config.get('tasks.javascript.dist'),
-  }, callback => done());
+gulp.task('javascript:build', () => {
+  const entries = config.get('tasks.javascript.babel');
+  return es.merge(entries.map(entry => {
+    return bundle({
+      instance: getBrowserifyInstance({ config: entry.config }),
+      bundle: entry.bundle,
+    });
+  }));
 });
 
-gulp.task('javascript:build:legacy', (done) => {
-  bundle({
-    instance: getBrowserifyInstance({ config: config.get('tasks.javascript.babel.legacy') }),
-    src: config.get('tasks.javascript.bundle.legacy'),
-    dest: config.get('tasks.javascript.dist'),
-  }, callback => done());
-});
-
-/**
- * For the watch and rebuild tasks, we only build/transpile the ES6 file
- */
-gulp.task('javascript:watch', (done) => {
-  bundle({
-    instance: getBrowserifyInstance({
-      config: config.get('tasks.javascript.babel.es6'),
-      watch: true,
-    }),
-    src: config.get('tasks.javascript.bundle.es6'),
-    dest: config.get('tasks.javascript.dist'),
-  }, callback => {
-    done();
+gulp.task('javascript:watch', () => {
+  const entries = config.get('tasks.javascript.babel').filter(entry => entry.watch);
+  return es.merge(entries.map(entry => {
+    return bundle({
+      instance: getBrowserifyInstance({ config: entry.config }),
+      bundle: entry.bundle,
+    });
+  })).on('end', () => {
     browserSync.reload();
     gulp.start('eslint');
   });

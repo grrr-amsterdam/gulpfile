@@ -74,58 +74,60 @@ Below is an example `gulp.json` config, check the [examples](https://github.com/
       "src": "assets/scripts/**/*.js",
       "dist": "dist/scripts",
       "main": "assets/scripts/main.js",
-      "bundle": {
-        "es6": "main.js",
-        "legacy": "main-legacy.js"
-      },
-      "babel": {
-        "es6": {
-          "env": {
-            "production": {
-              "presets": ["minify"]
-            }
-          },
-          "plugins": [
-            "babel-plugin-transform-object-rest-spread"
-          ],
-          "presets": [
-            [
-              "env", {
-                "useBuiltIns": true,
-                "targets": {
-                  "browsers": [
-                    "Chrome >= 60",
-                    "Safari >= 10.1",
-                    "iOS >= 10.3",
-                    "Firefox >= 54",
-                    "Edge >= 15"
-                  ]
-                }
+      "babel": [
+        {
+          "bundle": "main.js",
+          "watch": true,
+          "config": {
+            "env": {
+              "production": {
+                "presets": [ "minify" ]
               }
+            },
+            "plugins": [
+              "babel-plugin-transform-object-rest-spread"
+            ],
+            "presets": [
+              [
+                "env", {
+                  "targets": {
+                    "browsers": [
+                      "Chrome >= 60",
+                      "Safari >= 10.1",
+                      "iOS >= 10.3",
+                      "Firefox >= 54",
+                      "Edge >= 15"
+                    ]
+                  }
+                }
+              ]
             ]
-          ]
+          }
         },
-        "legacy": {
-          "plugins": [
-            "babel-plugin-transform-object-rest-spread"
-          ],
-          "presets": [
-            [
-              "env", {
-                "useBuiltIns": true,
-                "targets": {
-                  "browsers": [
-                    "> 5%",
-                    "last 3 versions",
-                    "safari >= 7",
-                    "ie >= 9"
-                  ]
+        {
+          "bundle": "main-legacy.js",
+          "watch": false,
+          "config": {
+            "plugins": [
+              "babel-plugin-transform-object-rest-spread"
+            ],
+            "presets": [
+              [
+                "env", {
+                  "targets": {
+                    "browsers": [
+                      "> 5%",
+                      "last 3 versions",
+                      "safari >= 7",
+                      "ie >= 9"
+                    ]
+                  }
                 }
-              }
+              ]
             ]
-          ]
+          }
         }
-      }
+      ]
     },
     "sass": {
       "src": "assets/styles/**/*.scss",
