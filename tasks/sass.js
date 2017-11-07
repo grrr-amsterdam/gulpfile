@@ -13,7 +13,7 @@ import pxtorem from 'postcss-pxtorem';
 import autoprefixer from 'autoprefixer';
 import browserSync from 'browser-sync';
 
-const autoprefixerConfig = config.has('tasks.sass.autoprefixer') ?
+const autoprefixerConfig = config.get('tasks.sass.autoprefixer') ?
   config.get('tasks.sass.autoprefixer') : {
   browsers: [
     '>5%',
@@ -24,7 +24,7 @@ const autoprefixerConfig = config.has('tasks.sass.autoprefixer') ?
   ]}
 ;
 
-const cleanCssConfig = config.has('tasks.sass.cleanCss') ?
+const cleanCssConfig = config.get('tasks.sass.cleanCss') ?
   config.get('tasks.sass.cleanCss') : {
     compatibility: 'ie8',
     level: 1,

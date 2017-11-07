@@ -4,7 +4,7 @@ import gulp from 'gulp';
 import browserSync from 'browser-sync';
 
 const domain = config.get('app.domain');
-const port = config.has('app.port') ? config.get('app.port') : null;
+const port = config.get('app.port') ? config.get('app.port') : null;
 const proxy = domain && port ? `${domain}:${port}` : domain;
 
 /**

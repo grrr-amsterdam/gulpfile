@@ -9,10 +9,12 @@ import rev from 'gulp-rev';
 import revDeleteOriginal from 'gulp-rev-delete-original';
 import revReplace from 'gulp-rev-replace';
 
-const manifestDir = config.has('tasks.revision.manifest.directory') ?
+const manifestDir = config.get('tasks.revision') &&
+  config.get('tasks.revision.manifest.directory') ?
   config.get('tasks.revision.manifest.directory') : config.get('paths.dist');
-const manifestFile = config.has('tasks.revision.manifest.file') ?
-    config.get('tasks.revision.manifest.file') : 'assets.json';
+const manifestFile = config.get('tasks.revision') &&
+  config.get('tasks.revision.manifest.file') ?
+  config.get('tasks.revision.manifest.file') : 'assets.json';
 const manifestFullPath = `${manifestDir}/${manifestFile}`;
 
 /**

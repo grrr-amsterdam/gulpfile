@@ -10,7 +10,7 @@ import uglify from 'gulp-uglify';
  * Copy some JS vendor files (eg. polyfills)
  */
 gulp.task('javascript:vendor', () => {
-  if (!config.has('tasks.javascript:vendor')) {
+  if (!config.get('tasks.javascript:vendor')) {
     return;
   }
   const entries = config.get('tasks.javascript:vendor');

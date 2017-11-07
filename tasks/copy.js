@@ -5,7 +5,7 @@ import pump from 'pump';
 import copy from 'gulp-copy';
 
 gulp.task('copy', (done) => {
-  if (!config.has('tasks.copy')) {
+  if (!config.get('tasks.copy')) {
     return done();
   }
   pump([
