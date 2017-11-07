@@ -12,6 +12,4 @@ fs.readdirSync(taskFolder)
 /**
  * Custom `SIGINT` listener to exit process
  */
-process.on('SIGINT', (e) => {
-  process.exit();
-});
+process.on('SIGINT', (e) => process.exit());

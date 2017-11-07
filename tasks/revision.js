@@ -9,13 +9,11 @@ import rev from 'gulp-rev';
 import revDeleteOriginal from 'gulp-rev-delete-original';
 import revReplace from 'gulp-rev-replace';
 
-if (config.get('tasks.revision')) {
-  const manifestDir = config.has('tasks.revision.manifest.directory') ?
-    config.get('tasks.revision.manifest.directory') : config.get('paths.dist');
-  const manifestFile = config.has('tasks.revision.manifest.file') ?
-      config.get('tasks.revision.manifest.file') : 'assets.json';
-  const manifestFullPath = `${manifestDir}/${manifestFile}`;
-}
+const manifestDir = config.has('tasks.revision.manifest.directory') ?
+  config.get('tasks.revision.manifest.directory') : config.get('paths.dist');
+const manifestFile = config.has('tasks.revision.manifest.file') ?
+    config.get('tasks.revision.manifest.file') : 'assets.json';
+const manifestFullPath = `${manifestDir}/${manifestFile}`;
 
 /**
  * Add revision hash behind filename so we can cache assets forever

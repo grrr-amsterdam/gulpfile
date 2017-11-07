@@ -25,8 +25,12 @@
       },
       "babel": {
         "es6": {
+          "env": {
+            "production": {
+              "presets": ["minify"]
+            }
+          },
           "plugins": [
-            "lodash",
             "babel-plugin-transform-object-rest-spread"
           ],
           "presets": [
@@ -48,7 +52,6 @@
         },
         "legacy": {
           "plugins": [
-            "lodash",
             "babel-plugin-transform-object-rest-spread"
           ],
           "presets": [

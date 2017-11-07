@@ -33,7 +33,7 @@ Tip: save this as an npm script in your project's `package.json`, for example:
     "watch": "gulp watch --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'",
     "build": "gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'",
     "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'",
-    "build:production": "gulp --production --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'"
+    "build:production": "BABEL_ENV=production gulp --production --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'"
 },
 ```
 Then run by calling the watch task:
@@ -80,8 +80,12 @@ Below is an example `gulp.json` config, check the [examples](https://github.com/
       },
       "babel": {
         "es6": {
+          "env": {
+            "production": {
+              "presets": ["minify"]
+            }
+          },
           "plugins": [
-            "lodash",
             "babel-plugin-transform-object-rest-spread"
           ],
           "presets": [
@@ -103,7 +107,6 @@ Below is an example `gulp.json` config, check the [examples](https://github.com/
         },
         "legacy": {
           "plugins": [
-            "lodash",
             "babel-plugin-transform-object-rest-spread"
           ],
           "presets": [
