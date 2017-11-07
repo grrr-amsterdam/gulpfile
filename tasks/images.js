@@ -10,10 +10,7 @@ import imagemin from 'gulp-imagemin';
  */
 gulp.task('images', (done) => {
   pump([
-    gulp.src([
-      config.get('tasks.images.src'),
-      '!**/icons/**/*.svg',
-    ]),
+    gulp.src(config.get('tasks.images.src')),
     imagemin({
       progressive: true,
       svgoPlugins: [{ removeViewBox: false }],
