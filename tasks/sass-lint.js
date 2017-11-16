@@ -4,7 +4,6 @@ import { log } from '../lib/log';
 import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
-import pump from 'pump';
 
 import sassLint from 'gulp-sass-lint';
 
@@ -14,16 +13,14 @@ const sassLintConfig = fs.existsSync('.sass-lint.yml') ?
 /**
  * Lints sass (see `.sass-lint.yml`)
  */
-gulp.task('sass:lint', (done) => {
+gulp.task('sass:lint', () => {
   if (!isDevelopment) {
     log('sass-lint: skipping for non-development');
-    return done();
+    return;
   }
-  pump([
-    gulp.src(config.get('tasks.sass.src')).on('finish', () => done()),
-    sassLint({
+  return gulp.src(config.get('tasks.sass.src'))
+    .pipe(sassLint({
       configFile: sassLintConfig,
-    }),
-    sassLint.format(),
-  ]);
+    }))
+    .pipe(sassLint.format());
 });
