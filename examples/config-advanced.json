@@ -23,7 +23,9 @@
     "javascript": {
       "src": "assets/scripts/**/*.js",
       "dist": "dist/scripts",
-      "main": "assets/scripts/main.js",
+      "main": [
+        "assets/scripts/main.js"
+      ],
       "bundles": [
         {
           "bundle": "main.js",

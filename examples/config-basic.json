@@ -18,7 +18,9 @@
     "javascript": {
       "src": "assets/scripts/**/*.js",
       "dist": "dist/scripts",
-      "main": "assets/scripts/main.js",
+      "main": [
+        "assets/scripts/main.js"
+      ],
       "bundles": [
         {
           "bundle": "main.js",
@@ -54,7 +56,9 @@
     "sass": {
       "src": "assets/styles/**/*.scss",
       "dist": "dist/styles",
-      "main": "assets/styles/base.scss"
+      "main": [
+        "assets/styles/base.scss"
+      ]
     }
   }
 }
