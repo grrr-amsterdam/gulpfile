@@ -2,10 +2,8 @@
 An opinionated and modular gulpfile.
 Made with ❤️ by [Grrr](https://grrr.nl/), a digital creative agency in Amsterdam.
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/grrr-amsterdam/gulpfile.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/grrr-amsterdam/gulpfile.svg)](https://travis-ci.org/grrr-amsterdam/gulpfile)
 [![Dependencies](https://david-dm.org/grrr-amsterdam/gulpfile.svg)](https://david-dm.org/grrr-amsterdam/gulpfile)
-
 
 ## Quick start
 Basic installation and configuration is as follows:
@@ -18,8 +16,7 @@ npm install grrr-gulpfile --save-dev
 
 #### Configure
 - Create a `gulp.json` config file (see [below](#config-file)).
-- Add the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information.
-- Specify the Babel config in the `gulp.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
+- Add the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. Now specify the Babel config in the `gulp.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
 
 #### Run
 Run gulp by calling:
