@@ -15,7 +15,7 @@ npm install grrr-gulpfile --save-dev
 ```
 
 #### Configure
-- Create a `gulp.json` config file (see [below](#config-file)).
+- Create a `gulp.json` config file (see [below](#task-configuration)).
 - Add the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. Now specify the Babel config in the `gulp.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
 
 #### Run
@@ -46,18 +46,23 @@ or run a specific task:
 npm run build images
 ```
 
-## Config file
+---
+
+## Task configuration
 Check the [examples](https://github.com/grrr-amsterdam/gulpfile/tree/master/examples) for a basic and advanced `gulp.json` config.
 
+---
+
 ## Overriding defaults
-Some defaults can be overwritten. These are:
+The project uses a few sensible defaults for `Autoprefixer`, `sass-lint`, `eslint` (specs and ignores). These defaults can be overwritten:
 
-- The Autoprefixer options used in `sass`. These can be specified in the `gulp.json` file.
+- The Autoprefixer options used in `sass`. These can be specified in the `gulp.json` file in an `autoprefixer` object within the `sass` task.
 - The rules used in `sass:lint`. Place a `.sass-lint.yml` file in your project.
-- The `eslint` rules. Place an `.eslintrc` file in your project.
-- You can additionally add an `.eslintignore` for ignoring (wildcarded) folders or packages.
+- The `eslint` rules. Place an `.eslintrc` file in your project. You can additionally add an `.eslintignore` for ignoring (wildcarded) folders or packages specific to your project.
 
-## Tasks
+---
+
+## Available tasks
 Specify which tasks to run by calling gulp like: `gulp [task-name] --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'`. Or if speciefied `gulp` as a script: `yarn run gulp <task>`.
 
 The individual tasks include:
@@ -82,6 +87,8 @@ The main tasks are:
 - `watch` runs the same tasks as `default` but will retrigger when files are changed, and will start browsersync
 
 For more info, jump into the tasks folder.
+
+---
 
 ## Contributing
 To make changes to this gulpfile, it's best to replace the installed package in a real project with a locally linked development version. This can be done with both yarn or npm. We use yarn in this example; for npm check the [npm docs](https://docs.npmjs.com/cli/link) . Inside the root of the `grrr-gulpfile` repo, run:
