@@ -1,3 +1,4 @@
+import { logError } from '../lib/log';
 import { isDevelopment } from '../lib/env';
 
 import config from '../lib/config';
@@ -52,7 +53,12 @@ gulp.task('sass', (done) => {
   pump([
     gulp.src(config.get('tasks.sass.main')),
     sassGlob(),
-    sass(),
+    sass().on('error', error => {
+      if (!isDevelopment) {
+        logError(error);
+        process.exit(1);
+      }
+    }),
     postcss(processorsConfig),
     gulpif(!isDevelopment, cleanCSS(cleanCssConfig)),
     gulp.dest(config.get('tasks.sass.dist')),
