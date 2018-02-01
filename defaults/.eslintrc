@@ -25,7 +25,7 @@
         "import/no-duplicates": 0,
         "import/prefer-default-export": 0,
         "no-unused-vars": [ 2, { "args": "none" } ],
-        "quotes": [ 1, "backtick" ],
+        "quotes": 0,
         "space-before-function-paren": 0,
         "no-param-reassign": 0,
         "array-callback-return": 0,
