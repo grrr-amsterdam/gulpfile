@@ -28,12 +28,12 @@
         "quotes": [ 1, "backtick" ],
         "space-before-function-paren": 0,
         "no-param-reassign": 0,
-        "array-callback-return": 0
+        "array-callback-return": 0,
         "arrow-parens": 0,
         "no-confusing-arrow": 0,
         "arrow-body-style": 0,
         "func-names": 0,
         "no-console": 0,
-        "no-alert": 0,
+        "no-alert": 0
     }
 }
