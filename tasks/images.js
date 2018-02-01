@@ -11,10 +11,16 @@ import imagemin from 'gulp-imagemin';
 gulp.task('images', (done) => {
   pump([
     gulp.src(config.get('tasks.images.src')),
-    imagemin({
-      progressive: true,
-      svgoPlugins: [{ removeViewBox: false }],
-    }),
+    imagemin([
+      imagemin.jpegtran({
+        progressive: true
+      }),
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: false },
+        ]
+      })
+    ]),
     gulp.dest(config.get('tasks.images.dist')),
   ], done);
 });
