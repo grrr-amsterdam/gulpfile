@@ -1,14 +1,13 @@
-import { logError } from '../lib/log';
+import config from '../lib/config';
 
+import log from 'fancy-log';
 import fs from 'fs';
 import es from 'event-stream';
-import config from '../lib/config';
 import gulp from 'gulp';
 import pump from 'pump';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import browserSync from 'browser-sync';
-
 import sourcemaps from 'gulp-sourcemaps';
 import browserify from 'browserify';
 import babelify from 'babelify';
@@ -20,7 +19,7 @@ import watchify from 'watchify';
 const bundle = (args, done) => {
   return args.instance.bundle()
     .on('error', err => {
-      logError(err);
+      log.error(err);
       done();
     })
     .pipe(source(args.bundle))

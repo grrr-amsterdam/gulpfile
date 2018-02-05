@@ -1,7 +1,7 @@
 import config from '../lib/config';
+
 import gulp from 'gulp';
 import pump from 'pump';
-
 import modernizr from 'gulp-modernizr';
 import uglify from 'gulp-uglify';
 

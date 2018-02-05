@@ -1,5 +1,5 @@
 import { isDevelopment } from '../lib/env';
-import { log } from '../lib/log';
+import log from 'fancy-log';
 import config from '../lib/config';
 import gulp from 'gulp';
 import pump from 'pump';

@@ -1,8 +1,8 @@
 import config from '../lib/config';
+
 import gulp from 'gulp';
 import pump from 'pump';
 import path from 'path';
-
 import svgmin from 'gulp-svgmin';
 import svgstore from 'gulp-svgstore';
 

@@ -1,8 +1,7 @@
 import config from '../lib/config';
+
 import gulp from 'gulp';
 import pump from 'pump';
-import util from 'gulp-util';
-
 import imagemin from 'gulp-imagemin';
 
 /**

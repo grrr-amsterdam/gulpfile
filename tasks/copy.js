@@ -1,7 +1,7 @@
 import config from '../lib/config';
+
 import gulp from 'gulp';
 import pump from 'pump';
-
 import copy from 'gulp-copy';
 
 gulp.task('copy', (done) => {

@@ -1,11 +1,10 @@
-import { logError } from '../lib/log';
+import config from '../lib/config';
 import { isDevelopment } from '../lib/env';
 
-import config from '../lib/config';
+import log from 'fancy-log';
 import gulp from 'gulp';
 import pump from 'pump';
 import gulpif from 'gulp-if';
-
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import sassGlob from 'gulp-sass-glob';

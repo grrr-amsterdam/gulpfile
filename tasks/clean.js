@@ -1,6 +1,6 @@
 import config from '../lib/config';
-import gulp from 'gulp';
 
+import gulp from 'gulp';
 import del from 'del';
 
 /**

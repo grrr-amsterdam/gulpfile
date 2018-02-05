@@ -1,10 +1,10 @@
 import config from '../lib/config';
 import { isDevelopment } from '../lib/env';
-import { log } from '../lib/log';
+
+import log from 'fancy-log';
 import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
-
 import sassLint from 'gulp-sass-lint';
 
 const sassLintConfig = fs.existsSync('.sass-lint.yml') ?

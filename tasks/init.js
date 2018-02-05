@@ -1,5 +1,6 @@
-import { log } from './../lib/log';
 import { env } from '../lib/env';
+
+import log from 'fancy-log';
 import gulp from 'gulp';
 import path from 'path';
 import fs from 'fs';
