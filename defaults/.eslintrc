@@ -11,7 +11,13 @@
         "codeFrame": false
     },
     "env": {
-        "browser": true
+        "browser": true,
+        "jquery": true
+    },
+    "globals": {
+        "Modernizr": true,
+        "ga": true,
+        "dataLayer": true
     },
     "extends": [
         "airbnb-base"
@@ -20,11 +26,12 @@
         "import"
     ],
     "rules": {
+        "no-unused-vars": [ 2, { "args": "none" } ],
+        "comma-dangle": [ 2, "always-multiline" ],
         "import/no-unassigned-import": 0,
         "import/no-named-default": 0,
         "import/no-duplicates": 0,
         "import/prefer-default-export": 0,
-        "no-unused-vars": [ 2, { "args": "none" } ],
         "quotes": 0,
         "space-before-function-paren": 0,
         "no-param-reassign": 0,
