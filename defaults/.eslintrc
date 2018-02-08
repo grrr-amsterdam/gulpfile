@@ -1,46 +1,47 @@
 {
-    "parser": "babel-eslint",
-    "parserOptions": {
-        "ecmaVersion": "2018",
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "modules": true
-        },
-        "allowImportExportEverywhere": true,
-        "codeFrame": false
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": "2018",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "modules": true
     },
-    "env": {
-        "browser": true,
-        "jquery": true
-    },
-    "globals": {
-        "Modernizr": true,
-        "ga": true,
-        "dataLayer": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
-    "plugins": [
-        "import"
-    ],
-    "rules": {
-        "no-unused-vars": [ 2, { "args": "none" } ],
-        "comma-dangle": [ 2, "always-multiline" ],
-        "import/no-unassigned-import": 0,
-        "import/no-named-default": 0,
-        "import/no-duplicates": 0,
-        "import/prefer-default-export": 0,
-        "quotes": 0,
-        "space-before-function-paren": 0,
-        "no-param-reassign": 0,
-        "array-callback-return": 0,
-        "arrow-parens": 0,
-        "no-confusing-arrow": 0,
-        "arrow-body-style": 0,
-        "func-names": 0,
-        "no-console": 0,
-        "no-alert": 0
-    }
+    "allowImportExportEverywhere": true,
+    "codeFrame": false
+  },
+  "env": {
+    "browser": true,
+    "jquery": true
+  },
+  "globals": {
+    "Modernizr": true,
+    "ga": true,
+    "dataLayer": true
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "no-unused-vars": [2, { "args": "none" }],
+    "comma-dangle": [2, "always-multiline"],
+    "quote-props": [2, "consistent"],
+    "import/no-unassigned-import": 0,
+    "import/no-named-default": 0,
+    "import/no-duplicates": 0,
+    "import/prefer-default-export": 0,
+    "quotes": 0,
+    "space-before-function-paren": 0,
+    "no-param-reassign": 0,
+    "array-callback-return": 0,
+    "arrow-parens": 0,
+    "no-confusing-arrow": 0,
+    "arrow-body-style": 0,
+    "func-names": 0,
+    "no-console": 0,
+    "no-alert": 0
+  }
 }
