@@ -21,11 +21,15 @@ const manifestFullPath = `${manifestDir}/${manifestFile}`;
  * Add revision hash behind filename so we can cache assets forever
  */
 gulp.task('revision:hash', (done) => {
+  const defaults = [
+    `${config.get('tasks.sass.dist')}/**/*.css`,
+    `${config.get('tasks.javascript.dist')}/**/*.js`,
+    `${config.get('tasks.images.dist')}/**/*.{gif,jpg,jpeg,svg,png}`,
+  ];
   pump([
     gulp.src([
-      `${config.get('tasks.sass.dist')}/**/*.css`,
-      `${config.get('tasks.javascript.dist')}/**/*.js`,
-      `${config.get('tasks.images.dist')}/**/*.{gif,jpg,jpeg,svg,png}`,
+      ...defaults,
+      ...config.get('tasks.revision.files') || [],
     ], { base: config.get('paths.dist') }),
     rev(),
     revDeleteOriginal(),

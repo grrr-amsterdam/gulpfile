@@ -10,6 +10,8 @@
   "tasks": {
     "copy": [
       "assets/fonts/**/*",
+      "assets/videos/**/*",
+      "assets/images/*.ico",
       "assets/scripts/vendor/**/*.js"
     ],
     "icons": {
@@ -122,8 +124,11 @@
     "revision": {
       "manifest": {
         "directory": "dist",
-        "files": "assets.json"
-      }
+        "file": "assets.json"
+      },
+      "files": [
+        "assets/build/videos/**/*"
+      ]
     },
     "watch": {
       "files": [

@@ -113,6 +113,7 @@ rules:
         - intro-font
         - ui-font
         - hocus
+        - placeholder
 
   nesting-depth:
     - 1
