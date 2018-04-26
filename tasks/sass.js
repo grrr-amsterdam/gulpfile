@@ -16,11 +16,8 @@ import browserSync from 'browser-sync';
 const autoprefixerConfig = config.get('tasks.sass.autoprefixer') ?
   config.get('tasks.sass.autoprefixer') : {
   browsers: [
-    '>5%',
-    'last 3 versions',
-    'ie 9',
-    'ie 10',
-    'ie 11'
+    "> 0.25%",
+    "ie >= 9"
   ]}
 ;
 

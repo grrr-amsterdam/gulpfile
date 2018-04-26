@@ -70,9 +70,7 @@
                 "env", {
                   "targets": {
                     "browsers": [
-                      "> 5%",
-                      "last 3 versions",
-                      "safari >= 7",
+                      "> 0.25%",
                       "ie >= 9"
                     ]
                   }
@@ -109,11 +107,8 @@
       ],
       "autoprefixer": {
         "browsers": [
-          ">5%",
-          "last 3 versions",
-          "ie 9",
-          "ie 10",
-          "ie 11"
+          "> 0.25%",
+          "ie >= 9"
         ]
       },
       "cleanCss": {
