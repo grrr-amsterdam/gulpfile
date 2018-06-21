@@ -5,20 +5,20 @@ Made with ❤️ by [Grrr](https://grrr.nl/), a digital creative agency in Amste
 [![Build Status](https://travis-ci.org/grrr-amsterdam/gulpfile.svg)](https://travis-ci.org/grrr-amsterdam/gulpfile)
 [![Dependencies](https://david-dm.org/grrr-amsterdam/gulpfile.svg)](https://david-dm.org/grrr-amsterdam/gulpfile)
 
-## Quick start
+# Quick start
 Basic installation and configuration is as follows:
 
-#### Install
+### Install
 Install this package in your project through yarn or npm:
 ```
 npm install grrr-gulpfile --save-dev
 ```
 
-#### Configure
-- Create a `gulp.json` config file (see [below](#task-configuration)).
-- Add the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. Now specify the Babel config in the `gulp.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
+### Configure
+1. Create a `gulp.json` config file (see [below](#task-configuration)).
+2. Add the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. Now specify the Babel config in the `gulp.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
 
-#### Run
+### Run
 Run gulp by calling:
 ```
 gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.babel.js'
@@ -33,18 +33,11 @@ Tip: save this as an npm script in your project's `package.json`, for example:
     "build:production": "BABEL_ENV=production gulp --production --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'"
 },
 ```
-Then run by calling the watch task:
-```
-npm run watch
-```
-or build for a specific environment:
-```
-npm run build:production
-```
-or run a specific task:
-```
-npm run build images
-```
+
+- To build, run the build task: `npm run watch`
+- To watch, run the watch task: `npm run watch`
+- To build for a specific environment: `npm run build:production`
+- To run a specific task: `npm run build images`
 
 ---
 
@@ -72,7 +65,8 @@ The individual tasks include:
 - `copy` copies files that don't need processing (like fonts, videos and the favicon)
 - `eslint` lints js with opinionated rules, which can be overwritten by including your own `.eslintrc`
 - `images` runs imagemin on all images in the `config.paths.images.src` and saves the result to `config.paths.images.dist`
-- `javascript` bundles javascript into a single bunle thru Browserify and transpiles them via Babel
+- `javascript:build` bundles JavaScript into a single bunle thru Browserify and transpiles it via Babel
+- `javascript:watch` watches for changes and builds the bundle when changes are detected
 - `javascript:vendor` copies and uglifies vendor files (can also concatenate them)
 - `init` prints some debug info
 - `icons` creates a svg sprite
@@ -83,7 +77,7 @@ The individual tasks include:
 
 The main tasks are:
 
-- `default` runs all above tasks, except `browsersync` (some tasks are dependent on the called environment)
+- `build` runs all above tasks, except `browsersync` (some tasks are dependent on the called environment)
 - `watch` runs the same tasks as `default` but will retrigger when files are changed, and will start browsersync
 
 For more info, jump into the tasks folder.
