@@ -16,7 +16,7 @@ npm install grrr-gulpfile --save-dev
 
 ### Configure
 1. Create a `gulp.json` config file (see [below](#task-configuration)).
-2. Add the required Babel dependencies for your project. A good starting point is by adding `babel-preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. Now specify the Babel config in the `gulp.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
+2. Add the required Babel dependencies for your project. A good starting point is by adding `@babel/preset-env`. See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. Now specify the Babel config in the `gulp.json`. See [below](#config-file) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
 
 ### Run
 Run gulp by calling:

@@ -32,11 +32,11 @@
               }
             },
             "plugins": [
-              "babel-plugin-transform-object-rest-spread"
+              "@babel/plugin-proposal-object-rest-spread"
             ],
             "presets": [
               [
-                "env", {
+                "@babel/preset-env", {
                   "targets": {
                     "browsers": [
                       "> 0.25%",
