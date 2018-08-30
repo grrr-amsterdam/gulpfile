@@ -13,17 +13,20 @@ import pxtorem from 'postcss-pxtorem';
 import autoprefixer from 'autoprefixer';
 import browserSync from 'browser-sync';
 
-const autoprefixerConfig = config.get('tasks.sass.autoprefixer') ?
-  config.get('tasks.sass.autoprefixer') : {
-  browsers: [
-    "> 0.25%",
-    "ie >= 9"
-  ]}
+const autoprefixerConfig = config.get('tasks.sass.autoprefixer')
+  ? config.get('tasks.sass.autoprefixer')
+  : {
+    browsers: [
+      "> 0.25%",
+      "ie >= 9"
+    ]
+  }
 ;
 
-const cleanCssConfig = config.get('tasks.sass.cleanCss') ?
-  config.get('tasks.sass.cleanCss') : {
-    compatibility: 'ie8',
+const cleanCssConfig = config.get('tasks.sass.cleanCss')
+  ? config.get('tasks.sass.cleanCss')
+  : {
+    compatibility: 'ie9',
     level: 1,
   }
 ;
@@ -46,12 +49,15 @@ const processorsConfig = [
  * Builds css files
  */
 gulp.task('sass', (done) => {
+  if (!config.get('tasks.sass')) {
+    log(`Skipping 'sass' task`);
+    return;
+  }
   pump([
     gulp.src(config.get('tasks.sass.main')),
     sassGlob(),
     sass().on('error', error => {
       if (!isDevelopment) {
-        logError(error);
         process.exit(1);
       }
     }),

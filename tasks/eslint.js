@@ -14,8 +14,8 @@ const eslintConfig = fs.existsSync('.eslintrc') ?
  * Lints JS (see `.eslintrc`)
  */
 gulp.task('eslint', () => {
-  if (!isDevelopment) {
-    log('eslint: skipping for non-development');
+  if (!isDevelopment || !config.get('tasks.javascript.src')) {
+    log(`skipping 'eslint' task`);
     return;
   }
   return gulp.src([

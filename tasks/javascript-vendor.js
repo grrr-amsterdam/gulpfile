@@ -1,5 +1,6 @@
 import config from '../lib/config';
 
+import log from 'fancy-log';
 import gulp from 'gulp';
 import es from 'event-stream';
 import pump from 'pump';
@@ -12,6 +13,7 @@ import uglify from 'gulp-uglify';
  */
 gulp.task('javascript:vendor', () => {
   if (!config.get('tasks.javascript:vendor')) {
+    log(`Skipping 'javascript:vendor' task`);
     return;
   }
   const entries = config.get('tasks.javascript:vendor');

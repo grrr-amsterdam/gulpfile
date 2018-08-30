@@ -1,5 +1,6 @@
 import config from '../lib/config';
 
+import log from 'fancy-log';
 import gulp from 'gulp';
 import pump from 'pump';
 import modernizr from 'gulp-modernizr';
@@ -12,6 +13,10 @@ import uglify from 'gulp-uglify';
  * Note: this task isn't run on watch, you can run it manually via `gulp modernizr`
  */
 gulp.task('modernizr', (done) => {
+  if (!config.get('tasks.sass.src') && !config.get('tasks.javascript.src')) {
+    log(`Skipping 'modernizr' task`);
+    return done();
+  }
   pump([
     gulp.src([
       config.get('tasks.sass.src'),

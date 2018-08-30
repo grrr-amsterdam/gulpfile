@@ -36,6 +36,10 @@ const getBrowserifyInstance = (args) => {
 };
 
 gulp.task('javascript:build', (done) => {
+  if (!config.get('tasks.javascript')) {
+    log(`Skipping 'javascript:build' task`);
+    return done();
+  }
   const task = this;
   const entries = config.get('tasks.javascript.bundles');
   return es.merge(entries.map(entry => {
@@ -48,6 +52,10 @@ gulp.task('javascript:build', (done) => {
 });
 
 gulp.task('javascript:watch', (done) => {
+  if (!config.get('tasks.javascript')) {
+    log(`Skipping 'javascript:watch' task`);
+    return done();
+  }
   const task = this;
   const entries = config.get('tasks.javascript.bundles').filter(entry => entry.watch);
   return es.merge(entries.map(entry => {

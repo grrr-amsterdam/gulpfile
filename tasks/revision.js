@@ -66,7 +66,7 @@ gulp.task('revision:replace:js', (done) => {
  */
 gulp.task('revision', (done) => {
   if (isDevelopment || !config.get('tasks.revision')) {
-    log('revision: skipping for this environment');
+    log(`Skipping 'revision' task for development`);
     return done();
   }
   runSequence(
