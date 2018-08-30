@@ -1,6 +1,38 @@
 # Changelog
 This changelog only lists major version changes (breaking), or minor changes important enough to list them here. Check individual releases (tags) and their commits to see unlisted changes.
 
+
+### 4.0.0 (2018-08-30)
+
+#### Upgrade to Babel 7
+Babel has deprecated some packages, and has a new naming structure. This means that host packages need to be updated. See the [migration guide](https://babeljs.io/docs/en/v7-migration).
+
+This...
+
+```json
+"plugins": [
+    "plugin-transform-object-rest-spread"
+],
+"presets": [
+    [
+        "preset-env", {}
+    ]
+]
+```
+
+... becomes:
+
+```json
+"plugins": [
+    "@babel/plugin-proposal-object-rest-spread"
+],
+"presets": [
+    [
+        "@babel/preset-env", {}
+    ]
+]
+```
+
 ### 3.0.0 (2017-10-10)
 
 #### Split up JavaScript into ES6 (ES2015+) and legacy versions
