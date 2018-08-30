@@ -4,7 +4,7 @@
     "ecmaVersion": "2018",
     "sourceType": "module",
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
+      "legacyDecorators": true,
       "modules": true
     },
     "allowImportExportEverywhere": true,
@@ -42,7 +42,6 @@
     "arrow-body-style": 0,
     "func-names": 0,
     "no-console": 0,
-    "no-alert": 0,
-    "object-curly-newline": 0
+    "no-alert": 0
   }
 }
