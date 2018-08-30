@@ -23,6 +23,10 @@
   "bugs": {
     "url": "https://github.com/grrr-amsterdam/gulpfile/issues"
   },
+  "engines": {
+    "node": ">= 8 <= 10",
+    "yarn": ">= 1"
+  },
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-transform-modules-commonjs": "^7.0.0",
