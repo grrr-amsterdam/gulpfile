@@ -42,6 +42,7 @@
     "arrow-body-style": 0,
     "func-names": 0,
     "no-console": 0,
-    "no-alert": 0
+    "no-alert": 0,
+    "object-curly-newline": 0
   }
 }
