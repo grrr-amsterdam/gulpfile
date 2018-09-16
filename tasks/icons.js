@@ -22,7 +22,10 @@ gulp.task('icons', (done) => {
         cleanupIDs: {
           prefix: path.basename(file.relative, path.extname(file.relative)) + '-',
           minify: true,
-        },
+        }
+      },
+      {
+        removeViewBox: false,
       }],
     })),
     svgstore({ inlineSvg: true }),
