@@ -2,6 +2,12 @@
 This changelog only lists major version changes (breaking), or minor changes important enough to list them here. Check individual releases (tags) and their commits to see unlisted changes.
 
 
+### 5.0.0 (2018-10-23)
+
+#### Move to namespaced package
+The package is renamed from `grrr-gulpfile` to `@grrr/gulpfile`. Update all references in your `package.json` to `node_modules/@grrr/gulpfile/gulpfile.js`.
+
+
 ### 4.0.0 (2018-08-30)
 
 #### Upgrade to Babel 7
@@ -33,6 +39,7 @@ This...
 ]
 ```
 
+
 ### 3.0.0 (2017-10-10)
 
 #### Split up JavaScript into ES6 (ES2015+) and legacy versions
@@ -41,6 +48,7 @@ There are two seperate Babel config entries, and two bundle output entries. This
 #### Removed JavaScript minification
 Uglify doesn't work wel with ES6 syntax, and `gulp-uglify` gave errors when running with newer JavaScript syntax (eg. async functions). Since all files should be served with `gzip` (or some newer form of compression) anyhow, this shouldn't hurt much.
 A future release might add something like [babel-minify](https://github.com/babel/minify).
+
 
 ### 2.0.0 (2017-10-08)
 
@@ -58,9 +66,11 @@ now becomes:
   "styles/base.css": "styles/base-26102c538a.css"
 ```
 
+
 ### 1.0.0 (2017-08-01)
 
 Initial release.
+
 
 ### 0.1.0 (2016-07-08)
 

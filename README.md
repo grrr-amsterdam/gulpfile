@@ -11,7 +11,7 @@ Basic installation and configuration is as follows:
 ### Install
 Install this package in your project through yarn or npm:
 ```
-npm install grrr-gulpfile --save-dev
+npm install @grrr/gulpfile --save-dev
 ```
 
 ### Configure
@@ -27,16 +27,16 @@ See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more infor
 ### Run
 Run gulp by calling:
 ```
-gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'
+gulp --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'
 ```
 
 Tip: save this as an npm script in your project's `package.json`, for example:
 ```json
 "scripts": {
-    "watch": "gulp watch --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'",
-    "build": "gulp --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'",
-    "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'",
-    "build:production": "BABEL_ENV=production gulp --production --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'"
+    "watch": "gulp watch --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
+    "build": "gulp --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
+    "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
+    "build:production": "BABEL_ENV=production gulp --production --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'"
 },
 ```
 
@@ -62,7 +62,7 @@ The project uses a few sensible defaults for `Autoprefixer`, `sass-lint`, `eslin
 ---
 
 ## Available tasks
-Specify which tasks to run by calling gulp like: `gulp [task-name] --cwd . --gulpfile 'node_modules/grrr-gulpfile/gulpfile.js'`. Or if speciefied `gulp` as a script: `yarn run gulp <task>`.
+Specify which tasks to run by calling gulp like: `gulp [task-name] --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'`. Or if speciefied `gulp` as a script: `yarn run gulp <task>`.
 
 The individual tasks include:
 
@@ -91,16 +91,16 @@ For more info, jump into the tasks folder.
 ---
 
 ## Contributing
-To make changes to this gulpfile, it's best to replace the installed package in a real project with a locally linked development version. This can be done with both yarn or npm. We use yarn in this example; for npm check the [npm docs](https://docs.npmjs.com/cli/link) . Inside the root of the `grrr-gulpfile` repo, run:
+To make changes to this gulpfile, it's best to replace the installed package in a real project with a locally linked development version. This can be done with both yarn or npm. We use yarn in this example; for npm check the [npm docs](https://docs.npmjs.com/cli/link) . Inside the root of the repo, run:
 ```
 yarn link
 ```
 Inside the root of the project you want to test the gulpfile, run:
 ```
-yarn link grrr-gulpfile
+yarn link @grrr/gulpfile
 ```
 When you're done, you can publish the changes on `npm` and unlink the development version by running the following inside the project:
 ```
-yarn unlink grrr-gulpfile
+yarn unlink @grrr/gulpfile
 yarn install
 ```
