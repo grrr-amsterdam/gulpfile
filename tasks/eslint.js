@@ -23,5 +23,6 @@ gulp.task('eslint', (done) => {
     '!**/{vendor,polyfills}/**/*.js',
   ])
     .pipe(eslint(eslintConfig))
-    .pipe(eslint.formatEach());
+    .pipe(eslint.formatEach())
+    .pipe(eslint.failAfterError());
 });
