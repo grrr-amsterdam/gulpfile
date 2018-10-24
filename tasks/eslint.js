@@ -26,7 +26,7 @@ gulp.task('eslint', (done) => {
     .pipe(eslint.formatEach())
     .pipe(eslint.results(results => {
       // See https://github.com/adametry/gulp-eslint/issues/135
-      if (isDevelopment && results.errorCount > 0) {
+      if (!isDevelopment && results.errorCount > 0) {
         process.exit(1);
       }
     }));
