@@ -11,10 +11,10 @@ import uglify from 'gulp-uglify';
 /**
  * Copy some JS vendor files (eg. polyfills)
  */
-gulp.task('javascript:vendor', () => {
+gulp.task('javascript:vendor', (done) => {
   if (!config.get('tasks.javascript:vendor')) {
     log(`Skipping 'javascript:vendor' task`);
-    return;
+    return done();
   }
   const entries = config.get('tasks.javascript:vendor');
   return es.merge(entries.map(entry => {

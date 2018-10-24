@@ -51,7 +51,7 @@ const processorsConfig = [
 gulp.task('sass', (done) => {
   if (!config.get('tasks.sass')) {
     log(`Skipping 'sass' task`);
-    return;
+    return done();
   }
   pump([
     gulp.src(config.get('tasks.sass.main')),

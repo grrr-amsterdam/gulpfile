@@ -13,10 +13,10 @@ const eslintConfig = fs.existsSync('.eslintrc') ?
 /**
  * Lints JS (see `.eslintrc`)
  */
-gulp.task('eslint', () => {
-  if (!isDevelopment || !config.get('tasks.javascript.src')) {
+gulp.task('eslint', (done) => {
+  if (!config.get('tasks.javascript.src')) {
     log(`skipping 'eslint' task`);
-    return;
+    return done();
   }
   return gulp.src([
     config.get('tasks.javascript.src'),
