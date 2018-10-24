@@ -30,7 +30,10 @@ const bundle = (args, done) => {
 };
 
 const getBrowserifyInstance = (args) => {
-  const options = { entries: config.get('tasks.javascript.main') };
+  const options = {
+    entries: config.get('tasks.javascript.main'),
+    ignoreMissing: true,
+  };
   const instance = args && args.watch ? watchify(browserify(options)) : browserify(options);
   return instance.transform(babelify, args.config);
 };
