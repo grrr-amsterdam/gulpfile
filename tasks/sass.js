@@ -18,8 +18,8 @@ const autoprefixerConfig = config.get('tasks.sass.autoprefixer')
   : {
     browsers: [
       "> 0.25%",
-      "ie >= 9"
-    ]
+      "ie >= 9",
+    ],
   }
 ;
 

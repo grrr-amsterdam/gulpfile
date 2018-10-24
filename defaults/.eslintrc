@@ -29,6 +29,8 @@
     "no-unused-vars": [1, { "args": "none" }],
     "comma-dangle": [1, "always-multiline"],
     "quote-props": [1, "consistent"],
+    "semi": 1,
+    "prefer-destructuring": 1,
     "import/no-unassigned-import": 0,
     "import/no-named-default": 0,
     "import/no-duplicates": 0,
@@ -43,6 +45,6 @@
     "func-names": 0,
     "no-console": 0,
     "no-alert": 0,
-    "object-curly-newline": 0
+    "object-curly-newline": 0,
   }
 }
