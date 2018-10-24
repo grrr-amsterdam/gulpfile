@@ -26,9 +26,9 @@
     "import"
   ],
   "rules": {
-    "no-unused-vars": [2, { "args": "none" }],
-    "comma-dangle": [2, "always-multiline"],
-    "quote-props": [2, "consistent"],
+    "no-unused-vars": [1, { "args": "none" }],
+    "comma-dangle": [1, "always-multiline"],
+    "quote-props": [1, "consistent"],
     "import/no-unassigned-import": 0,
     "import/no-named-default": 0,
     "import/no-duplicates": 0,
