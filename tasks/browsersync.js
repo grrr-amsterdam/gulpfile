@@ -15,7 +15,7 @@ const proxy = domain && port ? `${domain}:${port}` : domain;
  */
 gulp.task('browsersync', () => {
   browserSync({
-    proxy: domain ? domain : false,
+    proxy: proxy ? proxy : false,
     open: false,
   });
 });
