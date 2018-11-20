@@ -12,6 +12,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import watchify from 'watchify';
+import esmify from 'esmify';
 
 /**
  * Javascript bundle with Browserify and Babel transpiler
@@ -32,6 +33,9 @@ const bundle = (args, done) => {
 const getBrowserifyInstance = ({ babelConfig, babelifyConfig, watch }) => {
   const options = {
     entries: config.get('tasks.javascript.main'),
+    plugin: [
+      [ esmify ],
+    ],
     ignoreMissing: true,
   };
   const instance = watch ? watchify(browserify(options)) : browserify(options);
