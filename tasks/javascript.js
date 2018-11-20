@@ -29,13 +29,13 @@ const bundle = (args, done) => {
     .pipe(gulp.dest(config.get('tasks.javascript.dist')));
 };
 
-const getBrowserifyInstance = (args) => {
+const getBrowserifyInstance = ({ babelConfig, babelifyConfig, watch }) => {
   const options = {
     entries: config.get('tasks.javascript.main'),
     ignoreMissing: true,
   };
-  const instance = args && args.watch ? watchify(browserify(options)) : browserify(options);
-  return instance.transform(babelify, args.config);
+  const instance = watch ? watchify(browserify(options)) : browserify(options);
+  return instance.transform(babelify, { ...babelConfig, ...babelifyConfig });
 };
 
 gulp.task('javascript:build', (done) => {
@@ -48,7 +48,10 @@ gulp.task('javascript:build', (done) => {
   return es.merge(entries.map(entry => {
     return bundle({
       task: task,
-      instance: getBrowserifyInstance({ config: entry.babel }),
+      instance: getBrowserifyInstance({
+        babelConfig: entry.babel,
+        babelifyConfig: entry.babelify,
+      }),
       bundle: entry.bundle,
     }, error => process.exit(1));
   }));
@@ -65,7 +68,8 @@ gulp.task('javascript:watch', (done) => {
     return bundle({
       task: task,
       instance: getBrowserifyInstance({
-        config: entry.babel,
+        babelConfig: entry.babel,
+        babelifyConfig: entry.babelify,
         watch: true,
       }),
       bundle: entry.bundle,
