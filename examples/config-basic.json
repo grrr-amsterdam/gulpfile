@@ -25,7 +25,11 @@
         {
           "bundle": "main.js",
           "watch": true,
+          "babelify": {
+            "global": true
+          },
           "babel": {
+            "ignore": ["/\/node_modules\/(?!.*.*\/.*.mjs)/"],
             "env": {
               "production": {
                 "presets": [ "minify" ]
