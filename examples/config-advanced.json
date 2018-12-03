@@ -1,7 +1,6 @@
 {
-  "app": {
-    "domain": "localhost.<something>.com",
-    "port": 443
+  "dotenv": {
+    "file": "../../.env"
   },
   "paths": {
     "src": "assets",
