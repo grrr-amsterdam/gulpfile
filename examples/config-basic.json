@@ -1,7 +1,4 @@
 {
-  "app": {
-    "domain": "localhost.<something>.com"
-  },
   "paths": {
     "src": "assets",
     "dist": "dist"

@@ -14,12 +14,26 @@ npm install @grrr/gulpfile --save-dev
 ## Configuration
 1. Create a `gulp.json` config file. Check the [examples](https://github.com/grrr-amsterdam/gulpfile/tree/master/examples) for all the available options.
 2. When transpiling JavaScript, add the required Babel dependencies for your project.
-See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. A good starting point is by adding `@babel/preset-env`:
-```
-npm install --save-dev @babel/preset-env
+    See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. A good starting point is by adding `@babel/preset-env`:  
+    ```
+    npm install --save-dev @babel/preset-env
+    ```
+3. Create an env var `BROWSERSYNC_PROXY` with your app domain (eg: localhost:10000) as value. This points BrowserSync to your app. The location of BrowserSync will be printed in the output of Gulp.
+
+See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. Now specify the Babel config in the `gulp.json`. See [the advanced example](https://github.com/grrr-amsterdam/gulpfile/blob/master/examples/config-advanced.json#L35) for an example, or check the [Babel docs](https://babeljs.io/docs/usage/babelrc/) for more information.
+
+BrowserSync uses env vars for its configuration. When the `.env` is in another location add the path to `gulp.json`:
+```json
+{
+  ...,
+  "dotenv": {
+    "file": "../../.env"
+  },
+  ...
+}
 ```
 
-## Usage
+### Run
 Run gulp by calling:
 ```
 gulp --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'

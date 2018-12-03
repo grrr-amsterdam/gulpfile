@@ -1,5 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import config from './lib/config';
+
+require('dotenv').config({path: config.get('dotenv.file')});
 
 /**
  * Gulp tasks are defined in separate files in the tasks folder
