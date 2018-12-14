@@ -2,6 +2,35 @@
 This changelog only lists major version changes (breaking), or minor changes important enough to list them here. Check individual releases (tags) and their commits to see unlisted changes.
 
 
+### 6.0.0 (2018-12-15)
+
+#### Replace Browsersync proxy configuration
+The old way of specifying the Browsersync proxy is deprecated in favour of adding it via an environment variable (`BROWSERSYNC_PROXY`).
+
+This...
+
+```json
+  "app": {
+    "domain": "localhost.<something>.com",
+    "port": 443
+  },
+```
+
+.. is replaced with an entry in a `.env` file:
+
+```
+BROWSERSYNC_PROXY=localhost.<something>.com
+```
+
+To load the `.env` from somewhere else than the root, specify it in the `gulp.json`:
+
+```json
+  "dotenv": {
+    "file": "../../.env"
+  },
+```
+
+
 ### 5.0.0 (2018-10-23)
 
 #### Move to namespaced package
