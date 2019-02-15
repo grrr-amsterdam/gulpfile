@@ -112,6 +112,8 @@ rules:
         - body-font
         - intro-font
         - ui-font
+        - numeric-font
+        - mono-font
         - hocus
         - placeholder
 
