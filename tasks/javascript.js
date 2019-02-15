@@ -2,7 +2,7 @@ import config from '../lib/config';
 
 import log from 'fancy-log';
 import fs from 'fs';
-import es from 'event-stream';
+import merge from 'merge-stream';
 import gulp from 'gulp';
 import pump from 'pump';
 import source from 'vinyl-source-stream';
@@ -49,7 +49,7 @@ gulp.task('javascript:build', (done) => {
   }
   const task = this;
   const entries = config.get('tasks.javascript.bundles');
-  return es.merge(entries.map(entry => {
+  return merge(entries.map(entry => {
     return bundle({
       task: task,
       instance: getBrowserifyInstance({
@@ -68,7 +68,7 @@ gulp.task('javascript:watch', (done) => {
   }
   const task = this;
   const entries = config.get('tasks.javascript.bundles').filter(entry => entry.watch);
-  return es.merge(entries.map(entry => {
+  return merge(entries.map(entry => {
     return bundle({
       task: task,
       instance: getBrowserifyInstance({

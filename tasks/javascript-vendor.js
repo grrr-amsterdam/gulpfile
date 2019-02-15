@@ -2,7 +2,7 @@ import config from '../lib/config';
 
 import log from 'fancy-log';
 import gulp from 'gulp';
-import es from 'event-stream';
+import merge from 'merge-stream';
 import pump from 'pump';
 import gulpif from 'gulp-if';
 import concat from 'gulp-concat';
@@ -17,7 +17,7 @@ gulp.task('javascript:vendor', (done) => {
     return done();
   }
   const entries = config.get('tasks.javascript:vendor');
-  return es.merge(entries.map(entry => {
+  return merge(entries.map(entry => {
     /**
      * Somehow gulpif and concat don't play nice at all, so we use this
      * ugly if/else-statement for now ¯\_(ツ)_/¯
