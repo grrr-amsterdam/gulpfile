@@ -77,16 +77,20 @@ The project uses a few sensible defaults for `Autoprefixer`, `Sass Lint` and `ES
 - ESLint: used in `eslint`. Place an `.eslintrc` file in the root of your project. You can additionally add an `.eslintignore` for ignoring (wildcarded) folders or packages specific to your project.
 
 ## Contributing
-To make changes to this gulpfile, it's best to replace the installed package in a real project with a locally linked development version. This can be done with both yarn or npm. We use yarn in this example; for npm check the [npm docs](https://docs.npmjs.com/cli/link) . Inside the root of the repo, run:
+To make changes to this gulpfile, it's best to replace the installed package in a real project with a locally linked development version. To do so, run the following command in the repo of this project:
 ```
 yarn link
 ```
-Inside the root of the project you want to test the gulpfile, run:
+
+Inside the root of the project you want to test `@grrr/gulpfile` in, run:
 ```
 yarn link @grrr/gulpfile
 ```
-When you're done, you can publish the changes on `npm` and unlink the development version by running the following inside the project:
+
+When you're done, you can publish the changes and unlink the development version by running:
 ```
 yarn unlink @grrr/gulpfile
 yarn install
 ```
+
+Note that when locally testing updated dependencies, it's better to use a tool like [Yalc](https://github.com/whitecolor/yalc). Dependency resolution in linked packages (via `yarn link`) does not work the same way as when the package would've been published.
