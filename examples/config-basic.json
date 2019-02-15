@@ -18,9 +18,7 @@
     "javascript": {
       "src": "assets/scripts/**/*.js",
       "dist": "dist/scripts",
-      "main": [
-        "assets/scripts/main.js"
-      ],
+      "main": "assets/scripts/main.js",
       "bundles": [
         {
           "bundle": "main.js",
@@ -30,11 +28,6 @@
           },
           "babel": {
             "ignore": ["/\/node_modules\/(?!.*.*\/.*.mjs)/"],
-            "env": {
-              "production": {
-                "presets": [ "minify" ]
-              }
-            },
             "plugins": [
               "@babel/plugin-proposal-object-rest-spread"
             ],

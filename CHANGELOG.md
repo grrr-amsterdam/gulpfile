@@ -2,6 +2,12 @@
 This changelog only lists major version changes (breaking), or minor changes important enough to list them here. Check individual releases (tags) and their commits to see unlisted changes.
 
 
+### v6.2.0 (2019-02-15)
+
+#### Re-add Uglify for main JavaScript
+Uglify was re-added for the `javascript:build` task in non-development.
+
+
 ### v6.1.0 (2019-02-15)
 
 #### Upgrade to Gulp v4

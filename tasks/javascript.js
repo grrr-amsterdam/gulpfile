@@ -1,9 +1,11 @@
 import config from '../lib/config';
+import { isDevelopment } from '../lib/env';
 
 import log from 'fancy-log';
 import fs from 'fs';
 import merge from 'merge-stream';
 import pump from 'pump';
+import gulpif from 'gulp-if';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import browserSync from 'browser-sync';
@@ -12,21 +14,30 @@ import browserify from 'browserify';
 import babelify from 'babelify';
 import watchify from 'watchify';
 import esmify from 'esmify';
+import uglify from 'gulp-uglify';
 import { dest, task } from 'gulp';
+
 import { eslint } from './eslint';
 
 /**
  * Bundle JavaScript with Browserify and transpile with Babel.
  */
-const bundle = (args, done) => {
-  return args.instance.bundle()
-    .on('error', err => {
-      log.error(err);
-      done();
-    })
-    .pipe(source(args.bundle))
+const generateBundle = ({ instance, bundle }, errorCallback) => {
+  return instance.bundle()
+    .on('error', errorCallback)
+    .pipe(source(bundle))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(gulpif(!isDevelopment,
+      uglify({
+        compress: {
+          drop_debugger: true,
+        },
+        output: {
+          comments: /^!/,
+        }
+      }).on('error', errorCallback)
+    ))
     .pipe(sourcemaps.write('./'))
     .pipe(dest(config.get('tasks.javascript.dist')));
 };
@@ -48,17 +59,21 @@ export const jsbuild = done => {
     log(`Skipping 'javascript:build' task`);
     return done();
   }
-  const task = this;
   const entries = config.get('tasks.javascript.bundles');
   return merge(entries.map(entry => {
-    return bundle({
-      task: task,
+    return generateBundle({
       instance: getBrowserifyInstance({
         babelConfig: entry.babel,
         babelifyConfig: entry.babelify,
       }),
       bundle: entry.bundle,
-    }, error => process.exit(1));
+    }, error => {
+      log.error(error);
+      done();
+      if (!isDevelopment) {
+        process.exit(1);
+      }
+    });
   }));
 };
 
@@ -67,18 +82,19 @@ export const jswatch = done => {
     log(`Skipping 'javascript:watch' task`);
     return done();
   }
-  const task = this;
   const entries = config.get('tasks.javascript.bundles').filter(entry => entry.watch);
   return merge(entries.map(entry => {
-    return bundle({
-      task: task,
+    return generateBundle({
       instance: getBrowserifyInstance({
         babelConfig: entry.babel,
         babelifyConfig: entry.babelify,
         watch: true,
       }),
       bundle: entry.bundle,
-    }, error => done());
+    }, error => {
+      log.error(error);
+      done();
+    });
   })).on('end', () => {
     browserSync.reload();
     eslint();
