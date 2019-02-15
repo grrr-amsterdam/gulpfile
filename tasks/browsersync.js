@@ -1,17 +1,20 @@
 import config from '../lib/config';
 
-import gulp from 'gulp';
-import browserSync from 'browser-sync';
+import browserSyncPackage from 'browser-sync';
+import { task } from 'gulp';
 
 /**
- * Auto refresh and hot reloading in the browser
+ * Auto refresh and hot reloading in the browser.
  *
  * Also makes your development computer available to
  * third party devices over the network.
  */
-gulp.task('browsersync', () => {
-  browserSync({
+export const browsersync = done => {
+  browserSyncPackage({
     proxy: process.env.BROWSERSYNC_PROXY,
     open: false,
   });
-});
+  done();
+};
+
+task('browsersync', browsersync);

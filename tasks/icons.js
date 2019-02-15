@@ -1,22 +1,22 @@
 import config from '../lib/config';
 
 import log from 'fancy-log';
-import gulp from 'gulp';
 import pump from 'pump';
 import path from 'path';
 import svgmin from 'gulp-svgmin';
 import svgstore from 'gulp-svgstore';
+import { src, dest, task } from 'gulp';
 
 /**
- * Creates an svg icon sprite
+ * Create an SVG icon sprite.
  */
-gulp.task('icons', (done) => {
+export const icons = done => {
   if (!config.get('tasks.icons')) {
     log(`Skipping 'icons' task`);
     return done();
   }
   pump([
-    gulp.src(config.get('tasks.icons.src')),
+    src(config.get('tasks.icons.src')),
     svgmin((file) => ({
       plugins: [{
         cleanupIDs: {
@@ -29,6 +29,8 @@ gulp.task('icons', (done) => {
       }],
     })),
     svgstore({ inlineSvg: true }),
-    gulp.dest(config.get('tasks.icons.dist')),
+    dest(config.get('tasks.icons.dist')),
   ], done);
-});
+};
+
+task('icons', icons);

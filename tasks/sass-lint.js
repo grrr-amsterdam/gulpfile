@@ -4,17 +4,17 @@ import { isDevelopment } from '../lib/env';
 import log from 'fancy-log';
 import fs from 'fs';
 import path from 'path';
-import gulp from 'gulp';
-import sassLint from 'gulp-sass-lint';
+import gulpSassLint from 'gulp-sass-lint';
+import { src, dest, task } from 'gulp';
 
-const sassLintConfig = fs.existsSync('.sass-lint.yml')
+const LINT_CONFIG = fs.existsSync('.sass-lint.yml')
   ? '.sass-lint.yml'
   : path.join(__dirname, '../defaults/.sass-lint.yml');
 
 /**
  * Lints sass (see `.sass-lint.yml`)
  */
-gulp.task('sass:lint', (done) => {
+export const sasslint = done => {
   if (!config.get('tasks.sass')) {
     log(`Skipping 'sass:lint' task`);
     return done();
@@ -23,9 +23,11 @@ gulp.task('sass:lint', (done) => {
     log(`Skipping 'sass-lint' task for non-development`);
     return done();
   }
-  return gulp.src(config.get('tasks.sass.src'))
-    .pipe(sassLint({
-      configFile: sassLintConfig,
+  return src(config.get('tasks.sass.src'))
+    .pipe(gulpSassLint({
+      configFile: LINT_CONFIG,
     }))
-    .pipe(sassLint.format());
-});
+    .pipe(gulpSassLint.format());
+};
+
+task('sass:lint', sasslint);

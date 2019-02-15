@@ -2,37 +2,35 @@ import config from '../lib/config';
 import { isDevelopment } from '../lib/env';
 
 import log from 'fancy-log';
-import gulp from 'gulp';
 import pump from 'pump';
 import gulpif from 'gulp-if';
-import sass from 'gulp-sass';
+import gulpSass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import sassGlob from 'gulp-sass-glob';
 import cleanCSS from 'gulp-clean-css';
 import pxtorem from 'postcss-pxtorem';
 import autoprefixer from 'autoprefixer';
 import browserSync from 'browser-sync';
+import { src, dest, task } from 'gulp';
 
-const autoprefixerConfig = config.get('tasks.sass.autoprefixer')
+const AUTOPREFIXER_CONFIG = config.get('tasks.sass.autoprefixer')
   ? config.get('tasks.sass.autoprefixer')
   : {
     browsers: [
       "> 0.25%",
       "ie >= 9",
     ],
-  }
-;
+  };
 
-const cleanCssConfig = config.get('tasks.sass.cleanCss')
+const CLEAN_CSS_CONFIG = config.get('tasks.sass.cleanCss')
   ? config.get('tasks.sass.cleanCss')
   : {
     compatibility: 'ie9',
     level: 1,
-  }
-;
+  };
 
-const processorsConfig = [
-  autoprefixer(autoprefixerConfig),
+const PROCESSOR_CONFIG = [
+  autoprefixer(AUTOPREFIXER_CONFIG),
   pxtorem({
     root_value: 10,
     unit_precision: 5,
@@ -46,24 +44,26 @@ const processorsConfig = [
 ];
 
 /**
- * Builds css files
+ * Compile Sass files.
  */
-gulp.task('sass', (done) => {
+export const sass = done => {
   if (!config.get('tasks.sass')) {
     log(`Skipping 'sass' task`);
     return done();
   }
   pump([
-    gulp.src(config.get('tasks.sass.main')),
+    src(config.get('tasks.sass.main')),
     sassGlob(),
-    sass().on('error', error => {
+    gulpSass().on('error', error => {
       if (!isDevelopment) {
         process.exit(1);
       }
     }),
-    postcss(processorsConfig),
-    gulpif(!isDevelopment, cleanCSS(cleanCssConfig)),
-    gulp.dest(config.get('tasks.sass.dist')),
+    postcss(PROCESSOR_CONFIG),
+    gulpif(!isDevelopment, cleanCSS(CLEAN_CSS_CONFIG)),
+    dest(config.get('tasks.sass.dist')),
     browserSync.reload({ stream: true }),
   ], done);
-});
+};
+
+task('sass', sass);

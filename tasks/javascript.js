@@ -3,7 +3,6 @@ import config from '../lib/config';
 import log from 'fancy-log';
 import fs from 'fs';
 import merge from 'merge-stream';
-import gulp from 'gulp';
 import pump from 'pump';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
@@ -13,9 +12,11 @@ import browserify from 'browserify';
 import babelify from 'babelify';
 import watchify from 'watchify';
 import esmify from 'esmify';
+import { dest, task } from 'gulp';
+import { eslint } from './eslint';
 
 /**
- * Javascript bundle with Browserify and Babel transpiler
+ * Bundle JavaScript with Browserify and transpile with Babel.
  */
 const bundle = (args, done) => {
   return args.instance.bundle()
@@ -27,7 +28,7 @@ const bundle = (args, done) => {
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(config.get('tasks.javascript.dist')));
+    .pipe(dest(config.get('tasks.javascript.dist')));
 };
 
 const getBrowserifyInstance = ({ babelConfig, babelifyConfig, watch }) => {
@@ -42,7 +43,7 @@ const getBrowserifyInstance = ({ babelConfig, babelifyConfig, watch }) => {
   return instance.transform(babelify, { ...babelConfig, ...babelifyConfig });
 };
 
-gulp.task('javascript:build', (done) => {
+export const jsbuild = done => {
   if (!config.get('tasks.javascript')) {
     log(`Skipping 'javascript:build' task`);
     return done();
@@ -59,9 +60,9 @@ gulp.task('javascript:build', (done) => {
       bundle: entry.bundle,
     }, error => process.exit(1));
   }));
-});
+};
 
-gulp.task('javascript:watch', (done) => {
+export const jswatch = done => {
   if (!config.get('tasks.javascript')) {
     log(`Skipping 'javascript:watch' task`);
     return done();
@@ -80,6 +81,9 @@ gulp.task('javascript:watch', (done) => {
     }, error => done());
   })).on('end', () => {
     browserSync.reload();
-    gulp.start('eslint');
+    eslint();
   });
-});
+};
+
+task('javascript:build', jsbuild);
+task('javascript:watch', jswatch);
