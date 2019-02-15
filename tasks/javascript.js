@@ -1,9 +1,11 @@
 import config from '../lib/config';
+import { isDevelopment } from '../lib/env';
 
 import log from 'fancy-log';
 import fs from 'fs';
 import merge from 'merge-stream';
 import pump from 'pump';
+import gulpif from 'gulp-if';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import browserSync from 'browser-sync';
@@ -13,20 +15,41 @@ import babelify from 'babelify';
 import watchify from 'watchify';
 import esmify from 'esmify';
 import { dest, task } from 'gulp';
-import { eslint } from './eslint';
+
+const closureCompiler = require('google-closure-compiler').gulp();
 
 /**
  * Bundle JavaScript with Browserify and transpile with Babel.
  */
-const bundle = (args, done) => {
-  return args.instance.bundle()
+const generateBundle = ({ instance, bundle, minify }, done) => {
+  const runClosureCompiler = minify && !isDevelopment;
+  return instance.bundle()
     .on('error', err => {
       log.error(err);
       done();
     })
-    .pipe(source(args.bundle))
+    // Note: the Closure Compiler does not like the input name to be the
+    // same as the output name, so we fake a name here when it needs to run.
+    .pipe(source(runClosureCompiler ? 'random.js' : bundle))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(gulpif(runClosureCompiler,
+      closureCompiler({
+        compilation_level: 'SIMPLE_OPTIMIZATIONS',
+        warning_level: 'QUIET',
+        language_in: 'ECMASCRIPT6_STRICT',
+        language_out: 'ECMASCRIPT5_STRICT',
+        output_wrapper: '(function(){\n%output%\n}).call(this)',
+        js_output_file: bundle,
+      }, {
+        platform: ['native', 'java', 'javascript']
+      }).on('error', error => {
+        log.error(error);
+        if (!isDevelopment) {
+          process.exit(1);
+        }
+      }))
+    )
     .pipe(sourcemaps.write('./'))
     .pipe(dest(config.get('tasks.javascript.dist')));
 };
@@ -48,16 +71,15 @@ export const jsbuild = done => {
     log(`Skipping 'javascript:build' task`);
     return done();
   }
-  const task = this;
   const entries = config.get('tasks.javascript.bundles');
   return merge(entries.map(entry => {
-    return bundle({
-      task: task,
+    return generateBundle({
       instance: getBrowserifyInstance({
         babelConfig: entry.babel,
         babelifyConfig: entry.babelify,
       }),
       bundle: entry.bundle,
+      minify: entry.minify,
     }, error => process.exit(1));
   }));
 };
@@ -67,17 +89,16 @@ export const jswatch = done => {
     log(`Skipping 'javascript:watch' task`);
     return done();
   }
-  const task = this;
   const entries = config.get('tasks.javascript.bundles').filter(entry => entry.watch);
   return merge(entries.map(entry => {
-    return bundle({
-      task: task,
+    return generateBundle({
       instance: getBrowserifyInstance({
         babelConfig: entry.babel,
         babelifyConfig: entry.babelify,
         watch: true,
       }),
       bundle: entry.bundle,
+      minify: entry.minify,
     }, error => done());
   })).on('end', () => {
     browserSync.reload();
