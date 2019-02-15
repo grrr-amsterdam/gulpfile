@@ -13,10 +13,10 @@ dotenv.config({ path: config.get('dotenv.file') || process.cwd() });
  */
 const taskFolder = path.join(__dirname, 'tasks');
 fs.readdirSync(taskFolder)
-  .filter((name) => /(\.(js)$)/i.test(path.extname(name)))
-  .forEach((task) => require(path.join(taskFolder, task)));
+  .filter(name => /(\.(js)$)/i.test(path.extname(name)))
+  .forEach(task => require(path.join(taskFolder, task)));
 
 /**
  * Custom `SIGINT` listener to exit process
  */
-process.on('SIGINT', (e) => process.exit(1));
+process.on('SIGINT', e => process.exit(1));

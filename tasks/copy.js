@@ -1,18 +1,23 @@
 import config from '../lib/config';
 
 import log from 'fancy-log';
-import gulp from 'gulp';
 import pump from 'pump';
+import { src, dest, task } from 'gulp';
 
-gulp.task('copy', (done) => {
+/**
+ * Copy files from on location to the other.
+ */
+export const copy = done => {
   if (!config.get('tasks.copy')) {
     log(`Skipping 'copy' task`);
     return done();
   }
   pump([
-    gulp.src(config.get('tasks.copy'), {
+    src(config.get('tasks.copy'), {
       base: config.get('paths.src'),
     }),
-    gulp.dest(config.get('paths.dist'))
+    dest(config.get('paths.dist'))
   ], done);
-});
+};
+
+task('copy', copy);

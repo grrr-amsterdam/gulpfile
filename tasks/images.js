@@ -1,20 +1,20 @@
 import config from '../lib/config';
 
 import log from 'fancy-log';
-import gulp from 'gulp';
 import pump from 'pump';
 import imagemin from 'gulp-imagemin';
+import { src, dest, task } from 'gulp';
 
 /**
- * Compresses images
+ * Compress images.
  */
-gulp.task('images', (done) => {
+export const images = done => {
   if (!config.get('tasks.images')) {
     log(`Skipping 'images' task`);
     return done();
   }
   pump([
-    gulp.src(config.get('tasks.images.src')),
+    src(config.get('tasks.images.src')),
     imagemin([
       imagemin.jpegtran({
         progressive: true
@@ -25,6 +25,8 @@ gulp.task('images', (done) => {
         ]
       })
     ]),
-    gulp.dest(config.get('tasks.images.dist')),
+    dest(config.get('tasks.images.dist')),
   ], done);
-});
+};
+
+task('images', images);

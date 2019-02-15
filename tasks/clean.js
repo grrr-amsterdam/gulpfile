@@ -1,11 +1,14 @@
 import config from '../lib/config';
-
-import gulp from 'gulp';
 import del from 'del';
+import { task } from 'gulp';
 
 /**
- * Deletes all previous build files
+ * Clean the build folder.
  */
-gulp.task('clean', () => del([
-  `${config.get('paths.dist')}/**/*`,
-], { dot: true }));
+export const clean = done => {
+  del([
+    `${config.get('paths.dist')}/**/*`,
+  ], { dot: true }).then(paths => done());
+};
+
+task('clean', clean);

@@ -1,17 +1,17 @@
 import config from '../lib/config';
 
 import log from 'fancy-log';
-import gulp from 'gulp';
 import merge from 'merge-stream';
 import pump from 'pump';
 import gulpif from 'gulp-if';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
+import { src, dest, task } from 'gulp';
 
 /**
- * Copy some JS vendor files (eg. polyfills)
+ * Copy and bundle JavaScript vendor files (eg. polyfills).
  */
-gulp.task('javascript:vendor', (done) => {
+export const jsvendor = done => {
   if (!config.get('tasks.javascript:vendor')) {
     log(`Skipping 'javascript:vendor' task`);
     return done();
@@ -23,7 +23,7 @@ gulp.task('javascript:vendor', (done) => {
      * ugly if/else-statement for now ¯\_(ツ)_/¯
      */
     if (entry.bundle) {
-      return gulp.src(entry.src)
+      return src(entry.src)
         .pipe(concat(entry.bundle))
         .pipe(uglify({
           compress: {
@@ -34,9 +34,9 @@ gulp.task('javascript:vendor', (done) => {
             comments: /^!/,
           }
         }))
-        .pipe(gulp.dest(entry.dist));
+        .pipe(dest(entry.dist));
     } else {
-      return gulp.src(entry.src)
+      return src(entry.src)
         .pipe(uglify({
           compress: {
             drop_console: true,
@@ -46,7 +46,9 @@ gulp.task('javascript:vendor', (done) => {
             comments: /^!/,
           }
         }))
-        .pipe(gulp.dest(entry.dist));
+        .pipe(dest(entry.dist));
     }
   }));
-});
+};
+
+task('javascript:vendor', jsvendor);
