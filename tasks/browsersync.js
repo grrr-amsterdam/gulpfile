@@ -17,4 +17,10 @@ export const browsersync = done => {
   done();
 };
 
+export const reload = done => {
+  browserSyncPackage.reload();
+  done();
+};
+
 task('browsersync', browsersync);
+task('browsersync:reload', reload);

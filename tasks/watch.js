@@ -22,7 +22,7 @@ const watchers = done => {
   watch(getGlobs('tasks.images.src'), images);
   watch(getGlobs('tasks.icons.src'), icons);
   watch(getGlobs('tasks.javascript.src'), series(jswatch, eslint));
-  watch(getGlobs('tasks.watch.files'), browserSyncPackage.reload);
+  watch(getGlobs('tasks.watch.files'), task('browsersync:reload'));
   done();
 };
 
