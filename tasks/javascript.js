@@ -17,8 +17,6 @@ import esmify from 'esmify';
 import uglify from 'gulp-uglify';
 import { dest, task } from 'gulp';
 
-import { eslint } from './eslint';
-
 /**
  * Bundle JavaScript with Browserify and transpile with Babel.
  */
@@ -97,7 +95,6 @@ export const jswatch = done => {
     });
   })).on('end', () => {
     browserSync.reload();
-    eslint();
   });
 };
 

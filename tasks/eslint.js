@@ -12,7 +12,7 @@ const ESLINT_CONFIG = fs.existsSync('.eslintrc')
   : path.join(__dirname, '../defaults/.eslintrc');
 
 /**
- * Lint Javascript files (see `.eslintrc`).
+ * Lint JavaScript files (see `.eslintrc`).
  */
 export const eslint = done => {
   if (!config.get('tasks.javascript.src')) {
@@ -24,7 +24,7 @@ export const eslint = done => {
     '!**/{vendor,polyfills}/**/*.js',
   ])
     .pipe(gulpEsLint(ESLINT_CONFIG))
-    .pipe(gulpEsLint.formatEach())
+    .pipe(gulpEsLint.format())
     .pipe(gulpEsLint.results(results => {
       // See https://github.com/adametry/gulp-eslint/issues/135
       if (!isDevelopment && results.errorCount > 0) {
