@@ -1,6 +1,6 @@
 {
   "name": "@grrr/gulpfile",
-  "version": "6.2.0",
+  "version": "6.2.1",
   "description": "An opinionated set of gulp tasks",
   "author": "Grrr <npm@grrr.nl>",
   "license": "MIT",
