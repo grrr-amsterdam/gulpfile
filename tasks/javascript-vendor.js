@@ -5,7 +5,7 @@ import merge from 'merge-stream';
 import pump from 'pump';
 import gulpif from 'gulp-if';
 import concat from 'gulp-concat';
-import uglify from 'gulp-uglify';
+import terser from 'gulp-terser';
 import { src, dest, task } from 'gulp';
 
 /**
@@ -25,26 +25,18 @@ export const jsvendor = done => {
     if (entry.bundle) {
       return src(entry.src)
         .pipe(concat(entry.bundle))
-        .pipe(uglify({
+        .pipe(terser({
           compress: {
             drop_console: true,
-            drop_debugger: true,
           },
-          output: {
-            comments: /^!/,
-          }
         }))
         .pipe(dest(entry.dist));
     } else {
       return src(entry.src)
-        .pipe(uglify({
+        .pipe(terser({
           compress: {
             drop_console: true,
-            drop_debugger: true,
           },
-          output: {
-            comments: /^!/,
-          }
         }))
         .pipe(dest(entry.dist));
     }

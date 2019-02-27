@@ -3,7 +3,7 @@ import config from '../lib/config';
 import log from 'fancy-log';
 import pump from 'pump';
 import gulpModernizr from 'gulp-modernizr';
-import uglify from 'gulp-uglify';
+import terser from 'gulp-terser';
 import { src, dest, task } from 'gulp';
 
 /**
@@ -32,7 +32,7 @@ export const modernizr = done => {
         'picture',
       ],
     }),
-    uglify(),
+    terser(),
     dest(config.get('tasks.javascript.dist')),
   ], done);
 };

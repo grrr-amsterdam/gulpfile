@@ -62,7 +62,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "gulp-svgmin": "^2.0.0",
     "gulp-svgstore": "^7.0.0",
-    "gulp-uglify": "^3.0.0",
+    "gulp-terser": "^1.1.7",
     "merge-stream": "^1.0.1",
     "postcss-pxtorem": "^4.0.1",
     "pump": "^3.0.0",

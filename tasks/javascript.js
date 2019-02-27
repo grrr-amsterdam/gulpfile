@@ -14,7 +14,7 @@ import browserify from 'browserify';
 import babelify from 'babelify';
 import watchify from 'watchify';
 import esmify from 'esmify';
-import uglify from 'gulp-uglify';
+import terser from 'gulp-terser';
 import { dest, task } from 'gulp';
 
 /**
@@ -26,16 +26,7 @@ const generateBundle = ({ instance, bundle }, errorCallback) => {
     .pipe(source(bundle))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(gulpif(!isDevelopment,
-      uglify({
-        compress: {
-          drop_debugger: true,
-        },
-        output: {
-          comments: /^!/,
-        }
-      }).on('error', errorCallback)
-    ))
+    .pipe(gulpif(!isDevelopment, terser().on('error', errorCallback)))
     .pipe(sourcemaps.write('./'))
     .pipe(dest(config.get('tasks.javascript.dist')));
 };
