@@ -35,7 +35,7 @@ Tip: save this as an npm script in your project's `package.json`, for example:
     "watch": "gulp watch --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
     "build": "gulp --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
     "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
-    "build:production": "BABEL_ENV=production gulp --production --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'"
+    "build:production": "gulp --production --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'"
 },
 ```
 
@@ -52,7 +52,7 @@ The individual tasks are:
 - `copy` — copies files that don't need processing (like fonts, videos and the favicon)
 - `eslint` — lints js with opinionated rules, which can be overwritten by including your own `.eslintrc`
 - `images` — runs imagemin on all images in the `config.paths.images.src` and saves the result to `config.paths.images.dist`
-- `javascript:build` — bundles JavaScript into a single bundle thru Browserify and transpiles it with Babel
+- `javascript:build` — bundles JavaScript into a single bundle with Rollup and transpiles it with Babel
 - `javascript:watch` — watches for changes and builds the bundle when changes are detected
 - `javascript:vendor` — copies and uglifies vendor files (can also concatenate them)
 - `init` — prints some debug info

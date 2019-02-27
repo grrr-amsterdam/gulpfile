@@ -4,58 +4,55 @@ import { isDevelopment } from '../lib/env';
 import log from 'fancy-log';
 import fs from 'fs';
 import merge from 'merge-stream';
-import pump from 'pump';
-import gulpif from 'gulp-if';
-import source from 'vinyl-source-stream';
-import buffer from 'vinyl-buffer';
 import browserSync from 'browser-sync';
 import sourcemaps from 'gulp-sourcemaps';
-import browserify from 'browserify';
-import babelify from 'babelify';
-import watchify from 'watchify';
-import esmify from 'esmify';
-import terser from 'gulp-terser';
-import { dest, task } from 'gulp';
+import rollup from 'gulp-better-rollup';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import babel from 'rollup-plugin-babel';
+import { terser } from 'rollup-plugin-terser';
+import { src, dest, task } from 'gulp';
 
 /**
- * Bundle JavaScript with Browserify and transpile with Babel.
+ * Bundle JavaScript with Rollup and transpile with Babel.
  */
-const generateBundle = ({ instance, bundle }, errorCallback) => {
-  return instance.bundle()
-    .on('error', errorCallback)
-    .pipe(source(bundle))
-    .pipe(buffer())
+const generateBundle = ({ babelConfig, bundleFile }, errorCallback) => {
+  return src(config.get('tasks.javascript.main'))
     .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(gulpif(!isDevelopment, terser().on('error', errorCallback)))
+    .pipe(rollup({
+      plugins: [
+        resolve(),
+        commonjs(),
+        babel(babelConfig),
+        !isDevelopment && terser(),
+      ],
+      onwarn: (warning, warn) => {
+        const ignored = ['THIS_IS_UNDEFINED', 'CIRCULAR_DEPENDENCY'];
+        if (ignored.includes(warning.code)) {
+          return;
+        }
+        warn(warning);
+      },
+    }, {
+      format: 'iife',
+      file: bundleFile,
+    }).on('error', errorCallback))
     .pipe(sourcemaps.write('./'))
     .pipe(dest(config.get('tasks.javascript.dist')));
 };
 
-const getBrowserifyInstance = ({ babelConfig, babelifyConfig, watch }) => {
-  const options = {
-    entries: config.get('tasks.javascript.main'),
-    plugin: [
-      [ esmify ],
-    ],
-    ignoreMissing: true,
-  };
-  const instance = watch ? watchify(browserify(options)) : browserify(options);
-  return instance.transform(babelify, { ...babelConfig, ...babelifyConfig });
-};
-
-export const jsbuild = done => {
+const generateBundles = ({ watch }, done) => {
   if (!config.get('tasks.javascript')) {
-    log(`Skipping 'javascript:build' task`);
+    log(`Skipping 'javascript:${watch ? 'watch' : 'build'}' task`);
     return done();
   }
-  const entries = config.get('tasks.javascript.bundles');
+  const entries = config.get('tasks.javascript.bundles')
+    .filter(entry => watch ? entry.watch : true);
+
   return merge(entries.map(entry => {
     return generateBundle({
-      instance: getBrowserifyInstance({
-        babelConfig: entry.babel,
-        babelifyConfig: entry.babelify,
-      }),
-      bundle: entry.bundle,
+      babelConfig: entry.babel,
+      bundleFile: entry.bundle,
     }, error => {
       log.error(error);
       done();
@@ -63,31 +60,15 @@ export const jsbuild = done => {
         process.exit(1);
       }
     });
-  }));
-};
-
-export const jswatch = done => {
-  if (!config.get('tasks.javascript')) {
-    log(`Skipping 'javascript:watch' task`);
-    return done();
-  }
-  const entries = config.get('tasks.javascript.bundles').filter(entry => entry.watch);
-  return merge(entries.map(entry => {
-    return generateBundle({
-      instance: getBrowserifyInstance({
-        babelConfig: entry.babel,
-        babelifyConfig: entry.babelify,
-        watch: true,
-      }),
-      bundle: entry.bundle,
-    }, error => {
-      log.error(error);
-      done();
-    });
   })).on('end', () => {
-    browserSync.reload();
+    if (watch) {
+      browserSync.reload();
+    }
   });
 };
+
+export const jsbuild = done => generateBundles({ watch: false }, done);
+export const jswatch = done => generateBundles({ watch: true }, done);
 
 task('javascript:build', jsbuild);
 task('javascript:watch', jswatch);

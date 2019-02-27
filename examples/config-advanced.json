@@ -27,11 +27,8 @@
       "main": "assets/scripts/main.js",
       "bundles": [
         {
-          "bundle": "main.js",
+          "bundle": "bundle.js",
           "watch": true,
-          "babelify": {
-            "global": true
-          },
           "babel": {
             "ignore": ["/\/node_modules\/(?!.*.*\/.*.mjs)/"],
             "plugins": [
@@ -55,7 +52,7 @@
           }
         },
         {
-          "bundle": "main-legacy.js",
+          "bundle": "bundle-legacy.js",
           "watch": false,
           "babel": {
             "plugins": [

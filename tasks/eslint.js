@@ -28,6 +28,7 @@ export const eslint = done => {
     .pipe(gulpEsLint.results(results => {
       // See https://github.com/adametry/gulp-eslint/issues/135
       if (!isDevelopment && results.errorCount > 0) {
+        done();
         process.exit(1);
       }
     }));
