@@ -29,8 +29,19 @@
         {
           "bundle": "bundle.js",
           "watch": true,
+          "rollup": {
+            "input": {
+              "external": [
+                "moment"
+              ]
+            },
+            "output": {
+              "globals": {
+                "moment": "momentMock"
+              }
+            }
+          },
           "babel": {
-            "ignore": ["/\/node_modules\/(?!.*.*\/.*.mjs)/"],
             "plugins": [
               "@babel/plugin-proposal-object-rest-spread"
             ],
@@ -54,6 +65,18 @@
         {
           "bundle": "bundle-legacy.js",
           "watch": false,
+          "rollup": {
+            "input": {
+              "external": [
+                "moment"
+              ]
+            },
+            "output": {
+              "globals": {
+                "moment": "momentMock"
+              }
+            }
+          },
           "babel": {
             "plugins": [
               "@babel/plugin-proposal-object-rest-spread"

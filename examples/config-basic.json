@@ -24,7 +24,6 @@
           "bundle": "bundle.js",
           "watch": true,
           "babel": {
-            "ignore": ["/\/node_modules\/(?!.*.*\/.*.mjs)/"],
             "plugins": [
               "@babel/plugin-proposal-object-rest-spread"
             ],

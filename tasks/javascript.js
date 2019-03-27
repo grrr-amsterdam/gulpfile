@@ -16,10 +16,11 @@ import { src, dest, task } from 'gulp';
 /**
  * Bundle JavaScript with Rollup and transpile with Babel.
  */
-const generateBundle = ({ babelConfig, bundleFile }, errorCallback) => {
+const generateBundle = ({ babelConfig, rollupConfig, bundleFile }, errorCallback) => {
   return src(config.get('tasks.javascript.main'))
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(rollup({
+      ...rollupConfig.input,
       plugins: [
         resolve(),
         commonjs(),
@@ -38,6 +39,7 @@ const generateBundle = ({ babelConfig, bundleFile }, errorCallback) => {
         }
       },
     }, {
+      ...rollupConfig.output,
       format: 'iife',
       file: bundleFile,
     }).on('error', errorCallback))
@@ -56,6 +58,7 @@ const generateBundles = ({ watch }, done) => {
   return merge(entries.map(entry => {
     return generateBundle({
       babelConfig: entry.babel,
+      rollupConfig: entry.rollup,
       bundleFile: entry.bundle,
     }, error => {
       log.error(error);
