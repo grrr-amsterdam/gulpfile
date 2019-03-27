@@ -31,7 +31,11 @@ const generateBundle = ({ babelConfig, bundleFile }, errorCallback) => {
         if (ignored.includes(warning.code)) {
           return;
         }
-        warn(warning);
+        if (!isDevelopment) {
+          errorCallback(warning);
+        } else {
+          warn(warning);
+        }
       },
     }, {
       format: 'iife',

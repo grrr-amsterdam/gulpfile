@@ -24,14 +24,7 @@ export const eslint = done => {
     '!**/{vendor,polyfills}/**/*.js',
   ])
     .pipe(gulpEsLint(ESLINT_CONFIG))
-    .pipe(gulpEsLint.format())
-    .pipe(gulpEsLint.results(results => {
-      // See https://github.com/adametry/gulp-eslint/issues/135
-      if (!isDevelopment && results.errorCount > 0) {
-        done();
-        process.exit(1);
-      }
-    }));
+    .pipe(gulpEsLint.format());
 };
 
 task('eslint', eslint);
