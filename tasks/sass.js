@@ -56,6 +56,7 @@ export const sass = done => {
     sassGlob(),
     gulpSass().on('error', error => {
       if (!isDevelopment) {
+        log.error(error);
         done();
         process.exit(1);
       }
