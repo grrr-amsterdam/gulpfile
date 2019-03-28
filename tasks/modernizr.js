@@ -24,13 +24,10 @@ export const modernizr = done => {
       '!**/{vendor,polyfills}/**/*.js',
     ]),
     gulpModernizr({
-      enableJSClass: false,
       options: [
         'setClasses',
       ],
-      tests: [
-        'picture',
-      ],
+      ...config.get('tasks.modernizr') || {},
     }),
     terser(),
     dest(config.get('tasks.javascript.dist')),

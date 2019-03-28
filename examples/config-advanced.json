@@ -140,6 +140,15 @@
         "assets/build/videos/**/*"
       ]
     },
+    "modernizr": {
+      "options": [
+        "addTest",
+        "setClasses"
+      ],
+      "tests": [
+        "picture"
+      ]
+    },
     "watch": {
       "files": [
         "{lib,templates}/**/*.{php,phtml}",
