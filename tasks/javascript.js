@@ -58,7 +58,7 @@ const generateBundles = ({ watch }, done) => {
   return merge(entries.map(entry => {
     return generateBundle({
       babelConfig: entry.babel,
-      rollupConfig: entry.rollup,
+      rollupConfig: entry.rollup || {},
       bundleFile: entry.bundle,
     }, error => {
       log.error(error);
