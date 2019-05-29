@@ -43,6 +43,7 @@
     "arrow-parens": 0,
     "no-confusing-arrow": 0,
     "arrow-body-style": 0,
+    "implicit-arrow-linebreak": 0,
     "func-names": 0,
     "no-console": 0,
     "no-alert": 0,
