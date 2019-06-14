@@ -83,14 +83,7 @@
             ],
             "presets": [
               [
-                "@babel/preset-env", {
-                  "targets": {
-                    "browsers": [
-                      "> 0.25%",
-                      "ie >= 9"
-                    ]
-                  }
-                }
+                "@babel/preset-env"
               ]
             ]
           }
@@ -121,13 +114,15 @@
         "assets/styles/admin.scss"
       ],
       "autoprefixer": {
-        "browsers": [
-          "> 0.25%",
-          "ie >= 9"
+        "overrideBrowserslist": [
+          "last 2 versions",
+          "> 0.5%",
+          "ie >= 11",
+          "not dead",
         ]
       },
       "cleanCss": {
-        "compatibility": "ie8",
+        "compatibility": "ie11",
         "level": 1
       }
     },

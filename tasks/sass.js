@@ -13,19 +13,12 @@ import autoprefixer from 'autoprefixer';
 import browserSync from 'browser-sync';
 import { src, dest, task } from 'gulp';
 
-const AUTOPREFIXER_CONFIG = config.get('tasks.sass.autoprefixer')
-  ? config.get('tasks.sass.autoprefixer')
-  : {
-    browsers: [
-      "> 0.25%",
-      "ie >= 9",
-    ],
-  };
+const AUTOPREFIXER_CONFIG = config.get('tasks.sass.autoprefixer');
 
 const CLEAN_CSS_CONFIG = config.get('tasks.sass.cleanCss')
   ? config.get('tasks.sass.cleanCss')
   : {
-    compatibility: 'ie9',
+    compatibility: 'ie11',
     level: 1,
   };
 
