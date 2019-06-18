@@ -160,7 +160,10 @@ rules:
   no-misspelled-properties:
     - 1
     -
-      extra-properties: []
+      extra-properties:
+        - blend-mode
+        - overscroll-behavior
+        - text-decoration-skip-ink
 
   no-qualifying-elements:
     - 1
