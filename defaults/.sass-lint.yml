@@ -116,6 +116,10 @@ rules:
         - mono-font
         - hocus
         - placeholder
+        - dark-mode
+        - intro-font-size
+        - regular-font-size
+        - small-font-size
 
   nesting-depth:
     - 1
