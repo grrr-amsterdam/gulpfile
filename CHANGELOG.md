@@ -4,13 +4,13 @@ This changelog only lists major version changes (breaking), or minor changes imp
 
 ### v6.4.0 (2019-02-28)
 
-#### Replace Browserify Rollup
-Browserify was replaced by [Rollup](https://github.com/rollup/rollup), due its focus on ESM instead of CommonJS.
+#### Replace Browserify by Rollup
+Browserify was replaced by [Rollup](https://github.com/rollup/rollup), due to its focus on ESM instead of CommonJS.
 
 
 ### v6.3.0 (2019-02-27)
 
-#### Uglify with Terser
+#### Replace Uglify by Terser
 Uglify was replaced by [Terser](https://github.com/terser-js/terser), since it supports ES6+ natively and `uglify-es` is no longer maintained.
 
 
