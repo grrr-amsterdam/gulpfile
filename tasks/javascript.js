@@ -22,9 +22,9 @@ const generateBundle = ({ babelConfig, rollupConfig, bundleFile }, errorCallback
     .pipe(rollup({
       ...rollupConfig.input,
       plugins: [
+        babel(babelConfig),
         resolve(),
         commonjs(),
-        babel(babelConfig),
         !isDevelopment && terser(),
       ],
       onwarn: (warning, warn) => {
