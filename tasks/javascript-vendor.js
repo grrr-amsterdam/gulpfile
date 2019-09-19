@@ -2,8 +2,6 @@ import config from '../lib/config';
 
 import log from 'fancy-log';
 import merge from 'merge-stream';
-import pump from 'pump';
-import gulpif from 'gulp-if';
 import concat from 'gulp-concat';
 import terser from 'gulp-terser';
 import { src, dest, task } from 'gulp';
@@ -31,15 +29,14 @@ export const jsvendor = done => {
           },
         }))
         .pipe(dest(entry.dist));
-    } else {
-      return src(entry.src)
-        .pipe(terser({
-          compress: {
-            drop_console: true,
-          },
-        }))
-        .pipe(dest(entry.dist));
     }
+    return src(entry.src)
+      .pipe(terser({
+        compress: {
+          drop_console: true,
+        },
+      }))
+      .pipe(dest(entry.dist));
   }));
 };
 

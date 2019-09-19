@@ -1,3 +1,5 @@
+/* eslint-disable import/no-dynamic-require,global-require */
+
 import fs from 'fs';
 import path from 'path';
 import log from 'fancy-log';

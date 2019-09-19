@@ -5,7 +5,7 @@ import log from 'fancy-log';
 import fs from 'fs';
 import path from 'path';
 import gulpSassLint from 'gulp-sass-lint';
-import { src, dest, task } from 'gulp';
+import { src, task } from 'gulp';
 
 const LINT_CONFIG = fs.existsSync('.sass-lint.yml')
   ? '.sass-lint.yml'

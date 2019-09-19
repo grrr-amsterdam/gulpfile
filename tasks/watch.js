@@ -1,6 +1,5 @@
 import config from '../lib/config';
 
-import browserSyncPackage from 'browser-sync';
 import { task, watch, parallel, series } from 'gulp';
 
 import { browsersync } from './browsersync';

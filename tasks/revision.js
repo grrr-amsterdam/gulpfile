@@ -32,7 +32,7 @@ const hashFiles = done => {
     log(`Skipping 'revision:hash' task for development`);
     return done();
   }
-  pump([
+  return pump([
     src([
       ...DEFAULTS,
       ...config.get('tasks.revision.files') || [],
@@ -53,7 +53,7 @@ const replaceCss = done => {
     log(`Skipping 'revision:css' task for development`);
     return done();
   }
-  pump([
+  return pump([
     src(`${config.get('tasks.sass.dist')}/**/*.css`),
     revReplace({ manifest: src(MANIFEST_FULL_PATH) }),
     dest(config.get('tasks.sass.dist')),
@@ -68,7 +68,7 @@ const replaceJs = done => {
     log(`Skipping 'revision:javascript' task for development`);
     return done();
   }
-  pump([
+  return pump([
     src(`${config.get('tasks.javascript.dist')}/**/*.js`),
     revReplace({ manifest: src(MANIFEST_FULL_PATH) }),
     dest(config.get('tasks.javascript.dist')),

@@ -15,14 +15,14 @@ export const icons = done => {
     log(`Skipping 'icons' task`);
     return done();
   }
-  pump([
+  return pump([
     src(config.get('tasks.icons.src')),
     svgmin((file) => ({
       plugins: [{
         cleanupIDs: {
-          prefix: path.basename(file.relative, path.extname(file.relative)) + '-',
+          prefix: path.basename(file.relative, `${path.extname(file.relative)}-`),
           minify: true,
-        }
+        },
       },
       {
         removeViewBox: false,
