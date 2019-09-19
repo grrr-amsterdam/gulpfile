@@ -44,7 +44,7 @@ export const sass = done => {
     log(`Skipping 'sass' task`);
     return done();
   }
-  pump([
+  return pump([
     src(config.get('tasks.sass.main')),
     sassGlob(),
     gulpSass().on('error', error => {

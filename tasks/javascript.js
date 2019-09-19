@@ -2,7 +2,6 @@ import config from '../lib/config';
 import { isDevelopment } from '../lib/env';
 
 import log from 'fancy-log';
-import fs from 'fs';
 import merge from 'merge-stream';
 import browserSync from 'browser-sync';
 import sourcemaps from 'gulp-sourcemaps';

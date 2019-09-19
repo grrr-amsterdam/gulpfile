@@ -14,6 +14,7 @@
   ],
   "main": "gulpfile.babel.js",
   "scripts": {
+    "lint": "eslint . --ext=.js,.mjs",
     "test": "echo \"Not testing anything just yet.\" && exit 0"
   },
   "repository": {
@@ -37,9 +38,9 @@
     "browser-sync": "^2.18.13",
     "del": "^5.0.0",
     "dotenv": "^8.0.0",
-    "eslint": "^6.1.0",
+    "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.18.2",
     "fancy-log": "^1.3.2",
     "gulp": "^4.0.0",
     "gulp-better-rollup": "^4.0.1",

@@ -1,5 +1,3 @@
-import config from '../lib/config';
-
 import browserSyncPackage from 'browser-sync';
 import { task } from 'gulp';
 

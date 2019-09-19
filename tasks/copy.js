@@ -12,11 +12,11 @@ export const copy = done => {
     log(`Skipping 'copy' task`);
     return done();
   }
-  pump([
+  return pump([
     src(config.get('tasks.copy'), {
       base: config.get('paths.src'),
     }),
-    dest(config.get('paths.dist'))
+    dest(config.get('paths.dist')),
   ], done);
 };
 

@@ -13,17 +13,17 @@ export const images = done => {
     log(`Skipping 'images' task`);
     return done();
   }
-  pump([
+  return pump([
     src(config.get('tasks.images.src')),
     imagemin([
       imagemin.jpegtran({
-        progressive: true
+        progressive: true,
       }),
       imagemin.svgo({
         plugins: [
           { removeViewBox: false },
-        ]
-      })
+        ],
+      }),
     ]),
     dest(config.get('tasks.images.dist')),
   ], done);

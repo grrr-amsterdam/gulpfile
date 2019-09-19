@@ -1,11 +1,10 @@
 import config from '../lib/config';
-import { isDevelopment } from '../lib/env';
 
 import log from 'fancy-log';
 import fs from 'fs';
 import path from 'path';
 import gulpEsLint from 'gulp-eslint';
-import { src, dest, task } from 'gulp';
+import { src, task } from 'gulp';
 
 const ESLINT_CONFIG = fs.existsSync('.eslintrc')
   ? '.eslintrc'

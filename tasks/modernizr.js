@@ -17,7 +17,7 @@ export const modernizr = done => {
     log(`Skipping 'modernizr' task`);
     return done();
   }
-  pump([
+  return pump([
     src([
       config.get('tasks.sass.src') || '',
       config.get('tasks.javascript.src') || '',
