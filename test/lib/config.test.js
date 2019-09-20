@@ -11,5 +11,7 @@ describe('config', () => {
     };
     expect(getEntryByDotString(object, 'foo.bar.baz')).toEqual('foo');
     expect(getEntryByDotString(object, 'bar')).toBeUndefined();
+    expect(getEntryByDotString(object, 'baz.bar.foo')).toBeUndefined();
+    expect(getEntryByDotString({}, 'bar')).toBeUndefined();
   });
 });
