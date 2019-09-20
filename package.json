@@ -15,7 +15,7 @@
   "main": "gulpfile.babel.js",
   "scripts": {
     "lint": "eslint . --ext=.js,.mjs",
-    "test": "echo \"Not testing anything just yet.\" && exit 0"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -70,5 +70,10 @@
     "rollup-plugin-node-resolve": "^5.0.2",
     "rollup-plugin-terser": "^5.0.0",
     "yargs": "^14.0.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^24.9.0",
+    "eslint-plugin-jest": "^22.17.0",
+    "jest": "^24.9.0"
   }
 }
