@@ -1,5 +1,6 @@
 .DS_Store
 /examples
+/test
 /node_modules
 /yarn.lock
 /package-lock.json
@@ -8,3 +9,5 @@
 /.travis.yml
 /.gitignore
 /.editorconfig
+/.eslintrc
+babel.config.js
