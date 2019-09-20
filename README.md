@@ -1,9 +1,10 @@
 # Grrr Gulpfile
-An opinionated and modular gulpfile.
-Made with ❤️ by [Grrr](https://grrr.nl/), a digital creative agency in Amsterdam.
 
 [![Build Status](https://travis-ci.com/grrr-amsterdam/gulpfile.svg?branch=master)](https://travis-ci.com/grrr-amsterdam/gulpfile)
 [![Dependencies](https://david-dm.org/grrr-amsterdam/gulpfile.svg)](https://david-dm.org/grrr-amsterdam/gulpfile)
+
+An opinionated and modular gulpfile.
+Made with ❤️ by [GRRR](https://grrr.nl/), a digital creative agency in Amsterdam.
 
 ## Installation
 Install this package in your project through yarn or npm:
