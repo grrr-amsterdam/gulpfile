@@ -274,6 +274,11 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@grrr/utils@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@grrr/utils/-/utils-2.3.0.tgz#f11b39a746470dadfb823a228003ade7b852c59a"
+  integrity sha512-UFtC/IOldsx+KzaZzb87psNzskNnzlqI5ObVkXbBFRfgfmo0bHl9bIoKkfbg3OF3T7okb2cq9TkErOZQMtJcVA==
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
