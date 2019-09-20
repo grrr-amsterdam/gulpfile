@@ -6,13 +6,13 @@ node_js:
 cache:
   yarn: true
 
+install:
+  - npm install -g yarn
+  - yarn install
+
 script:
   - yarn lint
   - yarn test
-
-before_install:
-  - npm install -g yarn
-  - yarn install
 
 notifications:
   email: false
