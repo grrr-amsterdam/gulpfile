@@ -3,10 +3,6 @@ require('@babel/register')({
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-transform-modules-commonjs',
   ],
-  only: [
-    /(@grrr\/gulpfile|gulpfile)\/(gulpfile\.babel\.js|tasks|lib)/,
-    /(@grrr\/utils)/,
-  ],
-  extensions: ['.js', '.mjs'],
+  ignore: [/node_modules\/(?!@grrr)/],
 });
 require('./gulpfile.babel.js');
