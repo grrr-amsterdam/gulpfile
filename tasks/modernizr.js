@@ -19,10 +19,10 @@ export const modernizr = done => {
   }
   return pump([
     src([
-      config.get('tasks.sass.src') || '',
-      config.get('tasks.javascript.src') || '',
+      config.get('tasks.sass.src'),
+      config.get('tasks.javascript.src'),
       '!**/{vendor,polyfills}/**/*.js',
-    ]),
+    ].filter(entry => entry)),
     gulpModernizr({
       options: [
         'setClasses',
