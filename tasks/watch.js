@@ -4,6 +4,7 @@ import { task, watch, parallel, series } from 'gulp';
 
 import { browsersync } from './browsersync';
 import { eslint } from './eslint';
+import { copy } from './copy';
 import { icons } from './icons';
 import { images } from './images';
 import { jswatch } from './javascript';
@@ -20,6 +21,7 @@ const watchers = done => {
   watch(getGlobs('tasks.sass.src'), series(sass, sasslint));
   watch(getGlobs('tasks.images.src'), images);
   watch(getGlobs('tasks.icons.src'), icons);
+  watch(getGlobs('tasks.copy'), copy);
   watch(getGlobs('tasks.javascript.src'), series(jswatch, eslint));
   watch(getGlobs('tasks.watch.files'), task('browsersync:reload'));
   done();
