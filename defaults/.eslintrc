@@ -27,11 +27,21 @@
   ],
   "rules": {
     "no-unused-vars": ["warn", { "args": "none" }],
-    "comma-dangle": ["warn", "always-multiline"],
+    "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "only-multiline",
+    }],
     "quote-props": ["warn", "consistent"],
     "semi": "warn",
     "prefer-destructuring": "warn",
-    "import/extensions": ["error", "always", { "js": "never", "jsx": "never", "mjs": "never" }],
+    "import/extensions": ["error", "always", {
+        "js": "never",
+        "jsx": "never",
+        "mjs": "never",
+    }],
     "import/no-unassigned-import": "off",
     "import/no-named-default": "off",
     "import/no-duplicates": "off",
