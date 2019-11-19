@@ -7,6 +7,19 @@ This changelog only lists major version changes (breaking), or minor changes imp
 #### Replace Browserify by Rollup
 Browserify was replaced by [Rollup](https://github.com/rollup/rollup), due to its focus on ESM instead of CommonJS.
 
+Note: this might be a breaking change to some projects, since having both _ESM imports_ and _CommonJS requires_ in the same file is not allowed anymore. In this case some JavaScript files might have to be refactored.
+
+This...
+
+```js
+require('./polyfills/array-from');
+```
+
+... becomes:
+
+```js
+import './polyfills/array-from';
+```
 
 ### v6.3.0 (2019-02-27)
 
@@ -34,13 +47,13 @@ The old way of specifying the Browsersync proxy is deprecated in favour of addin
 This...
 
 ```json
-  "app": {
-    "domain": "localhost.<something>.com",
-    "port": 443
-  },
+"app": {
+  "domain": "localhost.<something>.com",
+  "port": 443
+},
 ```
 
-.. is replaced with an entry in a `.env` file:
+... is replaced with an entry in a `.env` file:
 
 ```
 BROWSERSYNC_PROXY=localhost.<something>.com
@@ -70,12 +83,12 @@ This...
 
 ```json
 "plugins": [
-    "plugin-transform-object-rest-spread"
+  "plugin-transform-object-rest-spread"
 ],
 "presets": [
-    [
-        "preset-env", {}
-    ]
+  [
+    "preset-env", {}
+  ]
 ]
 ```
 
@@ -83,12 +96,12 @@ This...
 
 ```json
 "plugins": [
-    "@babel/plugin-proposal-object-rest-spread"
+  "@babel/plugin-proposal-object-rest-spread"
 ],
 "presets": [
-    [
-        "@babel/preset-env", {}
-    ]
+  [
+    "@babel/preset-env", {}
+  ]
 ]
 ```
 
@@ -108,15 +121,15 @@ A future release might add something like [babel-minify](https://github.com/babe
 Changed the way paths are listed in the revisioned manifest JSON file:
 
 ```json
-  "main.js": "main-52d31ea9cb.js",
-  "base.css": "base-26102c538a.css"
+"main.js": "main-52d31ea9cb.js",
+"base.css": "base-26102c538a.css"
 ```
 
 now becomes:
 
 ```json
-  "scripts/modernizr.js": "scripts/modernizr-e8731e5942.js",
-  "styles/base.css": "styles/base-26102c538a.css"
+"scripts/modernizr.js": "scripts/modernizr-e8731e5942.js",
+"styles/base.css": "styles/base-26102c538a.css"
 ```
 
 
