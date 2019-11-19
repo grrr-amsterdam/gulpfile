@@ -1,5 +1,26 @@
 # Changelog
-This changelog only lists major version changes (breaking), or minor changes important enough to list them here. Check individual releases (tags) and their commits to see unlisted changes.
+This changelog only lists breaking changes (major versions), or minor changes important enough to list them here. Check individual releases (tags) and their commits to see unlisted changes.
+
+
+### v6.5.15 (2019-03-28)
+
+#### Remove default Modernizr.picture test
+
+The `Modernizr.picture` test was removed from the defaults, allowing for a custom Modernizr task config if customization is needed.
+
+To revert the removeal of the `Modernizr.picture` default, add the following task in `gulp.json`:
+
+```js
+"modernizr": {
+  "options": [
+    "addTest",
+    "setClasses"
+  ],
+  "tests": [
+    "picture"
+  ]
+}
+```
 
 
 ### v6.4.0 (2019-02-28)
@@ -20,6 +41,7 @@ require('./polyfills/array-from');
 ```js
 import './polyfills/array-from';
 ```
+
 
 ### v6.3.0 (2019-02-27)
 
