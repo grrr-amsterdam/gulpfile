@@ -2,7 +2,7 @@
 This changelog only lists breaking changes (major versions), or minor changes important enough to list them here. Check individual releases (tags) and their commits to see unlisted changes.
 
 
-### v6.5.15 (2019-03-28)
+### v6.5.3 (2019-03-28)
 
 #### Remove default Modernizr.picture test
 
