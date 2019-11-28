@@ -9,9 +9,11 @@ import rollup from 'gulp-better-rollup';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
-import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 import { src, dest, task } from 'gulp';
+
+// eslint-disable-next-line
+import json from '@rollup/plugin-json';
 
 /**
  * Bundle JavaScript with Rollup and transpile with Babel.
