@@ -8,44 +8,51 @@ Made with ❤️ by [GRRR](https://grrr.nl/), a digital creative agency in Amste
 
 ## Installation
 Install this package in your project through yarn or npm:
-```
-npm install @grrr/gulpfile --save-dev
+
+```sh
+$ npm install @grrr/gulpfile --save-dev
 ```
 
 ## Configuration
-1. Create a `gulp.json` config file. Check the [examples](https://github.com/grrr-amsterdam/gulpfile/tree/master/examples) for all the available options.
+1. Create a `gulp.json` config file ([examples](https://github.com/grrr-amsterdam/gulpfile/tree/master/examples)).
 
 2. When transpiling JavaScript, add the required Babel dependencies for your project.
     See the [Babel docs](https://babeljs.io/docs/plugins/preset-env/) for more information. A good starting point is by adding `@babel/preset-env`:
 
-    ```
-    npm install --save-dev @babel/preset-env
+    ```sh
+    $ npm install --save-dev @babel/preset-env
     ```
 
 3. When using the watch task, create an environment variable called `BROWSERSYNC_PROXY` with your app domain (eg: `localhost:10000`). This will point Browsersync to your app. To do so, add a [.env file](https://github.com/grrr-amsterdam/gulpfile/tree/master/examples/.env.example) in the root of your project. You can also load it from another location by specifying it in the [gulp.json](https://github.com/grrr-amsterdam/gulpfile/tree/master/examples/config-advanced.json) config file.
 
 ## Usage
 Run gulp by calling:
-```
-gulp --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'
+
+```sh
+$ gulp --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'
 ```
 
-Tip: save this as an npm script in your project's `package.json`, for example:
+You can also add shortcuts as npm scripts, and run them like so:
+
+```sh
+$ npm run build # run build task
+$ npm run watch # run watch task
+$ npm run build:production # run build for environment 
+$ npm run build images # run specific task
+```
+
+To do so, add these to the `scripts` entry in your `package.json`.
+
 ```json
 "scripts": {
-    "watch": "gulp watch --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
-    "build": "gulp --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
-    "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
-    "build:production": "gulp --production --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'"
+  "watch": "gulp watch --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
+  "build": "gulp --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
+  "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
+  "build:production": "gulp --production --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'"
 },
 ```
 
-- To build, run the build task: `npm run build`
-- To watch, run the watch task: `npm run watch`
-- To build for a specific environment: `npm run build:production`
-- To run a specific task: `npm run build images`
-
-## Tasks
+## Available tasks
 The individual tasks are:
 
 - `browsersync` — auto refresh and hot reloading in the browser
@@ -68,30 +75,35 @@ The main tasks are:
 - `build` runs all above tasks, except `browsersync` (some tasks are dependent on the called environment)
 - `watch` runs the same tasks as `default` but will retrigger when files are changed, and will start Browsersync
 
-For more info, jump into the tasks folder.
+For more info, take a look into the [tasks folder](https://github.com/grrr-amsterdam/gulpfile/tree/readme-update/tasks).
 
-## Prefixer and linter defaults
-The project uses a few sensible defaults for `Autoprefixer`, `Sass Lint` and `ESLint`. These defaults can be overwritten:
+## Prefixer & linter defaults
+The project uses a few sensible defaults for prefixers and linters. They can all be overwritten.
 
-- Autoprefixer: used in `sass`. Can be specified in the `gulp.json` file in an `autoprefixer` object within the `sass` task.
-- Sass Lint: used in `sass:lint`. Place a `.sass-lint.yml` file in the root of your project.
-- ESLint: used in `eslint`. Place an `.eslintrc` file in the root of your project. You can additionally add an `.eslintignore` for ignoring (wildcarded) folders or packages specific to your project.
+#### Autoprefixer
+Used in `sass` task. Can be specified in the `gulp.json` file in an `autoprefixer` object within the `sass` task.
+
+#### Sass Lint
+Used in `sass:lint` tasks. Place a `.sass-lint.yml` file in the root of your project.
+
+#### ESLint
+Used in `eslint` tasks. Place an `.eslintrc` file in the root of your project. You can additionally add an `.eslintignore` for ignoring (wildcarded) folders or packages specific to your project.
 
 ## Contributing
 To make changes to this gulpfile, it's best to replace the installed package in a real project with a locally linked development version. To do so, run the following command in the repo of this project:
-```
-yarn link
+```sh
+$ yarn link
 ```
 
 Inside the root of the project you want to test `@grrr/gulpfile` in, run:
-```
-yarn link @grrr/gulpfile
+```sh
+$ yarn link @grrr/gulpfile
 ```
 
 When you're done, you can publish the changes and unlink the development version by running:
-```
-yarn unlink @grrr/gulpfile
-yarn install
+```sh
+$ yarn unlink @grrr/gulpfile
+$ yarn install
 ```
 
 Note that when locally testing updated dependencies, it's better to use a tool like [Yalc](https://github.com/whitecolor/yalc). Dependency resolution in linked packages (via `yarn link`) does not work the same way as when the package would've been published.
