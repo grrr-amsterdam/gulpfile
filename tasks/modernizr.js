@@ -1,4 +1,5 @@
 import config from '../lib/config';
+import { TERSER_CONFIG } from './javascript-vendor';
 
 import log from 'fancy-log';
 import pump from 'pump';
@@ -29,7 +30,7 @@ export const modernizr = done => {
       ],
       ...config.get('tasks.modernizr') || {},
     }),
-    terser(),
+    terser(TERSER_CONFIG),
     dest(config.get('tasks.javascript.dist')),
   ], done);
 };

@@ -6,6 +6,15 @@ import concat from 'gulp-concat';
 import terser from 'gulp-terser';
 import { src, dest, task } from 'gulp';
 
+export const TERSER_CONFIG = {
+  compress: {
+    drop_console: true,
+  },
+  output: {
+    comments: false,
+  },
+};
+
 /**
  * Copy and bundle JavaScript vendor files (eg. polyfills).
  */
@@ -23,19 +32,11 @@ export const jsvendor = done => {
     if (entry.bundle) {
       return src(entry.src)
         .pipe(concat(entry.bundle))
-        .pipe(terser({
-          compress: {
-            drop_console: true,
-          },
-        }))
+        .pipe(terser(TERSER_CONFIG))
         .pipe(dest(entry.dist));
     }
     return src(entry.src)
-      .pipe(terser({
-        compress: {
-          drop_console: true,
-        },
-      }))
+      .pipe(terser(TERSER_CONFIG))
       .pipe(dest(entry.dist));
   }));
 };
