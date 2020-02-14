@@ -1,5 +1,12 @@
 # Changelog
-This changelog only lists breaking changes (major versions), or minor changes important enough to list them here. Check individual releases (tags) and their commits to see unlisted changes.
+This changelog only lists notable changes. Major version are always breaking, although in a few edge cases minor versions could be too. Both are listed here. Check individual releases (tags) and their commits to see unlisted changes.
+
+
+### v7.0.0 (2020-02-14)
+
+#### Require Node.js 10+
+
+Due to an upgrade of `gulp-imagemin` to [v7.0.0](https://github.com/sindresorhus/gulp-imagemin/releases/tag/v7.0.0), this package now requires at least version 10 of Node.js. 
 
 
 ### v6.5.3 (2019-03-28)
