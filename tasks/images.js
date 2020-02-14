@@ -16,12 +16,14 @@ export const images = done => {
   return pump([
     src(config.get('tasks.images.src')),
     imagemin([
-      imagemin.jpegtran({
+      imagemin.mozjpeg({
         progressive: true,
       }),
       imagemin.svgo({
         plugins: [
-          { removeViewBox: false },
+          {
+            removeViewBox: false,
+          },
         ],
       }),
     ]),
