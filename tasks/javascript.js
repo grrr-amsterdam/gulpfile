@@ -6,14 +6,12 @@ import merge from 'merge-stream';
 import browserSync from 'browser-sync';
 import sourcemaps from 'gulp-sourcemaps';
 import rollup from 'gulp-better-rollup';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import { src, dest, task } from 'gulp';
-
-// eslint-disable-next-line
-import json from '@rollup/plugin-json';
 
 /**
  * Bundle JavaScript with Rollup and transpile with Babel.
