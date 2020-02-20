@@ -23,7 +23,7 @@ if (process.cwd() !== realPath) {
 /**
  * Load environment variables from `.env`.
  */
-dotenv.config({ path: config.get('dotenv.file') || process.cwd() });
+dotenv.config({ path: config.get('dotenv.file') || `${process.cwd()}/.env` });
 
 /**
  * Gulp tasks are defined in separate files in the tasks folder.
