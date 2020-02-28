@@ -148,7 +148,8 @@
       "files": [
         "{lib,templates}/**/*.{php,phtml}",
         "**/*.twig"
-      ]
+      ],
+      "browsersync": false
     }
   }
 }
