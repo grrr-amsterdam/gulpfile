@@ -5,7 +5,7 @@ import config from '../lib/config';
 import pump from 'pump';
 import rev from 'gulp-rev';
 import revDeleteOriginal from 'gulp-rev-delete-original';
-import revReplace from 'gulp-rev-replace';
+import revRewrite from 'gulp-rev-rewrite';
 import { src, dest, task, parallel, series } from 'gulp';
 
 const MANIFEST_DIR = config.get('tasks.revision') && config.get('tasks.revision.manifest.directory')
@@ -55,7 +55,7 @@ const replaceCss = done => {
   }
   return pump([
     src(`${config.get('tasks.sass.dist')}/**/*.css`),
-    revReplace({ manifest: src(MANIFEST_FULL_PATH) }),
+    revRewrite({ manifest: src(MANIFEST_FULL_PATH) }),
     dest(config.get('tasks.sass.dist')),
   ], done);
 };
@@ -70,7 +70,7 @@ const replaceJs = done => {
   }
   return pump([
     src(`${config.get('tasks.javascript.dist')}/**/*.js`),
-    revReplace({ manifest: src(MANIFEST_FULL_PATH) }),
+    revRewrite({ manifest: src(MANIFEST_FULL_PATH) }),
     dest(config.get('tasks.javascript.dist')),
   ], done);
 };
