@@ -100,10 +100,17 @@ Inside the root of the project you want to test `@grrr/gulpfile` in, run:
 $ yarn link @grrr/gulpfile
 ```
 
+If you're testing a Node version which doesn't match the current `engines` restriction, installing or rebuilding won't work. You can circumvent that restriction via:
+
+```sh
+yarn --force --ignore-engines
+```
+
 When you're done, you can publish the changes and unlink the development version by running:
 ```sh
 $ yarn unlink @grrr/gulpfile
 $ yarn install
 ```
+
 
 Note that when locally testing updated dependencies, it's better to use a tool like [Yalc](https://github.com/whitecolor/yalc). Dependency resolution in linked packages (via `yarn link`) does not work the same way as when the package would've been published.
