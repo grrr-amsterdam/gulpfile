@@ -25,7 +25,7 @@
     "url": "https://github.com/grrr-amsterdam/gulpfile/issues"
   },
   "engines": {
-    "node": ">= 10 <= 13",
+    "node": ">= 10 <= 14",
     "yarn": ">= 1"
   },
   "dependencies": {
