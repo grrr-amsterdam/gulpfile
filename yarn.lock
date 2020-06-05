@@ -4320,13 +4320,14 @@ gulp-rev-delete-original@^0.2.3:
     rimraf "^2.3.4"
     through2 "^0.6.5"
 
-gulp-rev-replace@^0.4.3:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/gulp-rev-replace/-/gulp-rev-replace-0.4.4.tgz#9696854131024baf264010b1f51ff8a1382ab94a"
-  integrity sha512-2yiDel/TGamn/HgHyo8H1rYEEL2zLsOYODerItoX8batOo0gPAe7uX7t6NlaqB7FEHpS5tGzUr5CKUEmrgdHyQ==
+gulp-rev-rewrite@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/gulp-rev-rewrite/-/gulp-rev-rewrite-3.0.3.tgz#ce6144a1e9e29b2bb6b962628789c3d1780be8e6"
+  integrity sha512-Fcv1zKYhBgvKhPOY5ZB3lSDLY/UrFp7X98SzJOR/LY7xoolOHvilDbzh7YmzD9+t24FR/hQgPocVh4tQiX/YiA==
   dependencies:
-    plugin-error "^0.1.2"
-    through2 "^2.0.0"
+    lodash.escaperegexp "^4.1.2"
+    plugin-error "^1.0.1"
+    through2 "^3.0.0"
 
 gulp-rev@^9.0.0:
   version "9.0.0"
@@ -6033,6 +6034,11 @@ lodash.defaults@^4.0.1:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.defaults/-/lodash.defaults-4.2.0.tgz#d09178716ffea4dde9e5fb7b37f6f0802274580c"
   integrity sha1-0JF4cW/+pN3p5ft7N/bwgCJ0WAw=
+
+lodash.escaperegexp@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/lodash.escaperegexp/-/lodash.escaperegexp-4.1.2.tgz#64762c48618082518ac3df4ccf5d5886dae20347"
+  integrity sha1-ZHYsSGGAglGKw99Mz11YhtriA0c=
 
 lodash.filter@^4.4.0:
   version "4.6.0"
@@ -8979,7 +8985,7 @@ through2@2.X, through2@^2.0.0, through2@^2.0.2, through2@^2.0.3, through2@~2.0.0
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
-through2@3.0.1, through2@^3.0.1:
+through2@3.0.1, through2@^3.0.0, through2@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/through2/-/through2-3.0.1.tgz#39276e713c3302edf9e388dd9c812dd3b825bd5a"
   integrity sha512-M96dvTalPT3YbYLaKaCuwu+j06D/8Jfib0o/PxbVt6Amhv3dUAtW6rTV1jPgJSBG83I/e04Y6xkVdVhSRhi0ww==
