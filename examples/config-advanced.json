@@ -121,6 +121,10 @@
           "not dead",
         ]
       },
+      "pxtorem": {
+        "rootValue": 16,
+        "propWhiteList": ["*"],
+      },
       "cleanCss": {
         "compatibility": "ie11",
         "level": 1
