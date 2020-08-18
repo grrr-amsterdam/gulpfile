@@ -15,26 +15,19 @@ import { src, dest, task } from 'gulp';
 
 const AUTOPREFIXER_CONFIG = config.get('tasks.sass.autoprefixer');
 
-const CLEAN_CSS_CONFIG = config.get('tasks.sass.cleanCss')
-  ? config.get('tasks.sass.cleanCss')
-  : {
-    compatibility: 'ie11',
-    level: 1,
-  };
+const PXTOREM_CONFIG = {
+  rootValue: 10,
+  selectorBlackList: [
+    ':root',
+  ],
+  ...config.get('tasks.sass.pxtorem'),
+};
 
-const PROCESSOR_CONFIG = [
-  autoprefixer(AUTOPREFIXER_CONFIG),
-  pxtorem({
-    root_value: 10,
-    unit_precision: 5,
-    prop_white_list: [
-      'font',
-      'font-size',
-    ],
-    replace: false,
-    media_query: false,
-  }),
-];
+const CLEANCSS_CONFIG = {
+  compatibility: 'ie11',
+  level: 1,
+  ...config.get('tasks.sass.cleanCss'),
+};
 
 /**
  * Compile Sass files.
@@ -54,8 +47,11 @@ export const sass = done => {
         process.exit(1);
       }
     }),
-    postcss(PROCESSOR_CONFIG),
-    gulpif(!isDevelopment, cleanCSS(CLEAN_CSS_CONFIG)),
+    postcss([
+      autoprefixer(AUTOPREFIXER_CONFIG),
+      pxtorem(PXTOREM_CONFIG),
+    ]),
+    gulpif(!isDevelopment, cleanCSS(CLEANCSS_CONFIG)),
     dest(config.get('tasks.sass.dist')),
     browserSync.reload({ stream: true }),
   ], done);
