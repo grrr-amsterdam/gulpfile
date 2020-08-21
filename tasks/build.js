@@ -11,7 +11,7 @@ import { jsvendor } from './javascript-vendor';
 import { modernizr } from './modernizr';
 import { revision } from './revision';
 import { sass } from './sass';
-import { sasslint } from './sass-lint';
+import { styleLint } from './style-lint';
 
 export const TASKS = series(
   init,
@@ -26,7 +26,7 @@ export const TASKS = series(
   ),
   jsbuild,
   eslint,
-  sasslint,
+  styleLint,
   revision,
 );
 

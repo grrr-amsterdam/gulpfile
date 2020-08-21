@@ -1,0 +1,9 @@
+{
+  "ignoreFiles": [
+    "**/normalize.scss",
+    "**/normalize.css"
+  ],
+  "rules": {
+    "color-no-invalid-hex": true
+  }
+}
