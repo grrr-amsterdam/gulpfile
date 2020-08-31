@@ -28,12 +28,11 @@ export const styleLint = done => {
       configFile: LINT_CONFIG,
       reporters: [
         {
-          formatter: 'verbose',
+          formatter: 'string',
           console: true,
         },
       ],
-    }))
-    .pipe(gulpStyleLint.format());
+    }));
 };
 
 task('style:lint', styleLint);
