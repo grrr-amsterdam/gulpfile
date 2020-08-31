@@ -1,9 +1,16 @@
 {
+  "plugins": [
+    "stylelint-prettier"
+  ],
+  extends: [
+      "stylelint-prettier/recommended"
+  ],
   "ignoreFiles": [
     "**/normalize.scss",
     "**/normalize.css"
   ],
   "rules": {
-    "color-no-invalid-hex": true
-  }
+    "color-no-invalid-hex": true,
+    "prettier/prettier": true
+  },
 }
