@@ -56,9 +56,7 @@
     "object-curly-newline": "off",
     "padded-blocks": "off",
     "prefer-destructuring": "warn",
-    "quote-props": ["warn", "consistent"],
     "quotes": "off",
-    "semi": "warn",
     "space-before-function-paren": "off",
   }
 }
