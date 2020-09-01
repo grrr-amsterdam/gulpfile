@@ -58,7 +58,7 @@ The individual tasks are:
 - `browsersync` — auto refresh and hot reloading in the browser
 - `clean` — removes all built assets
 - `copy` — copies files that don't need processing (like fonts, videos and the favicon)
-- `eslint` — lints js with opinionated rules, which can be overwritten by including your own `.eslintrc`
+- `eslint` — lints js with opinionated rules, based on [Prettier](https://prettier.io/), which can be overwritten by including your own `.eslintrc`
 - `images` — runs imagemin on all images in the `config.paths.images.src` and saves the result to `config.paths.images.dist`
 - `javascript:build` — bundles JavaScript into a single bundle with Rollup and transpiles it with Babel
 - `javascript:watch` — watches for changes and builds the bundle when changes are detected
