@@ -76,8 +76,9 @@
     "stylelint": "^13.7.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.18.0",
     "yargs": "^15.0.2"
-  },
+    },
   "devDependencies": {
     "babel-jest": "^26.0.1",
     "jest": "^26.0.1",
