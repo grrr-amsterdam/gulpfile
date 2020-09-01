@@ -1,0 +1,16 @@
+on: push
+name: Lint files
+jobs:
+  eslint:
+    name: eslint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install node v10
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10
+    - name: yarn install
+      run: yarn install
+    - name: lint
+      run: yarn lint

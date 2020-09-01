@@ -1,5 +1,5 @@
 on: push
-name: validate commit message action
+name: Validate commit message action
 jobs:
   build:
     name: harmenjanssen/commit-message-validation-action@master
