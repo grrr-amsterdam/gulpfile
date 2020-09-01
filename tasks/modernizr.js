@@ -1,11 +1,11 @@
-import config from '../lib/config';
-import { TERSER_CONFIG } from './javascript-vendor';
+import config from "../lib/config";
+import { TERSER_CONFIG } from "./javascript-vendor";
 
-import log from 'fancy-log';
-import pump from 'pump';
-import gulpModernizr from 'gulp-modernizr';
-import terser from 'gulp-terser';
-import { src, dest, task } from 'gulp';
+import log from "fancy-log";
+import pump from "pump";
+import gulpModernizr from "gulp-modernizr";
+import terser from "gulp-terser";
+import { src, dest, task } from "gulp";
 
 /**
  * Check .js and .scss source files for Modernizr tests and create a custom
@@ -13,26 +13,29 @@ import { src, dest, task } from 'gulp';
  *
  * Note: this task isn't run on watch, you can run it manually via `gulp modernizr`
  */
-export const modernizr = done => {
-  if (!config.get('tasks.sass.src') && !config.get('tasks.javascript.src')) {
+export const modernizr = (done) => {
+  if (!config.get("tasks.sass.src") && !config.get("tasks.javascript.src")) {
     log(`Skipping 'modernizr' task`);
     return done();
   }
-  return pump([
-    src([
-      config.get('tasks.sass.src'),
-      config.get('tasks.javascript.src'),
-      '!**/{vendor,polyfills}/**/*.js',
-    ].filter(entry => entry)),
-    gulpModernizr({
-      options: [
-        'setClasses',
-      ],
-      ...config.get('tasks.modernizr') || {},
-    }),
-    terser(TERSER_CONFIG),
-    dest(config.get('tasks.javascript.dist')),
-  ], done);
+  return pump(
+    [
+      src(
+        [
+          config.get("tasks.sass.src"),
+          config.get("tasks.javascript.src"),
+          "!**/{vendor,polyfills}/**/*.js",
+        ].filter((entry) => entry)
+      ),
+      gulpModernizr({
+        options: ["setClasses"],
+        ...(config.get("tasks.modernizr") || {}),
+      }),
+      terser(TERSER_CONFIG),
+      dest(config.get("tasks.javascript.dist")),
+    ],
+    done
+  );
 };
 
-task('modernizr', modernizr);
+task("modernizr", modernizr);

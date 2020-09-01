@@ -31,7 +31,8 @@
             ],
             "presets": [
               [
-                "@babel/preset-env", {
+                "@babel/preset-env",
+                {
                   "targets": "> 0.25%, not dead"
                 }
               ]
@@ -43,9 +44,7 @@
     "sass": {
       "src": "assets/styles/**/*.scss",
       "dist": "dist/styles",
-      "main": [
-        "assets/styles/base.scss"
-      ]
+      "main": ["assets/styles/base.scss"]
     }
   }
 }

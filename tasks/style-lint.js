@@ -1,21 +1,21 @@
-import config from '../lib/config';
-import { isDevelopment } from '../lib/env';
+import config from "../lib/config";
+import { isDevelopment } from "../lib/env";
 
-import log from 'fancy-log';
-import fs from 'fs';
-import path from 'path';
-import gulpStyleLint from 'gulp-stylelint';
-import { src, task } from 'gulp';
+import log from "fancy-log";
+import fs from "fs";
+import path from "path";
+import gulpStyleLint from "gulp-stylelint";
+import { src, task } from "gulp";
 
-const LINT_CONFIG = fs.existsSync('.stylelintrc')
-  ? '.stylelintrc'
-  : path.join(__dirname, '../defaults/.stylelintrc');
+const LINT_CONFIG = fs.existsSync(".stylelintrc")
+  ? ".stylelintrc"
+  : path.join(__dirname, "../defaults/.stylelintrc");
 
 /**
  * Lints sass (see `.stylelintrc`)
  */
-export const styleLint = done => {
-  if (!config.get('tasks.sass')) {
+export const styleLint = (done) => {
+  if (!config.get("tasks.sass")) {
     log(`Skipping 'style:lint' task`);
     return done();
   }
@@ -23,16 +23,17 @@ export const styleLint = done => {
     log(`Skipping 'style:lint' task for non-development`);
     return done();
   }
-  return src(config.get('tasks.sass.src'))
-    .pipe(gulpStyleLint({
+  return src(config.get("tasks.sass.src")).pipe(
+    gulpStyleLint({
       configFile: LINT_CONFIG,
       reporters: [
         {
-          formatter: 'string',
+          formatter: "string",
           console: true,
         },
       ],
-    }));
+    })
+  );
 };
 
-task('style:lint', styleLint);
+task("style:lint", styleLint);

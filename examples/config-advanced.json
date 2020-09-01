@@ -31,9 +31,7 @@
           "watch": true,
           "rollup": {
             "input": {
-              "external": [
-                "moment"
-              ]
+              "external": ["moment"]
             },
             "output": {
               "globals": {
@@ -49,7 +47,8 @@
             ],
             "presets": [
               [
-                "@babel/preset-env", {
+                "@babel/preset-env",
+                {
                   "targets": {
                     "esmodules": true
                   }
@@ -63,9 +62,7 @@
           "watch": false,
           "rollup": {
             "input": {
-              "external": [
-                "moment"
-              ]
+              "external": ["moment"]
             },
             "output": {
               "globals": {
@@ -81,7 +78,8 @@
             ],
             "presets": [
               [
-                "@babel/preset-env", {
+                "@babel/preset-env",
+                {
                   "targets": "> 0.25%, not dead"
                 }
               ]
@@ -99,9 +97,7 @@
         "dist": "dist/scripts/vendor"
       },
       {
-        "src": [
-          "node_modules/@babel/polyfill/dist/polyfill.js"
-        ],
+        "src": ["node_modules/@babel/polyfill/dist/polyfill.js"],
         "dist": "assets/build/scripts/vendor",
         "bundle": "babel-polyfill.js"
       }
@@ -109,21 +105,18 @@
     "sass": {
       "src": "assets/styles/**/*.scss",
       "dist": "dist/styles",
-      "main": [
-        "assets/styles/base.scss",
-        "assets/styles/admin.scss"
-      ],
+      "main": ["assets/styles/base.scss", "assets/styles/admin.scss"],
       "autoprefixer": {
         "overrideBrowserslist": [
           "last 2 versions",
           "> 0.5%",
           "ie >= 11",
-          "not dead",
+          "not dead"
         ]
       },
       "pxtorem": {
         "rootValue": 16,
-        "propWhiteList": ["*"],
+        "propWhiteList": ["*"]
       },
       "cleanCss": {
         "compatibility": "ie11",
@@ -135,24 +128,14 @@
         "directory": "dist",
         "file": "assets.json"
       },
-      "files": [
-        "assets/build/videos/**/*"
-      ]
+      "files": ["assets/build/videos/**/*"]
     },
     "modernizr": {
-      "options": [
-        "addTest",
-        "setClasses"
-      ],
-      "tests": [
-        "picture"
-      ]
+      "options": ["addTest", "setClasses"],
+      "tests": ["picture"]
     },
     "watch": {
-      "files": [
-        "{lib,templates}/**/*.{php,phtml}",
-        "**/*.twig"
-      ],
+      "files": ["{lib,templates}/**/*.{php,phtml}", "**/*.twig"],
       "browsersync": false
     }
   }
