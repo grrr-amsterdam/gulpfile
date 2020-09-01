@@ -2,6 +2,12 @@
 This changelog only lists notable changes. Major version are always breaking, although in a few edge cases minor versions could be too. Both are listed here. Check individual releases (tags) and their commits to see unlisted changes.
 
 
+### v8.0.0 (2020-09-01)
+
+- We've moved away from `sass-lint` in favor of `style-lint`, since the former is no longer supported. Note that any `sass-lint:ignore` rules you might have used in current projects won't work anymore!
+- We've started to use [Prettier](https://prettier.io/) at GRRR. This means the default RC files for `eslint` and `style-lint` will extend from Prettier. If you don't want to use Prettier, you can create your own lint config files, they will be picked up in favor of the defaults. 
+
+
 ### v7.0.0 (2020-02-14)
 
 #### Require Node.js 10+
