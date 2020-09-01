@@ -5,45 +5,47 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "legacyDecorators": true,
-      "modules": true,
+      "modules": true
     },
     "allowImportExportEverywhere": true,
-    "codeFrame": false,
+    "codeFrame": false
   },
   "env": {
     "browser": true,
-    "jquery": true,
+    "jquery": true
   },
   "globals": {
     "Modernizr": true,
     "ga": true,
-    "dataLayer": true,
+    "dataLayer": true
   },
-  "extends": [
-    "airbnb-base",
-    "plugin:prettier/recommended",
-  ],
-  "plugins": [
-    "import",
-  ],
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "plugins": ["import"],
   "rules": {
     "array-callback-return": "off",
     "arrow-body-style": "off",
     "arrow-parens": "off",
-    "comma-dangle": ["error", {
-      "arrays": "always-multiline",
-      "objects": "always-multiline",
-      "imports": "always-multiline",
-      "exports": "always-multiline",
-      "functions": "only-multiline",
-    }],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "only-multiline"
+      }
+    ],
     "func-names": "off",
     "implicit-arrow-linebreak": "off",
-    "import/extensions": ["error", "always", {
-      "js": "never",
-      "jsx": "never",
-      "mjs": "never",
-    }],
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "js": "never",
+        "jsx": "never",
+        "mjs": "never"
+      }
+    ],
     "import/no-duplicates": "off",
     "import/no-named-default": "off",
     "import/no-unassigned-import": "off",
@@ -57,6 +59,6 @@
     "padded-blocks": "off",
     "prefer-destructuring": "warn",
     "quotes": "off",
-    "space-before-function-paren": "off",
+    "space-before-function-paren": "off"
   }
 }
