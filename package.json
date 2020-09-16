@@ -69,6 +69,7 @@
     "gulp-terser": "^1.1.7",
     "merge-stream": "^2.0.0",
     "postcss-pxtorem": "^5.1.1",
+    "prettier": "^2.1.1",
     "pump": "^3.0.0",
     "rollup": "^2.0.3",
     "rollup-plugin-babel": "^4.3.2",
@@ -81,8 +82,7 @@
   },
   "devDependencies": {
     "babel-jest": "^26.0.1",
-    "jest": "^26.0.1",
-    "prettier": "^2.1.1"
+    "jest": "^26.0.1"
   },
   "jest": {
     "transformIgnorePatterns": [
