@@ -6,9 +6,10 @@ import path from "path";
 import gulpEsLint from "gulp-eslint";
 import { src, task } from "gulp";
 
-const ESLINT_CONFIG = fs.existsSync(".eslintrc")
-  ? ".eslintrc"
-  : path.join(__dirname, "../defaults/.eslintrc");
+const ESLINT_FILE = ".eslintrc";
+const ESLINT_CONFIG = fs.existsSync(ESLINT_FILE)
+  ? ESLINT_FILE
+  : path.join(__dirname, `../defaults/${ESLINT_FILE}`);
 
 /**
  * Lint JavaScript files (see `.eslintrc`).
