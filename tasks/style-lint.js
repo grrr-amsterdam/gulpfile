@@ -27,6 +27,7 @@ export const styleLint = (done) => {
   return src(config.get("tasks.sass.src")).pipe(
     gulpStyleLint({
       configFile: LINT_CONFIG,
+      failAfterError: false,
       reporters: [
         {
           formatter: "string",
