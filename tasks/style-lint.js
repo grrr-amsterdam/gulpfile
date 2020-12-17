@@ -7,9 +7,10 @@ import path from "path";
 import gulpStyleLint from "gulp-stylelint";
 import { src, task } from "gulp";
 
-const LINT_CONFIG = fs.existsSync(".stylelintrc")
-  ? ".stylelintrc"
-  : path.join(__dirname, "../defaults/.stylelintrc");
+const LINT_FILE = ".stylelintrc";
+const LINT_CONFIG = fs.existsSync(LINT_FILE)
+  ? LINT_FILE
+  : path.join(__dirname, `../defaults/${LINT_FILE}`);
 
 /**
  * Lints sass (see `.stylelintrc`)
