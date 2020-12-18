@@ -1,5 +1,6 @@
 import { isDevelopment } from "../lib/env";
 
+import fs from "fs";
 import log from "fancy-log";
 import config from "../lib/config";
 import pump from "pump";
@@ -61,7 +62,7 @@ const replaceCss = (done) => {
   return pump(
     [
       src(`${config.get("tasks.sass.dist")}/**/*.css`),
-      revRewrite({ manifest: src(MANIFEST_FULL_PATH) }),
+      revRewrite({ manifest: fs.readFileSync(MANIFEST_FULL_PATH) }),
       dest(config.get("tasks.sass.dist")),
     ],
     done
@@ -79,7 +80,7 @@ const replaceJs = (done) => {
   return pump(
     [
       src(`${config.get("tasks.javascript.dist")}/**/*.js`),
-      revRewrite({ manifest: src(MANIFEST_FULL_PATH) }),
+      revRewrite({ manifest: fs.readFileSync(MANIFEST_FULL_PATH) }),
       dest(config.get("tasks.javascript.dist")),
     ],
     done
