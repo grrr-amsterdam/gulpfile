@@ -85,6 +85,9 @@
     "babel-jest": "^26.0.1",
     "jest": "^26.0.1"
   },
+  "resolutions": {
+    "**/gulp-modernizr/**/optimist/minimist": "^1.2.5"
+  },
   "jest": {
     "transformIgnorePatterns": [
       "//node_modules/(?!.*.*/.*.mjs)/"
