@@ -1,10 +1,16 @@
 # Gulpfile
 
 [![Build Status](https://travis-ci.com/grrr-amsterdam/gulpfile.svg?branch=master)](https://travis-ci.com/grrr-amsterdam/gulpfile)
-[![Dependencies](https://david-dm.org/grrr-amsterdam/gulpfile.svg)](https://david-dm.org/grrr-amsterdam/gulpfile)
 
 An opinionated and modular gulpfile.
-Made with ❤️ by [GRRR](https://grrr.nl/), a digital creative agency in Amsterdam.
+
+### Developed with ❤️ by [GRRR](https://grrr.nl)
+
+- GRRR is a [B Corp](https://grrr.nl/en/b-corp/)
+- GRRR has a [tech blog](https://grrr.tech/)
+- GRRR is [hiring](https://grrr.nl/en/jobs/)
+- [@GRRRTech](https://twitter.com/grrrtech) tweets
+
 
 ## Installation
 
