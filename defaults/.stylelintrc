@@ -29,7 +29,6 @@
     "no-duplicate-selectors": true,
     "no-empty-source": true,
     "no-extra-semicolons": true,
-    "no-unknown-animations": true,
     "prettier/prettier": true,
     "property-case": "lower",
     "property-no-unknown": true,
