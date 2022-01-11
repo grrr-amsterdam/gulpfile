@@ -8,7 +8,8 @@
       "modules": true
     },
     "allowImportExportEverywhere": true,
-    "codeFrame": false
+    "codeFrame": false,
+    "requireConfigFile": false
   },
   "env": {
     "browser": true,
