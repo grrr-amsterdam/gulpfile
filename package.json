@@ -41,7 +41,7 @@
     "browser-sync": "^2.18.13",
     "del": "^6.0.0",
     "dotenv": "^8.0.0",
-    "eslint": "^7.1.0",
+    "eslint": "^8.0.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-import": "^2.18.2",
