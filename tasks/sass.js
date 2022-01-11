@@ -13,6 +13,9 @@ import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
 import { src, dest, task } from "gulp";
 
+const nodeSass = require("node-sass");
+
+const sass = gulpSass(nodeSass);
 const AUTOPREFIXER_CONFIG = config.get("tasks.sass.autoprefixer");
 
 const PXTOREM_CONFIG = {
@@ -39,7 +42,7 @@ export const sass = (done) => {
     [
       src(config.get("tasks.sass.main")),
       sassGlob(),
-      gulpSass().on("error", (error) => {
+      sass().on("error", (error) => {
         if (!isDevelopment) {
           log.error(error);
           done();
