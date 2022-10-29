@@ -4,6 +4,7 @@ import { isDevelopment } from "../lib/env";
 import log from "fancy-log";
 import pump from "pump";
 import gulpif from "gulp-if";
+import dartSass from "sass";
 import gulpSass from "gulp-sass";
 import postcss from "gulp-postcss";
 import sassGlob from "gulp-sass-glob";
@@ -39,13 +40,15 @@ export const sass = (done) => {
     [
       src(config.get("tasks.sass.main")),
       sassGlob(),
-      gulpSass().on("error", (error) => {
-        if (!isDevelopment) {
-          log.error(error);
-          done();
-          process.exit(1);
-        }
-      }),
+      gulpSass(dartSass)
+        .sync()
+        .on("error", (error) => {
+          if (!isDevelopment) {
+            log.error(error);
+            done();
+            process.exit(1);
+          }
+        }),
       postcss([autoprefixer(AUTOPREFIXER_CONFIG), pxtorem(PXTOREM_CONFIG)]),
       gulpif(!isDevelopment, cleanCSS(CLEANCSS_CONFIG)),
       dest(config.get("tasks.sass.dist")),
