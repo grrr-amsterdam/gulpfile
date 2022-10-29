@@ -77,7 +77,7 @@ The individual tasks are:
 -   `modernizr` — checks js and scss source files for Modernizr tests and creates a custom Modernizr build
 -   `revision` — creates a revisioned filename for each static asset
 -   `sass` — compiles Sass with globbing and Autoprefixer
--   `style:lint` — lints styles with opinionated rules, which can be overwritten by including your own `.stylelintrc`
+-   `stylelint` — lints styles with opinionated rules, which can be overwritten by including your own `.stylelintrc`
 
 The main tasks are:
 
@@ -96,7 +96,7 @@ Used in `sass` task. Can be specified in the `gulp.json` file in an `autoprefixe
 
 #### Style Lint
 
-Used in `style:lint` tasks. Place a `.stylelintrc` file in the root of your project.
+Used in `stylelint` tasks. Place a `.stylelintrc` file in the root of your project.
 
 #### ESLint
 

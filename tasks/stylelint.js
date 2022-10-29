@@ -15,13 +15,13 @@ const LINT_CONFIG = fs.existsSync(LINT_FILE)
 /**
  * Lints sass (see `.stylelintrc`)
  */
-export const styleLint = (done) => {
+export const stylelint = (done) => {
   if (!config.get("tasks.sass")) {
-    log(`Skipping 'style:lint' task`);
+    log(`Skipping 'stylelint' task`);
     return done();
   }
   if (!isDevelopment) {
-    log(`Skipping 'style:lint' task for non-development`);
+    log(`Skipping 'stylelint' task for non-development`);
     return done();
   }
   return src(config.get("tasks.sass.src")).pipe(
@@ -38,4 +38,4 @@ export const styleLint = (done) => {
   );
 };
 
-task("style:lint", styleLint);
+task("stylelint", stylelint);

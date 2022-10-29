@@ -11,7 +11,7 @@ import { jsvendor } from "./javascript-vendor";
 import { modernizr } from "./modernizr";
 import { revision } from "./revision";
 import { sass } from "./sass";
-import { styleLint } from "./style-lint";
+import { stylelint } from "./stylelint";
 
 export const TASKS = series(
   init,
@@ -19,7 +19,7 @@ export const TASKS = series(
   parallel(modernizr, jsvendor, sass, copy, images, icons),
   jsbuild,
   eslint,
-  styleLint,
+  stylelint,
   revision
 );
 
