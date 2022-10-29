@@ -2,6 +2,25 @@
 
 This changelog only lists notable changes. Major version are always breaking, although in a few edge cases minor versions could be too. Both are listed here. Check individual releases (tags) and their commits to see unlisted changes.
 
+### v9.0.0 (2022-10-31)
+
+All dependencies were updated, and the following breaking changes are introduced:
+
+- The minimum Node.js version is now 14.18; all packages were tested with the latest LTS (Node.js 18).
+- The `engines` restriction is removed from the `package.json`, allowing for easier future usage without actively updating this package.
+- Stylelint was updated. Update your config if: your project uses a custom config (`.stylelintrc`), and your project is using a parsing language (e.g. Sass with SCSS syntax). See below for config adjustments.
+
+If you're using a custom `.stylelintrc`, add following to your configuration (given that you're using Sass with SCSS syntax):
+
+```json
+"overrides": [
+    {
+      "files": ["*.scss", "**/*.scss"],
+      "customSyntax": "postcss-scss"
+    }
+]
+```
+
 ### v8.0.0 (2020-09-01)
 
 -   We've moved away from `sass-lint` in favor of `stylelint`, since the former is no longer supported. Note that any `sass-lint:ignore` rules you might have used in current projects won't work anymore!
