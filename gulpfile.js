@@ -5,4 +5,4 @@ require("@babel/register")({
   ],
   ignore: [/node_modules\/(?!@grrr)/],
 });
-require("./gulpfile.babel.js");
+require("./gulpfile.babel");
