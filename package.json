@@ -25,6 +25,7 @@
     "url": "https://github.com/grrr-amsterdam/gulpfile/issues"
   },
   "engines": {
+    "node": ">= 14.18",
     "yarn": "1"
   },
   "dependencies": {
