@@ -9,8 +9,8 @@ import rollup from "gulp-better-rollup";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
-import babel from "rollup-plugin-babel";
-import { terser } from "rollup-plugin-terser";
+import babel from "@rollup/plugin-babel";
+import terser from "@rollup/plugin-terser";
 import { src, dest, task } from "gulp";
 
 /**
@@ -30,7 +30,10 @@ const generateBundle = (
             json(),
             resolve(),
             commonjs(),
-            babel(babelConfig),
+            babel({
+              babelHelpers: 'bundled',
+              ...babelConfig,
+            }),
             !isDevelopment && terser(),
           ],
           onwarn: (warning, warn) => {
