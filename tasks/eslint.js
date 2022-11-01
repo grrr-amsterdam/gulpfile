@@ -3,7 +3,7 @@ import config from "../lib/config";
 import log from "fancy-log";
 import fs from "fs";
 import path from "path";
-import gulpEsLint from "gulp-eslint";
+import gulpEsLint from "gulp-eslint-new";
 import { src, task } from "gulp";
 
 const ESLINT_FILE = ".eslintrc";
