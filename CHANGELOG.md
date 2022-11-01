@@ -2,6 +2,22 @@
 
 This changelog only lists notable changes. Major version are always breaking, although in a few edge cases minor versions could be too. Both are listed here. Check individual releases (tags) and their commits to see unlisted changes.
 
+### v9.0.1 (2022-01-02)
+
+A fix was added since `gulp-eslint` is abandoned, and resulted in an ESLint config conflict. The default `.eslintrc` config now has been updated.
+
+If your project is using a custom config, please add or update the following rules:
+
+```json
+{
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "requireConfigFile": false
+  }
+}
+```
+
 ### v9.0.0 (2022-10-31)
 
 All dependencies were updated, and the following breaking changes are introduced:
