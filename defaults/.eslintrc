@@ -1,14 +1,15 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaVersion": "2020",
+    "ecmaVersion": "latest",
     "sourceType": "module",
     "ecmaFeatures": {
       "legacyDecorators": true,
       "modules": true
     },
     "allowImportExportEverywhere": true,
-    "codeFrame": false
+    "codeFrame": false,
+    "requireConfigFile": false
   },
   "env": {
     "browser": true,
