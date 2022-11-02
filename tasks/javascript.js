@@ -31,7 +31,7 @@ const generateBundle = (
             resolve(),
             commonjs(),
             babel({
-              babelHelpers: 'bundled',
+              babelHelpers: "bundled",
               ...babelConfig,
             }),
             !isDevelopment && terser(),
