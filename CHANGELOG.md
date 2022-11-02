@@ -6,6 +6,8 @@ This changelog only lists notable changes. Major version are always breaking, al
 
 A fix was added since `gulp-eslint` is abandoned, and resulted in an ESLint config conflict. The default `.eslintrc` config now has been updated.
 
+#### ESLint config
+
 If your project is using a custom config, please add or update the following rules:
 
 ```json
@@ -25,6 +27,9 @@ All dependencies were updated, and the following breaking changes are introduced
 - The minimum Node.js version is now 14.18; all packages were tested with the latest LTS (Node.js 18).
 - The `engines` restriction is removed from the `package.json`, allowing for easier future usage without actively updating this package.
 - Stylelint was updated. Update your config if: your project uses a custom config (`.stylelintrc`), and your project is using a parsing language (e.g. Sass with SCSS syntax). See below for config adjustments.
+- An [update to gulp-svgstore](https://github.com/w0rm/gulp-svgstore/releases/tag/9.0.0) will now transfer presentation attributes from original icons root to a wrapping group (`<svg>` to `<g>`). See below for instructions.
+
+#### Stylelint config
 
 If you're using a custom `.stylelintrc`, add following to your configuration (given that you're using Sass with SCSS syntax):
 
@@ -36,6 +41,13 @@ If you're using a custom `.stylelintrc`, add following to your configuration (gi
     }
 ]
 ```
+
+#### Icons task
+
+If you're using the `icons` tasks to generate an icon SVG sheet, make sure to verify your icons.
+Previously presentation attributes on the `<svg>` were dropped, now they're transferred to a wrapping `<g>`.
+
+For example: if there's a `fill="none"` on the parent `<svg>`, this will now be copied, while previously one might've only removed them on `<path>`s. In this case it would render the icons transparent if a fill was set via CSS.
 
 ### v8.0.0 (2020-09-01)
 
