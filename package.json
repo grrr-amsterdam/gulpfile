@@ -78,7 +78,7 @@
     "pump": "^3.0.0",
     "rollup": "^3.2.3",
     "sass": "^1.55.0",
-    "stylelint": "^14.14.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-prettier": "^2.0.0",
     "stylelint-scss": "^4.3.0",
