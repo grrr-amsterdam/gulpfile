@@ -25,7 +25,7 @@
     "url": "https://github.com/grrr-amsterdam/gulpfile/issues"
   },
   "engines": {
-    "node": ">= 14.18",
+    "node": ">= 16",
     "yarn": "1"
   },
   "dependencies": {
@@ -78,7 +78,7 @@
     "pump": "^3.0.0",
     "rollup": "^3.2.3",
     "sass": "^1.55.0",
-    "stylelint": "^14.14.0",
+    "stylelint": "^15.10.3",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-prettier": "^2.0.0",
     "stylelint-scss": "^4.3.0",
@@ -86,7 +86,8 @@
   },
   "devDependencies": {
     "babel-jest": "^29.2.2",
-    "jest": "^29.2.2"
+    "jest": "^29.2.2",
+    "stylelint-config-standard-scss": "^10.0.0"
   },
   "resolutions": {
     "**/gulp-modernizr/**/optimist/minimist": "^1.2.5"
