@@ -1,13 +1,21 @@
 {
-  "plugins": ["stylelint-prettier"],
+  "plugins": [
+    "stylelint-prettier"
+  ],
   "extends": [
     "stylelint-prettier/recommended",
     "stylelint-config-standard-scss"
   ],
-  "ignoreFiles": ["**/normalize.scss", "**/normalize.css"],
+  "ignoreFiles": [
+    "**/normalize.scss",
+    "**/normalize.css"
+  ],
   "overrides": [
     {
-      "files": ["*.scss", "**/*.scss"],
+      "files": [
+        "*.scss",
+        "**/*.scss"
+      ],
       "customSyntax": "postcss-scss"
     }
   ],
@@ -41,7 +49,7 @@
     "no-duplicate-selectors": true,
     "no-empty-source": true,
     "no-invalid-position-at-import-rule": null,
-    "no-unknown-animations": true,
+    "no-unknown-animations": null,
     "prettier/prettier": true,
     "property-no-unknown": true,
     "rule-empty-line-before": null,
