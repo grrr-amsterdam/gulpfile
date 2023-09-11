@@ -130,3 +130,7 @@ $ yarn install
 ```
 
 Note that when locally testing updated dependencies, it's better to use a tool like [Yalc](https://github.com/whitecolor/yalc). Dependency resolution in linked packages (via `yarn link`) does not work the same way as when the package would've been published.
+
+### Publishing new version
+
+In case you get an error while publishing a new version of the package there is some short [documentation](https://coda.io/d/_dkXTSr4dR9g/Yarn_suOoE#_luqQv) on how to publish a new version.
