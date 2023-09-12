@@ -24,7 +24,7 @@ export const icons = (done) => {
             cleanupIDs: {
               prefix: path.basename(
                 file.relative,
-                `${path.extname(file.relative)}-`
+                `${path.extname(file.relative)}-`,
               ),
               minify: true,
             },
@@ -37,7 +37,7 @@ export const icons = (done) => {
       svgstore({ inlineSvg: true }),
       dest(config.get("tasks.icons.dist")),
     ],
-    done
+    done,
   );
 };
 

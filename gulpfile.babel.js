@@ -10,7 +10,7 @@ import config from "./lib/config";
  * Update `cwd` if `package.json` is a symlink.
  */
 const packageLocation = fs.realpathSync(
-  path.resolve(process.cwd(), "package.json")
+  path.resolve(process.cwd(), "package.json"),
 );
 const realPath = path.dirname(packageLocation);
 if (process.cwd() !== realPath) {

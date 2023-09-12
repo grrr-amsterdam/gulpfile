@@ -25,7 +25,7 @@ export const modernizr = (done) => {
           config.get("tasks.sass.src"),
           config.get("tasks.javascript.src"),
           "!**/{vendor,polyfills}/**/*.js",
-        ].filter((entry) => entry)
+        ].filter((entry) => entry),
       ),
       gulpModernizr({
         options: ["setClasses"],
@@ -34,7 +34,7 @@ export const modernizr = (done) => {
       terser(TERSER_CONFIG),
       dest(config.get("tasks.javascript.dist")),
     ],
-    done
+    done,
   );
 };
 

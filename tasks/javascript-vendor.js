@@ -37,7 +37,7 @@ export const jsvendor = (done) => {
           .pipe(dest(entry.dist));
       }
       return src(entry.src).pipe(terser(TERSER_CONFIG)).pipe(dest(entry.dist));
-    })
+    }),
   );
 };
 

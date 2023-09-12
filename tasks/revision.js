@@ -47,7 +47,7 @@ const hashFiles = (done) => {
       rev.manifest(MANIFEST_FILE),
       dest(MANIFEST_DIR),
     ],
-    done
+    done,
   );
 };
 
@@ -65,7 +65,7 @@ const replaceCss = (done) => {
       revRewrite({ manifest: fs.readFileSync(MANIFEST_FULL_PATH) }),
       dest(config.get("tasks.sass.dist")),
     ],
-    done
+    done,
   );
 };
 
@@ -83,7 +83,7 @@ const replaceJs = (done) => {
       revRewrite({ manifest: fs.readFileSync(MANIFEST_FULL_PATH) }),
       dest(config.get("tasks.javascript.dist")),
     ],
-    done
+    done,
   );
 };
 

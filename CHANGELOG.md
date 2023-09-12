@@ -12,11 +12,11 @@ If your project is using a custom config, please add or update the following rul
 
 ```json
 {
-  "parser": "@babel/eslint-parser",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "requireConfigFile": false
-  }
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "requireConfigFile": false
+    }
 }
 ```
 
@@ -24,10 +24,10 @@ If your project is using a custom config, please add or update the following rul
 
 All dependencies were updated, and the following breaking changes are introduced:
 
-- The minimum Node.js version is now 14.18; all packages were tested with the latest LTS (Node.js 18).
-- The `engines` restriction is removed from the `package.json`, allowing for easier future usage without actively updating this package.
-- Stylelint was updated. Update your config if: your project uses a custom config (`.stylelintrc`), and your project is using a parsing language (e.g. Sass with SCSS syntax). See below for config adjustments.
-- An [update to gulp-svgstore](https://github.com/w0rm/gulp-svgstore/releases/tag/9.0.0) will now transfer presentation attributes from original icons root to a wrapping group (`<svg>` to `<g>`). See below for instructions.
+-   The minimum Node.js version is now 14.18; all packages were tested with the latest LTS (Node.js 18).
+-   The `engines` restriction is removed from the `package.json`, allowing for easier future usage without actively updating this package.
+-   Stylelint was updated. Update your config if: your project uses a custom config (`.stylelintrc`), and your project is using a parsing language (e.g. Sass with SCSS syntax). See below for config adjustments.
+-   An [update to gulp-svgstore](https://github.com/w0rm/gulp-svgstore/releases/tag/9.0.0) will now transfer presentation attributes from original icons root to a wrapping group (`<svg>` to `<g>`). See below for instructions.
 
 #### Stylelint config
 

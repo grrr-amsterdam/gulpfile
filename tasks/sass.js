@@ -54,7 +54,7 @@ export const sass = (done) => {
       dest(config.get("tasks.sass.dist")),
       browserSync.reload({ stream: true }),
     ],
-    done
+    done,
   );
 };
 

@@ -18,7 +18,7 @@ import { src, dest, task } from "gulp";
  */
 const generateBundle = (
   { babelConfig, rollupConfig, bundleFile },
-  errorCallback
+  errorCallback,
 ) => {
   return src(config.get("tasks.javascript.main"))
     .pipe(sourcemaps.init({ loadMaps: true }))
@@ -52,8 +52,8 @@ const generateBundle = (
           ...rollupConfig.output,
           format: "iife",
           file: bundleFile,
-        }
-      ).on("error", errorCallback)
+        },
+      ).on("error", errorCallback),
     )
     .pipe(sourcemaps.write("./"))
     .pipe(dest(config.get("tasks.javascript.dist")));
@@ -82,9 +82,9 @@ const generateBundles = ({ watch }, done) => {
           if (!isDevelopment) {
             process.exit(1);
           }
-        }
+        },
       );
-    })
+    }),
   ).on("end", () => {
     if (watch) {
       browserSync.reload();
