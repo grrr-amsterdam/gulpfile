@@ -19,7 +19,7 @@ export const copy = (done) => {
       }),
       dest(config.get("paths.dist")),
     ],
-    done
+    done,
   );
 };
 

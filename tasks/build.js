@@ -20,7 +20,7 @@ export const TASKS = series(
   jsbuild,
   eslint,
   stylelint,
-  revision
+  revision,
 );
 
 task("build", TASKS);

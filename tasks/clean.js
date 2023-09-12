@@ -7,7 +7,7 @@ import { task } from "gulp";
  */
 export const clean = (done) => {
   del([`${config.get("paths.dist")}/**/*`], { dot: true }).then((paths) =>
-    done()
+    done(),
   );
 };
 

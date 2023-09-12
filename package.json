@@ -15,7 +15,8 @@
   "main": "gulpfile.babel.js",
   "scripts": {
     "lint": "eslint . --ext=.js,.mjs",
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",

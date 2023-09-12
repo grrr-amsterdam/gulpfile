@@ -34,7 +34,7 @@ export const stylelint = (done) => {
           console: true,
         },
       ],
-    })
+    }),
   );
 };
 

@@ -1,21 +1,13 @@
 {
-  "plugins": [
-    "stylelint-prettier"
-  ],
+  "plugins": ["stylelint-prettier"],
   "extends": [
     "stylelint-prettier/recommended",
     "stylelint-config-standard-scss"
   ],
-  "ignoreFiles": [
-    "**/normalize.scss",
-    "**/normalize.css"
-  ],
+  "ignoreFiles": ["**/normalize.scss", "**/normalize.css"],
   "overrides": [
     {
-      "files": [
-        "*.scss",
-        "**/*.scss"
-      ],
+      "files": ["*.scss", "**/*.scss"],
       "customSyntax": "postcss-scss"
     }
   ],

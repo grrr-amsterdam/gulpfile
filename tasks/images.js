@@ -30,7 +30,7 @@ export const images = (done) => {
       ]),
       dest(config.get("tasks.images.dist")),
     ],
-    done
+    done,
   );
 };
 
