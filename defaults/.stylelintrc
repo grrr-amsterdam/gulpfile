@@ -47,7 +47,7 @@
     "rule-empty-line-before": null,
     "scss/at-extend-no-missing-placeholder": true,
     "scss/at-import-no-partial-leading-underscore": true,
-    "scss/at-import-partial-extension": "always",
+    "scss/at-import-partial-extension": null,
     "scss/at-rule-conditional-no-parentheses": true,
     "scss/at-rule-no-unknown": true,
     "scss/dollar-variable-empty-line-before": null,
